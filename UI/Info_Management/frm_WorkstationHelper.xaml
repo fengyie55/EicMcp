@@ -1,0 +1,132 @@
+﻿<ad:DocumentContent
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ad="clr-namespace:AvalonDock;assembly=AvalonDock"
+        xmlns:Fluent="clr-namespace:Fluent;assembly=Fluent" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="UI.frm_WorkstationHelper"
+        Title="frm_WorkstationHelper" Height="640" Width="1040" Background="{StaticResource back_01}" Loaded="DocumentContent_Loaded">
+    <Grid Background="#FFB2CBD2">
+    	
+    	<Grid.RowDefinitions>
+    		<RowDefinition Height="32"/>
+    		<RowDefinition Height="223.84"/>
+    		<RowDefinition Height="344.16"/>
+    		<RowDefinition Height="15"/>
+    	</Grid.RowDefinitions>
+   
+        <Button Content="Button" HorizontalAlignment="Left" Height="0" Margin="16,103.84,0,0" VerticalAlignment="Top" Width="8" Grid.Row="1" Grid.Column="2"/>
+        <Grid Margin="5,0,0,0" Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="3">
+        	<Grid.RowDefinitions>
+        		<RowDefinition Height="40"/>
+        		<RowDefinition Height="305"/>
+        		<RowDefinition/>
+        	</Grid.RowDefinitions>
+        	<Grid.ColumnDefinitions>
+        		<ColumnDefinition Width="280"/>
+        		<ColumnDefinition Width="280"/>
+        		<ColumnDefinition Width="280"/>
+        		<ColumnDefinition Width="179"/>
+        		<ColumnDefinition/>
+        	</Grid.ColumnDefinitions>
+        	<Button Content="人" Margin="0" Style="{DynamicResource PlayButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"/>
+        	<Button Content="机" Margin="0" Style="{DynamicResource PlayButtonStyle}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40"/>
+        	<Button Content="料" Margin="0" x:Name="button1" VerticalAlignment="Center" Style="{StaticResource PlayButtonStyle}" Grid.Column="2" HorizontalAlignment="Center" Height="40" Width="40" >
+        		<Button.Background>
+        			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        				<GradientStop Color="White" Offset="0"/>
+        				<GradientStop Color="#FF31EF16" Offset="0.9"/>
+        			</LinearGradientBrush>
+        		</Button.Background>
+        	</Button>
+        	<Button Content="每日报表" HorizontalAlignment="Right" Margin="0,0,2,0" Width="118" Height="25" VerticalAlignment="Center" Background="#FF1755A9" Name="btn_H_ReportForms" Click="btn_H_ReportForms_Click" />
+        	<Button Content="员工配置" HorizontalAlignment="Left" Margin="2,0,0,0" Width="118" Height="25" VerticalAlignment="Center" Background="#FF1755A9" Name="btn_H_UserWK" Click="btn_H_UserWK_Click" />
+        	<Button Content="设备管理" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,2,0" Width="118" Height="25" VerticalAlignment="Center" Background="#FF1755A9" Name="btn_E_EquipmentMS" Click="btn_E_EquipmentMS_Click" />
+        	<Button Content="治具管理" Grid.Column="1" HorizontalAlignment="Left" Margin="2,0,0,0" Width="118" Height="25" VerticalAlignment="Center" Background="#FF1755A9" Name="btn_E_FixtureMS" Click="btn_E_FixtureMS_Click" />
+        	<Button Content="功能待定" Grid.Column="2" HorizontalAlignment="Left" Margin="2,0,0,0" Width="118" Height="25" VerticalAlignment="Center" Background="#FF1755A9"/>
+        	<Button Content="工单管理" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,2,0" Width="118" Height="25" VerticalAlignment="Center" Background="#FF1755A9"/>
+            <ListView Margin="2,0,15,3.5" Grid.Row="1" Name="lsv_UserList">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="班别" DisplayMemberBinding="{Binding Workstation}" Width="50"/>
+                        <GridViewColumn Header="工号" DisplayMemberBinding="{Binding Job_Num}" Width="80"/>
+                        <GridViewColumn Header="姓名" DisplayMemberBinding="{Binding Name}" Width="80"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+           
+            <ListView Margin="2,0,16,3.5" Grid.Row="1" Grid.Column="1" Name="lsv_EnquipmentList">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="财产编号" DisplayMemberBinding="{Binding AssetNum}" Width="80"/>
+                        <GridViewColumn Header="名称" DisplayMemberBinding="{Binding AssetName}" Width="120"/>
+                        <GridViewColumn Header="效率" DisplayMemberBinding="{Binding Efficiency}" Width="50"/>
+                        <GridViewColumn Header="状态" DisplayMemberBinding="{Binding State}" Width="50"/>                      
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <ListView Margin="2,0,16,3.5" Grid.Row="1" Grid.Column="2" Name="lsv_OrderInfoList">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="工单" DisplayMemberBinding="{Binding OrderID}" Width="100"/>
+                        <GridViewColumn Header="总量" DisplayMemberBinding="{Binding Count}" Width="50"/>
+                        <GridViewColumn Header="已领料" DisplayMemberBinding="{Binding JobNum}" Width="50"/>
+                        <GridViewColumn Header="已出货" DisplayMemberBinding="{Binding Name}" Width="50"/>
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+                <Button Content="法" Margin="0" x:Name="button1_Copy" Style="{StaticResource PlayButtonStyle}" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Height="40" >
+        		<Button.Background>
+        			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        				<GradientStop Color="White" Offset="0"/>
+        				<GradientStop Color="#FF31EF16" Offset="0.9"/>
+        			</LinearGradientBrush>
+        		</Button.Background>
+        	</Button>
+        	<Grid HorizontalAlignment="Right" Grid.Row="1" Width="10" Background="#FF6ACEA7"/>
+        	<Grid HorizontalAlignment="Right" Margin="0" Grid.Row="1" Width="10" Grid.Column="1" Background="#FF6ACEA7"/>
+        	<Grid HorizontalAlignment="Right" Margin="0" Grid.Row="1" Width="10" Grid.Column="2" Background="#FF6ACEA7"/>
+        	<Grid Margin="4,0,0,0" Grid.Row="1" Grid.Column="3" Background="#FF6ACEA7"/>
+            <Button Content="ＳＯＰ" Grid.Column="3" Margin="2,0,0,0" Background="#FF1755A9" HorizontalAlignment="Left" Width="67.5" VerticalAlignment="Center" Height="25"/>
+        	<Button Content="图纸" Grid.Column="3" Margin="0,0,2,0" Background="#FF1755A9" HorizontalAlignment="Right" Width="67.5" VerticalAlignment="Center" Height="25"/>
+        </Grid>
+        <Grid Margin="5,4,0,8" Grid.RowSpan="2" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox">
+        	<Grid.RowDefinitions>
+        		<RowDefinition Height="28.042"/>
+        		<RowDefinition/>
+        	</Grid.RowDefinitions>
+        	<Grid.ColumnDefinitions>
+        		<ColumnDefinition Width="170.51"/>
+        		<ColumnDefinition Width="528.49"/>
+        		<ColumnDefinition Width="320"/>
+        		<ColumnDefinition/>
+        	</Grid.ColumnDefinitions>
+        	<Rectangle Fill="#FF6ACEA7" Margin="0,4,0,0" Grid.RowSpan="2" Stroke="Black" Grid.Column="2" d:LayoutOverrides="GridBox"/>
+            <DataGrid Grid.Column="1" Margin="1,-0.334,0,0" Grid.Row="1" Name="dgv_DataList" />
+        	<TextBlock Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="信息" FontSize="24" FontWeight="Bold" Foreground="#FF1C1FEF" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        	<TextBlock Grid.Column="2" Margin="0" TextWrapping="Wrap" Text="菜单" FontSize="24" FontWeight="Bold" Foreground="#FF1C1FEF" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        	<Grid Grid.Column="2" Grid.RowSpan="2">
+        		<Grid.ColumnDefinitions>
+        			<ColumnDefinition Width="56"/>
+        			<ColumnDefinition Width="0.939*"/>
+        			<ColumnDefinition Width="0.061*"/>
+        		</Grid.ColumnDefinitions>
+        		<Grid.RowDefinitions>
+        			<RowDefinition Height="30"/>
+        			<RowDefinition Height="30"/>
+        			<RowDefinition Height="30"/>
+        			<RowDefinition Height="30"/>
+        			<RowDefinition Height="30"/>
+        			<RowDefinition Height="30"/>     
+        			<RowDefinition Height="30"/>
+        			<RowDefinition/>
+        		</Grid.RowDefinitions>
+        		<TextBlock Margin="8,8,0,8" Grid.Row="1" TextWrapping="Wrap" Text="工作站："/>
+        		<ComboBox Grid.Column="1" Margin="0,0,119.896,0" Grid.Row="1" VerticalAlignment="Center" Height="25" Name="cmb_WKList" />
+        		<Button Content="生产排程" Grid.Column="1" HorizontalAlignment="Right" Margin="0,3" Grid.Row="2" Width="80" Height="25" Name="btn_M_MPS" Click="btn_M_MPS_Click" />
+                <Button Content="载入信息" Height="25" HorizontalAlignment="Right" Margin="0,3,0,2" Name="btn_Lad_WkInfo" Width="80" Grid.Column="1" Grid.Row="1" Click="btn_Lad_WkInfo_Click" />
+            </Grid>
+            <TextBox Grid.RowSpan="2" Height="244" HorizontalAlignment="Left" Name="txb_WK_InfoMessage" VerticalAlignment="Top" Width="171" Background="#FF6ACEA7" />
+        </Grid>
+   
+    </Grid>
+</ad:DocumentContent>

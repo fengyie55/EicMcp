@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WorkstationState>
+  <Workstation Name ="南_第一站">
+    <State>待投料</State>
+  </Workstation>
+  <Workstation Name ="南_第二站">
+    <State>待研磨</State>
+  </Workstation>
+</WorkstationState>
+

@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8029D6C6-8248-4BE1-AF1E-AB9D667D098B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bll</RootNamespace>
+    <AssemblyName>MCP_Bll</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Maticsoft.Common">
+      <HintPath>..\Lib\Maticsoft.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="cls_Consumable.cs" />
+    <Compile Include="E_Process\Cls_Flow.cs" />
+    <Compile Include="ConsumableInfo.cs" />
+    <Compile Include="ConsumableReceive.cs" />
+    <Compile Include="ConsumableStorage.cs" />
+    <Compile Include="CustomersData.cs" />
+    <Compile Include="E_Process\Draw_Process.cs" />
+    <Compile Include="Equipment_Maintain.cs" />
+    <Compile Include="e_Flow.cs" />
+    <Compile Include="e_ProcessDraw.cs" />
+    <Compile Include="e_ProcessFlow.cs" />
+    <Compile Include="e_Rejects.cs" />
+    <Compile Include="e_ReworkProcess.cs" />
+    <Compile Include="e_Reworks.cs" />
+    <Compile Include="e_Solution.cs" />
+    <Compile Include="e_WorkOrder.cs" />
+    <Compile Include="FixtureList.cs" />
+    <Compile Include="E_Process\ICls_Flow.cs" />
+    <Compile Include="E_Process\IDraw_Process.cs" />
+    <Compile Include="LabelCheck.cs" />
+    <Compile Include="Operation_log.cs" />
+    <Compile Include="OrderInfo\Cls_OrderInfo.cs" />
+    <Compile Include="Entity_Sets\AdapterTestData.cs" />
+    <Compile Include="Entity_Sets\BoxInfo.cs" />
+    <Compile Include="Cls_Public\ZMing.cs" />
+    <Compile Include="Entity_Sets\ReWork\Dispose.cs" />
+    <Compile Include="Entity_Sets\MultiFiber.cs" />
+    <Compile Include="Entity_Sets\InspectStandard.cs" />
+    <Compile Include="Entity_Sets\MaterialInfo.cs" />
+    <Compile Include="Entity_Sets\Material_Receive.cs" />
+    <Compile Include="Entity_Sets\OrderMaterial.cs" />
+    <Compile Include="Entity_Sets\My_Inspect\My_Inspect.cs" />
+    <Compile Include="Entity_Sets\My_Inspect\My_Inspect_EventSet.cs" />
+    <Compile Include="Entity_Sets\My_Inspect\My_Inspect_InspectMethod.cs" />
+    <Compile Include="Entity_Sets\LabInfo.cs" />
+    <Compile Include="Entity_Sets\MoveStore\MoveStore_Receive.cs" />
+    <Compile Include="Entity_Sets\MoveStore\MoveStore_Send.cs" />
+    <Compile Include="Equipment\EquipmentInfo.cs" />
+    <Compile Include="Equipment\Equipment_TypeList.cs" />
+    <Compile Include="Equipment\FixtureInfo.cs" />
+    <Compile Include="Entity_Sets\ImageList.cs" />
+    <Compile Include="Entity_Sets\LabVerify.cs" />
+    <Compile Include="Entity_Sets\Material_Inject.cs" />
+    <Compile Include="Entity_Sets\MoveStore_ProductControl.cs" />
+    <Compile Include="Entity_Sets\My_Fixture.cs" />
+    <Compile Include="My_Print\My_Print.cs" />
+    <Compile Include="Entity_Sets\OrderLabSet.cs" />
+    <Compile Include="Entity_Sets\Binning.cs" />
+    <Compile Include="Entity_Sets\PackBatch.cs" />
+    <Compile Include="Entity_Sets\My_Inspect\Pack_3D.cs" />
+    <Compile Include="Entity_Sets\My_Inspect\Pack_Exfo.cs" />
+    <Compile Include="Cls_Public\My_MessageBox.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entity_Sets\SerialNumber.cs" />
+    <Compile Include="Entity_Sets\sysdiagrams.cs" />
+    <Compile Include="Entity_Sets\My_Inspect\TestStandard_3D.cs" />
+    <Compile Include="Entity_Sets\My_Inspect\TestStandard_Exfo.cs" />
+    <Compile Include="Entity_Sets\WorkOrder.cs" />
+    <Compile Include="Entity_Sets\My_Inspect\User_3D_Test_Good.cs" />
+    <Compile Include="Entity_Sets\My_Inspect\User_JDS_Test_Good.cs" />
+    <Compile Include="Entity_Sets\tb_PrintRecord.cs" />
+    <Compile Include="Entity_Sets\sysUser.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity_Sets\ReWork\Rejected.cs" />
+    <Compile Include="Report\Report.cs" />
+    <Compile Include="Entity_Sets\Workstation.cs" />
+    <Compile Include="Report\Report_3D.cs" />
+    <Compile Include="Entity_Sets\Encasement.cs" />
+    <Compile Include="Entity_Sets\EncasementSet.cs" />
+    <Compile Include="Entity_Sets\ReWork\Rework.cs" />
+    <Compile Include="Report\Report_Exfo.cs" />
+    <Compile Include="Entity_Sets\StateList.cs" />
+    <Compile Include="Tools_SPC\SPC.cs" />
+    <Compile Include="Entity_Sets\UserInfo.cs" />
+    <Compile Include="Entity_Sets\User_WK.cs" />
+    <Compile Include="Entity_Sets\XmlDatasetConvert.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MyLib\ZhuifengLib\ZhuifengLib\ZhuifengLib.csproj">
+      <Project>{ac67be14-18df-411d-8648-584814f9bc5b}</Project>
+      <Name>ZhuifengLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MCP_DAL\DAL.csproj">
+      <Project>{2EEC6101-D4FF-4B5B-B473-F414E51F0A2E}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MCP_DBUitility\DBUitility.csproj">
+      <Project>{9B822B62-880F-4ADD-ACF8-3BA3EB9A153E}</Project>
+      <Name>DBUitility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MCP_Model\Model.csproj">
+      <Project>{FE842339-726F-426A-8472-38D8422D82AA}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3D_APC_Report.Xls" />
+    <None Include="Resources\3D_PC_Report.Xls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AboutLogo.png">
+      <SubType>Image</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>6</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

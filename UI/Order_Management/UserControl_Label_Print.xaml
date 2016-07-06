@@ -1,0 +1,80 @@
+﻿<ad:DocumentContent x:Class="UI.UserControl_Label_Print"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ad="clr-namespace:AvalonDock;assembly=AvalonDock"
+             xmlns:extToolkit="clr-namespace:Microsoft.Windows.Controls.Primitives;assembly=WPFToolkit"
+             mc:Ignorable="d" FontSize="12"            
+             d:DesignHeight="640" d:DesignWidth="1040" Background="{StaticResource DocumentContent_Background}" Closed="DocumentContent_Closed">
+    <Grid Width="1030">
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width="79.542"/>
+    		<ColumnDefinition Width="166.958"/>
+    		<ColumnDefinition Width="50.5"/>
+    		<ColumnDefinition Width="148"/>
+    		<ColumnDefinition Width="99"/>
+    		<ColumnDefinition Width="480"/>
+    		<ColumnDefinition/>
+    	</Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="260"/>
+            <RowDefinition Height="5" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+			<RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border  BorderBrush="Silver" BorderThickness="1" Height="30" HorizontalAlignment="Left" Name="border1" VerticalAlignment="Top" Width="1022" Background="{StaticResource Border_Background}" Grid.ColumnSpan="6" d:LayoutOverrides="GridBox">
+            <Label FontSize="15" Foreground="White" Name="lab_Tiele" Margin="0,0,-37,0" HorizontalAlignment="Left" VerticalAlignment="Center">订单中心——标签打印</Label>
+        </Border>
+        <Label Content="已刷 12 条" HorizontalAlignment="Center" Margin="0" x:Name="label1" FontWeight="Bold" FontSize="29.333" Width="183.166" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="6" />
+        <DataGrid Margin="-0.458,0,0,0" Grid.Row="2" Grid.ColumnSpan="6"/>
+        <TextBlock Margin="0" Text="工单单号：" HorizontalAlignment="Right" Grid.Row="4" VerticalAlignment="Center" FontSize="16">
+        	<TextBlock.Foreground>
+        		<SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlTextColorKey}}"/>
+        	</TextBlock.Foreground>
+        </TextBlock>
+        <TextBlock Text="批号：" HorizontalAlignment="Right" Grid.Row="5" d:LayoutOverrides="HorizontalAlignment, Height" Width="37.7" FontSize="16" VerticalAlignment="Center" Margin="0,3,10,3">
+        	<TextBlock.Foreground>
+        		<SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlTextColorKey}}"/>
+        	</TextBlock.Foreground>
+        </TextBlock>
+        <TextBlock Margin="0,3,141,3" Text="编码：" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="2" d:LayoutOverrides="Height" FontSize="16" VerticalAlignment="Center" Grid.ColumnSpan="2">
+        	<TextBlock.Foreground>
+        		<SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlTextColorKey}}"/>
+        	</TextBlock.Foreground>
+        </TextBlock>
+        <CheckBox Content="" Grid.Column="1" HorizontalAlignment="Right" Margin="0,6,10,3.5" Grid.Row="4" Width="15.491" RenderTransformOrigin="2.258,0.452" Name="ckb_Order_Edit" Checked="ckb_Order_Edit_Checked" />
+        <ListBox Grid.Column="3" Margin="0,3,18,0" Grid.Row="5" Grid.RowSpan="8" Name="lst_BarCodeRecord" />
+        <TextBlock x:Name="Info_Batch_Count" Margin="1.7,0,0,0" Grid.Row="7" Text="BatchCount" Grid.Column="1" HorizontalAlignment="Left" Foreground="Black" d:LayoutOverrides="Height" FontSize="14" VerticalAlignment="Center"/>
+        <TextBlock x:Name="Info_YetPack_Count" Margin="1.7,0,0,0" Grid.Row="8" Text="Count" HorizontalAlignment="Left" Grid.Column="1" Foreground="Black" d:LayoutOverrides="Height" FontSize="14" VerticalAlignment="Center"/>
+        <TextBlock x:Name="Info_PeoductName" Margin="0" Grid.Row="10" Text="ProductName" Grid.Column="1" HorizontalAlignment="Left" Foreground="Black" d:LayoutOverrides="Height" FontSize="14" VerticalAlignment="Center"/>
+        <TextBlock x:Name='Info_Model' Margin="0" Grid.Row="11" Text="Model" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" Width="140" d:LayoutOverrides="Height" Foreground="Black" FontSize="14" VerticalAlignment="Center"/>
+        <TextBlock x:Name="Info_DeliveryDate" Margin="0,5" Grid.Row="12" Text="DeliveryDate" Grid.Column="1" HorizontalAlignment="Left" d:LayoutOverrides="HorizontalAlignment, Height" Foreground="Black" FontSize="14" VerticalAlignment="Center"/>
+        <TextBlock x:Name="Info_OrderID_Count" Margin="1.7,0,0,0" Grid.Row="6" Text="OrderCount" Grid.Column="1" HorizontalAlignment="Left" d:LayoutOverrides="Height" Foreground="Black" FontSize="14" VerticalAlignment="Center"/>
+        <TextBlock Margin="0,0,-1.7,0" Grid.Row="7" Text="批量：" HorizontalAlignment="Right" Foreground="Black" FontSize="16" VerticalAlignment="Center"/>
+        <TextBlock Margin="0,0,-1.7,0" Grid.Row="8" Text="已包装：" HorizontalAlignment="Right" Foreground="Black" Height="16" VerticalAlignment="Center" FontSize="16"/>
+        <TextBlock Margin="0" Grid.Row="10" Text="品名：" HorizontalAlignment="Right" Foreground="Black" FontSize="16" VerticalAlignment="Center"/>
+        <TextBlock Margin="0" Grid.Row="11" Text="规格：" HorizontalAlignment="Right" Foreground="Black" FontSize="16" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="12" Text="出货日期：" HorizontalAlignment="Right" Margin="0,3" Foreground="Black" FontSize="16" VerticalAlignment="Center" />
+        <TextBlock Margin="0,0,-1.7,0" Grid.Row="6" Text="工单数量：" HorizontalAlignment="Right" Foreground="Black" FontSize="16" VerticalAlignment="Center"/>
+        <Button Content="打印" Grid.Column="4" Grid.Row="4" HorizontalAlignment="Left" Margin="10,1,0,23" x:Name="btn_Print" Width="81" Grid.ColumnSpan="2" FontSize="18.667" Click="btn_Print_Click" Grid.RowSpan="2" />
+        <CheckBox Content="" HorizontalAlignment="Right" Margin="0,7,10,2" RenderTransformOrigin="2.258,0.452" Width="15.491" Grid.Column="1" Grid.Row="5" Name="ckb_BatchNo_Edit" IsChecked="False" Checked="ckb_BatchNo_Edit_Checked" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="1,2,0,0" Name="txb_Orderid" VerticalAlignment="Top" Width="134.958" Grid.Column="1" Grid.Row="4" PreviewKeyDown="txb_OrderID_PreviewKeyDown" />
+        <ComboBox Height="22" Margin="1,3,31,0" Name="cmb_BatchNo" VerticalAlignment="Center" Grid.Column="1" Grid.Row="5" DropDownClosed="cmb_BatchNo_DropDownClosed" ItemsSource="{Binding}" DataContext="{Binding}" />
+        <TextBlock Margin="0" Grid.Row="9" TextWrapping="Wrap" Text="已打印：" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16"/>
+        <TextBlock x:Name="Info_YetPrintCount" Grid.Column="1" Margin="0,0,60.458,0" Grid.Row="9" TextWrapping="Wrap" Text="YetPrintCount" VerticalAlignment="Center" FontSize="14"/>
+        <TextBox Height="23" HorizontalAlignment="Left" Name="txb_BarCode" VerticalAlignment="Top" Width="148" Grid.Column="3" Grid.Row="4" Margin="0,2,0,0" PreviewKeyDown="txb_BarCode_PreviewKeyDown" />
+    </Grid>
+</ad:DocumentContent>

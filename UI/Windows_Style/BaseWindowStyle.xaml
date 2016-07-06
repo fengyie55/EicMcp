@@ -1,0 +1,109 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTemplate x:Key="WindowTemplateKey"
+                     TargetType="{x:Type Window}">
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}">
+            <Grid>
+                <AdornerDecorator>
+                    <ContentPresenter />
+                </AdornerDecorator>
+                <ResizeGrip Visibility="Collapsed"
+                            IsTabStop="false"
+                            HorizontalAlignment="Right"
+                            x:Name="WindowResizeGrip"
+                            VerticalAlignment="Bottom" />
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ResizeMode"
+                               Value="CanResizeWithGrip" />
+                    <Condition Property="WindowState"
+                               Value="Normal" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Visibility"
+                        TargetName="WindowResizeGrip"
+                        Value="Visible" />
+            </MultiTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="BaseWindowControlTemplate" TargetType="{x:Type Window}">
+        <DockPanel LastChildFill="True">
+            <!--外边框-->
+            <Border Width="Auto"
+                    Height="Auto"
+                    DockPanel.Dock="Top"
+                    Background="#FF7097D0"
+                    CornerRadius="4,4,0,0"
+                    x:Name="borderTitle">
+                <DockPanel >
+                            
+                    <!--窗体主题-->
+                    <Label Content="WindowsTitle" 
+                           DockPanel.Dock="Left"
+                           Foreground="White"
+                           FontWeight="Bold" 
+                           FontFamily="SimSun" 
+                           FontSize="16"
+                           x:Name="lab_Title"/>
+                   
+                    <!--关闭按钮-->
+                    <Button Content="X"
+                            DockPanel.Dock="Right"
+                            Width="20"
+                            x:Name="btnClose" />
+                    <!--最大化按钮-->
+                    <Button Content="口"   
+                            DockPanel.Dock="Right"
+                            Width="20"                           
+                            x:Name="btnMax" />                    
+                    <!--最小化按钮-->
+                    <Button Content="一"
+                            DockPanel.Dock="Right"
+                            Width="20"                            
+                            x:Name="btnMin" />
+                    <!--窗体主题-->
+                    <Label DockPanel.Dock="Right" />
+                </DockPanel>
+            </Border>
+            <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Width="Auto"
+                    Height="Auto"
+                    DockPanel.Dock="Top"
+                    CornerRadius="0,0,4,4">
+                <AdornerDecorator>
+                    <ContentPresenter />
+                </AdornerDecorator>
+            </Border>
+        </DockPanel>
+    </ControlTemplate>  
+    <Style x:Key="BaseWindowStyle"
+           TargetType="{x:Type Window}">
+        <Setter Property="Foreground"
+                Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+        <Setter Property="Background"
+                Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
+        <Setter Property="Template" Value="{StaticResource BaseWindowControlTemplate}"/>
+            
+        <Setter Property="AllowsTransparency"
+                Value="True" />
+        <Setter Property="WindowStyle"
+                Value="None" />
+        <Setter Property="BorderBrush"
+                Value="#FF7097D0" />
+        <Setter Property="BorderThickness"
+                Value="4,0,4,4" />
+        <Style.Triggers>
+            <Trigger Property="ResizeMode"
+                     Value="CanResizeWithGrip">
+                <Setter Property="Template"
+                        Value="{StaticResource WindowTemplateKey}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SPC_Config>
+  <Type Name ="RL">  
+    <Trad_Name>PC</Trad_Name>
+    <!--品名-->
+    <Parameter>IL</Parameter>
+    <!--参数-->
+    <Upper_limit_USL>0.20</Upper_limit_USL>
+    <!--USL 上限-->
+    <Centre_Limit_USL>0</Centre_Limit_USL>
+    <!--USL 中心限-->
+    <Lower_Limit_USL>-0.20</Lower_Limit_USL>
+    <!--USL 下限-->
+
+    <Department>制六部</Department>
+    <!--制造部门-->
+    <MachineName>MPO_3D</MachineName>
+    <!--机器名-->
+    <OPName>魏秀华</OPName>
+    <!--操作员-->
+    <SamplingMethod>随机</SamplingMethod>
+    <!--抽样方法-->
+  </Type>
+  <Type Name ="IL">
+    <Trad_Name>PC</Trad_Name>
+    <!--品名-->
+    <Parameter>IL</Parameter>
+    <!--参数-->
+    <Upper_limit_USL>0.20</Upper_limit_USL>
+    <!--USL 上限-->
+    <Centre_Limit_USL>0</Centre_Limit_USL>
+    <!--USL 中心限-->
+    <Lower_Limit_USL>-0.20</Lower_Limit_USL>
+    <!--USL 下限-->
+
+    <Department>制六部</Department>
+    <!--制造部门-->
+    <MachineName>MPO_3D</MachineName>
+    <!--机器名-->
+    <OPName>魏秀华</OPName>
+    <!--操作员-->
+    <SamplingMethod>随机</SamplingMethod>
+    <!--抽样方法-->
+  </Type>
+</SPC_Config>
+

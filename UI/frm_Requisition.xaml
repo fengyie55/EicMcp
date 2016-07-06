@@ -1,0 +1,128 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="UI.frm_Requisition"
+        Title="frm_Requisition" Height="640" Width="1040">
+	<Grid>   	
+		<Grid Background="#FFDECBCB">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="40"/>
+				<RowDefinition Height="30"/>
+				<RowDefinition Height="25"/>
+				<RowDefinition Height="25"/>
+				<RowDefinition Height="10"/>
+				<RowDefinition Height="229.432"/>
+				<RowDefinition Height="178.515"/>
+				<RowDefinition Height="0.428*"/>
+				<RowDefinition Height="0.37*"/>
+				<RowDefinition Height="0.203*"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="0.506*"/>
+				<ColumnDefinition Width="1000"/>
+				<ColumnDefinition Width="0.494*"/>
+			</Grid.ColumnDefinitions>
+			<TextBlock Margin="0" TextWrapping="Wrap" Text="光圣科技(宁波)有限公司" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Center" FontWeight="Bold" FontSize="32"/>
+			<TextBlock Margin="0,-3.272,0,0.945" TextWrapping="Wrap" Text="请 购 单" HorizontalAlignment="Center" Grid.Column="1" FontWeight="Bold" FontSize="32" Grid.Row="1" VerticalAlignment="Center"/>
+			<TextBlock Margin="0,0,150,0" TextWrapping="Wrap" Text="单号:" HorizontalAlignment="Right" Grid.Column="1" FontSize="16" Grid.Row="1" VerticalAlignment="Center"/>
+			<TextBox Grid.Column="1" HorizontalAlignment="Right" Margin="0,3.5" Grid.Row="1" TextWrapping="Wrap" Text="&#xd;&#xa;" Width="150" Height="23"/>
+			<TextBlock Margin="0,0,150,0" TextWrapping="Wrap" Text="请购日期:" HorizontalAlignment="Right" Grid.Column="1" FontSize="16" Grid.Row="2" VerticalAlignment="Center"/>
+			<TextBlock Margin="0,0,150,0" TextWrapping="Wrap" Text="需求日期:" HorizontalAlignment="Right" Grid.Column="1" FontSize="16" Grid.Row="3" VerticalAlignment="Center"/>
+			<DatePicker Grid.Column="1" HorizontalAlignment="Right" Margin="0,1" Grid.Row="2" Width="150" Height="23"/>
+			<DatePicker Grid.Column="1" HorizontalAlignment="Right" Margin="0,1" Grid.Row="3" Width="150" Height="23"/>
+			<TextBlock Margin="367.24,4.283,0,2.467" TextWrapping="Wrap" Text="件别:" HorizontalAlignment="Left" Grid.Column="1" FontSize="16" Grid.Row="2" d:LayoutOverrides="Height"/>
+			<CheckBox Content="正常件" Grid.Column="1" Margin="428.808,0,491.192,0" Grid.Row="2" VerticalAlignment="Center" FontSize="16"/>
+			<CheckBox Content="急件" Grid.Column="1" Margin="0,0,388.06,0" Grid.Row="2" HorizontalAlignment="Right" Width="80" VerticalAlignment="Center" FontSize="16"/>
+			<TextBlock Margin="0,3.375" TextWrapping="Wrap" Text="申请单位:" HorizontalAlignment="Left" Grid.Column="1" FontSize="16" Grid.Row="2" d:LayoutOverrides="Height"/>
+			<ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="76,0,0,0" Grid.Row="2" Width="150" Height="23"/>
+			<DataGrid Grid.Column="1" Margin="0,2.583,0,0" Grid.Row="6" d:LayoutOverrides="Width">
+				<DataGrid.VerticalGridLinesBrush>
+					<LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+						<GradientStop Color="#FF84B2D4"/>
+						<GradientStop Color="#FFE2E2E2" Offset="1"/>
+					</LinearGradientBrush>
+				</DataGrid.VerticalGridLinesBrush>
+				<DataGrid.HorizontalGridLinesBrush>
+					<LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+						<GradientStop Color="#FF84B2D4"/>
+						<GradientStop Color="#FFEDF2F7" Offset="1"/>
+					</LinearGradientBrush>
+				</DataGrid.HorizontalGridLinesBrush>
+			</DataGrid>
+			<Grid Grid.Column="1" Grid.Row="5">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="30"/>
+					<RowDefinition Height="30"/>
+					<RowDefinition Height="30"/>
+					<RowDefinition Height="30"/>
+					<RowDefinition Height="30"/>
+					<RowDefinition Height="30"/>
+					<RowDefinition Height="0.755*"/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="75"/>
+					<ColumnDefinition Width="153"/>
+					<ColumnDefinition Width="348.192"/>
+					<ColumnDefinition Width="426"/>
+				</Grid.ColumnDefinitions>
+				<Path Data="M24.474667,8 L23.808,141.33333" Fill="#FFF4F4F5" HorizontalAlignment="Left" Margin="-0.025,-0.5,0,0.036" Stretch="Fill" Stroke="Black" Width="1.333" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="7">
+					<Path.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform ScaleX="-1"/>
+							<SkewTransform/>
+							<RotateTransform/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Path.RenderTransform>
+				</Path>
+				<Path Data="M24.474667,8 L23.808,141.33333" Fill="#FFF4F4F5" HorizontalAlignment="Right" Margin="0,-0.48,-0.392,0.016" Stretch="Fill" Stroke="Black" Width="1.334" RenderTransformOrigin="0.5,0.5" Grid.Column="3" Grid.RowSpan="7">
+					<Path.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform ScaleX="-1"/>
+							<SkewTransform/>
+							<RotateTransform/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Path.RenderTransform>
+				</Path>
+				<Path Data="M24.474667,8 L23.808,141.33333" Fill="#FFF4F4F5" HorizontalAlignment="Right" Margin="0,0.062,0.109,-0.526" Stretch="Fill" Stroke="Black" Width="1.333" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="7" Grid.Column="2">
+					<Path.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform ScaleX="-1"/>
+							<SkewTransform/>
+							<RotateTransform/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Path.RenderTransform>
+				</Path>
+				<ComboBox Margin="3.192,0,-0.192,0" Height="23" VerticalAlignment="Center" Grid.Column="1"/>
+				<TextBlock TextWrapping="Wrap" Text="类别:" FontSize="16" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+				<TextBlock TextWrapping="Wrap" Text="品名:" FontSize="16" Margin="0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+				<TextBlock TextWrapping="Wrap" Text="规格型号:" FontSize="16" Margin="0" Grid.Row="2" HorizontalAlignment="Right" Width="72" VerticalAlignment="Center"/>
+				<ComboBox Margin="73.192,3.5,0,3.5" Grid.Column="1" Grid.Row="3" Height="23"/>
+				<TextBlock TextWrapping="Wrap" Text="数量:" FontSize="16" Margin="0" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+				<TextBox Grid.Column="1" Margin="1.5,0" Grid.Row="1" TextWrapping="Wrap" Height="23" Width="150" VerticalAlignment="Center"/>
+				<TextBox Grid.Column="1" Margin="1.5,3.5" Grid.Row="2" TextWrapping="Wrap" Width="150" Height="23"/>
+				<TextBox Grid.Column="1" Margin="0,3.5" Grid.Row="3" TextWrapping="Wrap" Width="73.192" Height="23" HorizontalAlignment="Left"/>
+				<TextBlock TextWrapping="Wrap" Text="用途:" FontSize="16" Margin="0,0,1.5,0" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+				<TextBox Grid.Column="1" Margin="1.5,3.5,1.5,0" Grid.Row="4" TextWrapping="Wrap" Width="150" Grid.RowSpan="2"/>
+				<Path Data="M24.474667,8 L23.808,141.33333" Fill="#FFF4F4F5" HorizontalAlignment="Right" Margin="0,-0.49,1.88,-0.953" Stretch="Fill" Stroke="Black" Width="1.332" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="7" Grid.Column="3">
+					<Path.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform ScaleX="-1"/>
+							<SkewTransform/>
+							<RotateTransform/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Path.RenderTransform>
+				</Path>
+                <Button Content="Button" Grid.Column="2" Grid.Row="6" Height="25" HorizontalAlignment="Left" Margin="4,17,0,0" Name="button1" VerticalAlignment="Top" Width="67" />
+                <Button Content="Button" Grid.Column="2" Grid.Row="6" Height="25" HorizontalAlignment="Left" Margin="75,17,0,0" x:Name="button1_Copy" VerticalAlignment="Top" Width="67" />
+                <Button Content="Button" Grid.Column="2" Grid.Row="6" Height="25" Margin="146,17,135.192,0" x:Name="button1_Copy1" VerticalAlignment="Top" />
+                <Button Content="Button" Grid.Column="2" Grid.Row="6" Height="25" Margin="0,17,64.192,0" x:Name="button1_Copy2" VerticalAlignment="Top" HorizontalAlignment="Right" Width="67" />
+            </Grid>
+			<Path Grid.Column="1" Data="M62,189 L454,190" Fill="#FFF4F4F5" Height="1" Grid.Row="5" Stretch="Fill" Stroke="Black" VerticalAlignment="Top"/>
+			<Path Grid.Column="1" Data="M62,189 L454,190" Fill="#FFF4F4F5" Height="1" Grid.Row="6" Stretch="Fill" Stroke="Black" VerticalAlignment="Top"/>
+		</Grid>        
+	</Grid>
+</Window>

@@ -1,0 +1,120 @@
+﻿<ad:DocumentContent x:Class="UI.frm_ConsumableMS_Main"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                      xmlns:ad="clr-namespace:AvalonDock;assembly=AvalonDock"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+          Height="640" Width="1040" Background="{StaticResource DocumentContent_Background}" Loaded="DocumentContent_Loaded">
+    <Grid>
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width="5.2"/>
+    		<ColumnDefinition Width="705.8"/>
+    		<ColumnDefinition Width="324"/>
+    		<ColumnDefinition/>
+    	</Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35" />
+            <RowDefinition Height="374.5" />
+            <RowDefinition Height="227.585"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="grd_Ti" Background="{StaticResource Border_Background}" Grid.ColumnSpan="4">
+        	<Grid.ColumnDefinitions>
+        		<ColumnDefinition Width="160"/>
+        		<ColumnDefinition Width="60"/>
+        		<ColumnDefinition Width="147.02"/>
+        		<ColumnDefinition Width="167.183"/>
+        		<ColumnDefinition Width="496.797"/>
+        		<ColumnDefinition Width="9"/>
+        		<ColumnDefinition/>
+        	</Grid.ColumnDefinitions>
+            <Label Content="耗材管理-耗材总览" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="0,2,13,2"/>
+            <Label Content="查询：" Foreground="White" FontSize="16" Margin="0,1,2,7" Grid.Column="1" d:LayoutOverrides="GridBox" HorizontalAlignment="Right" Width="47"/>
+            <ComboBox Grid.Column="2" Margin="0,5" Height="25" Name="cmb_SearchConition" SelectionChanged="cmb_SearchConition_SelectionChanged" />
+            <Button Content="查找" Grid.Column="4" Margin="5,5,0,5.375" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Width="57" Name="btn_Search" Click="btn_Search_Click" />
+            <ComboBox Grid.Column="3" Height="25" HorizontalAlignment="Left" Margin="6,5,0,0" Name="cmb_SerachValue" VerticalAlignment="Top" Width="161" IsEditable="True" />
+            <Button Content="导出总览" Grid.Column="4" Margin="66,5,0,5" HorizontalAlignment="Left" Width="57" x:Name="btn_Search_Copy"  />
+            <Button Content="耗材入库" Margin="0,0,64.998,0" Grid.Column="4" d:LayoutOverrides="GridBox" HorizontalAlignment="Right" Width="60" VerticalAlignment="Center" Height="30" Name="btn_Storage" Click="btn_Storage_Click" />
+            <Button Content="耗材领用" Margin="0,2.5,128.998,2.5" HorizontalAlignment="Right" Width="60" Grid.Column="4" d:LayoutOverrides="GridBox" Height="30" Name="btn_Receive" Click="btn_Receive_Click" />
+            <Button Content="耗材新增" Margin="0,0,0.998,0" x:Name="btn_Consumable_Info" Click="btn_Consumable_Info_Click" Grid.Column="4" HorizontalAlignment="Right" Width="60" VerticalAlignment="Center" Height="30" />
+        </Grid>
+        <DataGrid Margin="0" Grid.Row="1" Grid.Column="1" Name="dgv_ConsumableInfoList"  SelectionMode="Single" MouseDoubleClick="dgv_ConsumableInfoList_MouseDoubleClick"  SelectedCellsChanged="dgv_ConsumableInfoList_SelectedCellsChanged" />
+        <Grid Margin="0" Grid.Row="2" x:Name="grd_ConsumableInfo" Background="{DynamicResource MouseOverBorderBrush}" Grid.Column="1">
+        	<Grid.ColumnDefinitions>
+        		<ColumnDefinition Width="5"/>
+        		<ColumnDefinition Width="65"/>
+        		<ColumnDefinition Width="140"/>
+        		<ColumnDefinition Width="65"/>   			
+        		<ColumnDefinition/>
+        	</Grid.ColumnDefinitions>
+        	<Grid.RowDefinitions>
+        		<RowDefinition Height="25"/>
+        		<RowDefinition Height="25"/>
+        		<RowDefinition Height="25"/>
+        		<RowDefinition Height="25"/>
+        		<RowDefinition Height="25"/>
+        		<RowDefinition Height="25"/>
+        		<RowDefinition Height="25"/>
+        		<RowDefinition Height="25"/>
+        		<RowDefinition Height="25"/>
+        		<RowDefinition/>
+        	</Grid.RowDefinitions>
+        	<TextBlock Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="耗材编号：" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center"/>
+        	<TextBox  Text="{Binding C_Barcode}"  x:Name="txb_AssetNum" Grid.Column="2" Margin="0,1" TextWrapping="Wrap"  Grid.Row="1" Height="23" IsEnabled="False"/>
+        	<TextBlock Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="名称：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        	<TextBox   Text="{Binding C_Name}" x:Name="txb_AssetName" Grid.Column="2" Margin="0,1" TextWrapping="Wrap" Height="23" IsEnabled="False"/>
+        	<TextBlock Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="功能描述：" HorizontalAlignment="Right" Grid.Row="5" VerticalAlignment="Center"/>
+        	<TextBox  Text="{Binding C_Function}" x:Name="txb_FunctionDescription" Grid.Column="2" Margin="0,1,-123.8,0" TextWrapping="Wrap"  Grid.Row="5" Grid.ColumnSpan="2" Grid.RowSpan="2" IsEnabled="False"/>
+        	<TextBlock Grid.Column="3" Margin="0,6.656,0,4.656" TextWrapping="Wrap" Text="储位：" HorizontalAlignment="Right" Grid.Row="1" d:LayoutOverrides="Height"/>
+        	<TextBlock Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="耗材类别：" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Center"/>
+        	<TextBlock Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="规格：" HorizontalAlignment="Right" Grid.Row="3" VerticalAlignment="Center"/>
+        	<TextBox  Text="{Binding C_Model}"  x:Name="txb_EquipmentModel" Grid.Column="2" Margin="0,0,-123.8,3" TextWrapping="Wrap" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="2" IsEnabled="False"/>
+        	<TextBlock Grid.Column="3" Margin="0,5.656" TextWrapping="Wrap" Text="库存：" HorizontalAlignment="Right" d:LayoutOverrides="Height"/>
+            <TextBox  Text="{Binding Stock}"  x:Name="txb_Count" Grid.Column="4" Margin="0,1,365.667,1" TextWrapping="Wrap" Height="23" IsEnabled="False"/>
+        	<TextBlock Grid.Column="3" Margin="0" TextWrapping="Wrap" Text="别名：" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        	<TextBox  Text="{Binding C_AliasName}" x:Name="txb_AliasName" Grid.Column="4" Margin="0,1" TextWrapping="Wrap"  Grid.Row="2" Height="23" HorizontalAlignment="Left" Width="123.8" IsEnabled="False"/>
+        	<TextBlock Grid.Column="1" Margin="0,6.312,0,5" TextWrapping="Wrap" Text="使用寿命：" HorizontalAlignment="Right" d:LayoutOverrides="Height" Grid.Row="7"/>
+        	<TextBox  Text="{Binding C_Lifetime}"  x:Name="txb_UsefulLife" Grid.Column="2" Margin="0,1,68.5,1" TextWrapping="Wrap"  Height="23" Grid.Row="7" IsEnabled="False"/>
+        	<TextBlock Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="安全库存：" HorizontalAlignment="Right" Grid.Row="8" VerticalAlignment="Center"/>
+        	<TextBox  Text="{Binding C_SafeStock}" x:Name="txb_UsefulLife_Copy" Grid.Column="2" Margin="0,1,68.5,1" TextWrapping="Wrap"  Height="23" Grid.Row="8" IsEnabled="False"/>
+        	<TextBox  Text="{Binding C_Type}" x:Name="txb_AssetNum_Copy" Grid.Column="2" Margin="0,1" TextWrapping="Wrap"  Height="23" Grid.Row="2" IsEnabled="False"/>
+        	<TextBox  Text="{Binding C_LifeUnit}" x:Name="txb_UsefulLife_Copy1" Grid.Column="2" Margin="0,1,1.5,1" TextWrapping="Wrap"  Height="23" HorizontalAlignment="Right" Grid.Row="7" Width="67" IsEnabled="False"/>
+        	<TextBox  Text="{Binding C_Unit}"  x:Name="txb_UsefulLife_Copy2" Grid.Column="2" Margin="0,1,1.5,1" TextWrapping="Wrap"  Height="23" HorizontalAlignment="Right" Grid.Row="8" Width="67" IsEnabled="False"/>
+        	<TextBox  Text="{Binding C_Unit}" x:Name="txb_UsefulLife_Copy3" Grid.Column="4" Margin="60.8,1,0,1" TextWrapping="Wrap"  Height="23" HorizontalAlignment="Left" Width="63" IsEnabled="False"/>
+        	<TextBox  Text="{Binding C_Address}" x:Name="txb_AliasName_Copy" Grid.Column="4" Margin="0,1" TextWrapping="Wrap"  Grid.Row="1" Height="23" HorizontalAlignment="Left" Width="123.8" IsEnabled="False"/>
+        </Grid>
+        <Image Height="228.248" HorizontalAlignment="Left" Margin="405.6,2.252,0,0" x:Name="image1" Source="/MCP.UI;component/Images/130607103251454d3563c3ad62.jpg" Stretch="Fill" VerticalAlignment="Top" Width="302.167" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" />
+        <Grid Grid.Column="2" Grid.Row="1" Background="{DynamicResource ControlContentBrush}" Grid.RowSpan="2" Name="grd_Rec_Or_Stog">
+        	<Grid.ColumnDefinitions>
+        		<ColumnDefinition Width="0.269*"/>
+        		<ColumnDefinition Width="0.731*"/>
+        	</Grid.ColumnDefinitions>
+        	<Grid.RowDefinitions>
+        		<RowDefinition Height="35"/>
+        		<RowDefinition Height="35"/>
+        		<RowDefinition Height="35"/>
+        		<RowDefinition Height="35"/>
+        		<RowDefinition Height="35"/>
+        		<RowDefinition Height="200"/>
+        		<RowDefinition Height="35"/>
+        		<RowDefinition/>
+        	</Grid.RowDefinitions>
+        	<Label Content="耗材领用" Margin="0" FontSize="18.667" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" Foreground="#FF162BDA" Grid.ColumnSpan="2" Name="lab_title" />
+        	<Label Content="耗材编号：" Margin="0,0,8,0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        	<Label Content="数量：" Margin="0,0,8,0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        	<Label Content="用途:" Margin="0,0,8,0" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        	<Label Content="领用人：" Margin="0,8,8,3" Grid.Row="4" HorizontalAlignment="Right" d:LayoutOverrides="Height" Name="lab_User" />
+        	<DataGrid Margin="0" x:Name="dgv_ConsumableList"  SelectionMode="Single" MouseDoubleClick="dgv_ConsumableInfoList_MouseDoubleClick" Grid.Row="5" Grid.ColumnSpan="2" d:LayoutOverrides="VerticalMargin" ItemsSource="{Binding}" />
+           <!--耗材领用 入库-->
+            <TextBox Text="{Binding C_Barcode}" Grid.Column="1" Margin="0,5,133,5" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Height="25" IsEnabled="False" Name="txb_Consumable_Barcode" />
+            <TextBox Text="{Binding Count}" Grid.Column="1" Margin="0" Grid.Row="2" TextWrapping="Wrap" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Width="89" IsEnabled="False" Name="txb_R_Count" />
+            <TextBox Text="{Binding Remarks}" Grid.Column="1" Margin="0" Grid.Row="3" TextWrapping="Wrap" IsEnabled="False" Name="txb_R_Remaks" />
+            <TextBox Text="{Binding UserName}" Grid.Column="1" Margin="76,5,79,5" Grid.Row="4" TextWrapping="Wrap" Height="25" IsEnabled="True" Name="txb_R_UserName" />          
+        	<TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="0,5" Grid.Row="4" TextWrapping="Wrap" Width="76" Height="25" Name="txb_R_UserID" IsEnabled="False" PreviewKeyUp="txb_R_UserID_PreviewKeyUp" />
+            <Button Content="添加" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,5,0" Grid.Row="4" Width="65" VerticalAlignment="Center" Height="25" Name="btn_Add" IsEnabled="False" Click="btn_Add_Click" />
+            <Button Content="保存" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,5,0" Grid.Row="6" Width="65" VerticalAlignment="Center" Height="25" Name="btn_Save" IsEnabled="False" Click="btn_Save_Click" />
+            <TextBox Grid.Column="1" Grid.Row="1" Height="25" HorizontalAlignment="Left" Margin="99,5,0,0" Name="txb_ConsumableName" VerticalAlignment="Top" Width="138" IsEnabled="False" />
+        </Grid>
+    </Grid>
+</ad:DocumentContent>

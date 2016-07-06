@@ -1,0 +1,21 @@
+﻿<Application x:Class="UI.App"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             StartupUri="MainFile\Login.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resource\Dictionary_Style.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Fluent;Component/Themes/Office2010/Silver.xaml" />                               
+                <ResourceDictionary Source="Resource\ButtonStyle.xaml"/>                
+                <ResourceDictionary Source="Resource\PlayButtonStyle.xaml"/>
+                <ResourceDictionary Source="Resource\TextBoxStyle.xaml"/> 
+                <ResourceDictionary Source="Windows_Style\BaseWindowStyle.xaml"/>
+                <ResourceDictionary Source="Resource\DataGrid_Style.xaml" />
+                   
+            </ResourceDictionary.MergedDictionaries>                           
+        </ResourceDictionary>
+    </Application.Resources>
+    
+</Application>
+

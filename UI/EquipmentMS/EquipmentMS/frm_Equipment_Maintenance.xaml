@@ -1,0 +1,156 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="UI.frm_Equipment_Maintenance"
+        Title="frm_Equipment_Maintenance" Height="640" Width="600" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Grid>
+    	<Grid Margin="-1,-1,0,0" Background="{DynamicResource back_01}" Name="grd_Maintain">
+    		<Grid.ColumnDefinitions>
+    			<ColumnDefinition Width="0.26*"/>
+    			<ColumnDefinition Width="29.136"/>
+    			<ColumnDefinition Width="500"/>
+    			<ColumnDefinition Width="0.267*"/>
+    		</Grid.ColumnDefinitions>
+    		<Grid.RowDefinitions>
+    			<RowDefinition Height="25"/>
+    			<RowDefinition Height="25"/>
+    			<RowDefinition Height="25"/>
+    			<RowDefinition Height="20"/>
+    			<RowDefinition Height="105"/>
+    			<RowDefinition Height="230"/>
+    			<RowDefinition Height="160"/>
+    			<RowDefinition Height="5"/>
+    			<RowDefinition/>
+    		</Grid.RowDefinitions>
+    		<Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Margin="0,-0.833,0,0">
+    			<Grid Margin="-1">
+    				<Grid.RowDefinitions>
+    					<RowDefinition Height="0"/>
+    					<RowDefinition Height="20"/>
+    					<RowDefinition Height="80"/>
+    					<RowDefinition Height="20"/>
+    					<RowDefinition Height="80"/>
+    					<RowDefinition Height="1"/>
+    				</Grid.RowDefinitions>
+    				<Grid.ColumnDefinitions>
+    					<ColumnDefinition Width="30"/>
+    					<ColumnDefinition Width="60"/>
+    					<ColumnDefinition Width="80"/>
+    					<ColumnDefinition Width="40"/>
+    					<ColumnDefinition Width="100"/>
+    					<ColumnDefinition Width="60"/>
+    					<ColumnDefinition Width="0.988*"/>
+    					<ColumnDefinition Width="0.012*"/>
+    				</Grid.ColumnDefinitions>
+    				<TextBlock Margin="0" TextWrapping="Wrap" Text="此栏由维修人员填写" HorizontalAlignment="Center" VerticalAlignment="Center" Width="12" Grid.RowSpan="5" Foreground="#FF1F35E9"/>
+    				<TextBlock Grid.Column="4" Margin="0,0,8,-18.594" TextWrapping="Wrap" Text="维修人：" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="6"/>
+                    <TextBox  Text="{Binding maintain_User}" x:Name="txb_Maintain_Person" Grid.Column="5" Margin="0,0,-19.167,-23" TextWrapping="Wrap"  Height="23" VerticalAlignment="Bottom" Grid.Row="6"/>
+                    <TextBlock Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="故障原因：" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center"/>
+    				<TextBlock Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="处理描述：" HorizontalAlignment="Left" Grid.Row="3" d:LayoutOverrides="Height" VerticalAlignment="Center"/>
+    				<Button x:Name="btn_Maintain" Content="维修完成" Grid.Column="6" Margin="49.226,0,7.999,-25.5" Grid.Row="6" Width="100" Height="25.5" VerticalAlignment="Bottom" d:LayoutOverrides="GridBox" Click="btn_Maintain_Click" />
+                    <TextBox Text="{Binding Maintain_Cause}" Grid.Column="1" Grid.ColumnSpan="6" Grid.Row="2" Height="75" HorizontalAlignment="Left" Margin="8,5,0,0" Name="txb_Fault_Analysis" VerticalAlignment="Top" Width="487.226" />
+                    <TextBox Text="{Binding Maintain_Describe}" Grid.Column="1" Grid.ColumnSpan="6" Grid.Row="4" Height="76.656" HorizontalAlignment="Left" Margin="8,0.344,0,0" Name="txb_Result_Describe" VerticalAlignment="Top" Width="487.226" />
+                    <TextBlock Text="{Binding Maintain_Date}" Grid.Column="6" Margin="0,4.146,2,2.167" TextWrapping="Wrap"  HorizontalAlignment="Right" Grid.Row="1" d:LayoutOverrides="Height" Foreground="#FF1619CE"/>
+                </Grid>
+    		</Border>
+    		<TextBlock Margin="163.556,0,179.056,0" TextWrapping="Wrap" Text="设备维修申请单" Grid.Column="2" Foreground="Black" FontSize="21.333" FontWeight="Bold"/>
+    		<Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,-1,0,0" Grid.RowSpan="4">
+    			<Grid Margin="-1">
+    				<Grid.RowDefinitions>
+    					<RowDefinition Height="25"/>
+    					<RowDefinition Height="25"/>
+    					<RowDefinition Height="20"/>
+    					<RowDefinition Height="106"/>
+    				</Grid.RowDefinitions>
+    				<Grid.ColumnDefinitions>
+    					<ColumnDefinition Width="30"/>
+    					<ColumnDefinition Width="60"/>
+    					<ColumnDefinition Width="80"/>
+    					<ColumnDefinition Width="60"/>
+    					<ColumnDefinition Width="100"/>
+    					<ColumnDefinition Width="60"/>
+    					<ColumnDefinition Width="0.988*"/>
+    					<ColumnDefinition Width="0.012*"/>
+    				</Grid.ColumnDefinitions>
+    				<TextBlock Margin="0" TextWrapping="Wrap" Text="此栏由申请人员填写" HorizontalAlignment="Center" VerticalAlignment="Center" Width="12" Grid.RowSpan="4" Foreground="#FF1F35E9"/>
+    				<Path Grid.Column="2" Data="M77.636,1.5 L75.955,71" Fill="#FFF4F4F5" HorizontalAlignment="Right" Margin="0,-0.583,-0.499,-0.817" Stretch="Fill" Stroke="Black" Width="1" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
+    					<Path.RenderTransform>
+    						<TransformGroup>
+    							<ScaleTransform ScaleX="-1"/>
+    							<SkewTransform/>
+    							<RotateTransform/>
+    							<TranslateTransform/>
+    						</TransformGroup>
+    					</Path.RenderTransform>
+    				</Path>
+    				<Path Grid.Column="5" Data="M77.636,1.5 L75.955,71" Fill="#FFF4F4F5" HorizontalAlignment="Left" Margin="-0.186,-0.749,0,-1.358" Stretch="Fill" Stroke="Black" Width="1" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
+    					<Path.RenderTransform>
+    						<TransformGroup>
+    							<ScaleTransform ScaleX="-1"/>
+    							<SkewTransform/>
+    							<RotateTransform/>
+    							<TranslateTransform/>
+    						</TransformGroup>
+    					</Path.RenderTransform>
+    				</Path>
+    				<TextBlock Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="财产编号：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+    				<TextBlock Grid.Column="4" Margin="0,0,18.333,10.656" TextWrapping="Wrap" Text="申请人：" HorizontalAlignment="Right" Grid.Row="3" VerticalAlignment="Bottom"/>
+    				<TextBlock Grid.Column="5" Margin="0" TextWrapping="Wrap" Text="设备类别：" HorizontalAlignment="Right" d:LayoutOverrides="Height" VerticalAlignment="Center"/>
+    				<TextBlock Grid.Column="1" TextWrapping="Wrap" Text="设备名称：" HorizontalAlignment="Right" Margin="0,7.656,0,3.656" Grid.Row="1" d:LayoutOverrides="Height"/>
+    				<TextBlock Grid.Column="3" TextWrapping="Wrap" Text="制造编号：" HorizontalAlignment="Right" Margin="0,0,-2,0" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding Apply_Date}" Grid.Column="5" Margin="0,5.352,0.86,5.352" TextWrapping="Wrap"  HorizontalAlignment="Right" Grid.Row="1" d:LayoutOverrides="Height" Grid.ColumnSpan="2" Foreground="#FF1619CE"/>
+                    <TextBox Text="{Binding Ass_Num}" x:Name="txb_AssetNum" Grid.Column="2" Margin="0,0,1.667,0" TextWrapping="Wrap" Height="23" VerticalAlignment="Center"/>
+                    <TextBox Text="{Binding Apply_User}" x:Name="txb_Fault_Person" Grid.Column="4" Margin="84,0,0,5" TextWrapping="Wrap" Grid.Row="3" VerticalAlignment="Bottom" Height="23" Grid.ColumnSpan="3" HorizontalAlignment="Left" Width="78" />
+                    <TextBox Text="{Binding Ass_Name}" x:Name="txb_AssetName" Grid.Column="2" TextWrapping="Wrap" Margin="0,1" Grid.Row="1" Grid.ColumnSpan="3" Height="23"/>
+                    <TextBox Text="{Binding Ass_MakeNum}" x:Name="txb_MakeNum" Grid.Column="4" TextWrapping="Wrap" Margin="0" VerticalAlignment="Center" Height="23"/>
+                    <TextBox Text="{Binding Ass_Type}" x:Name="txb_AssetType" Grid.Column="6" TextWrapping="Wrap" Height="23" VerticalAlignment="Center"/>
+    				<TextBlock Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="故障描述：" HorizontalAlignment="Right" Grid.Row="2" d:LayoutOverrides="Height" VerticalAlignment="Center"/>
+                    <Button x:Name="btn_Apply" Content="申请维修" Grid.Column="6" Margin="28.606,0,8.859,3.5" Grid.Row="3" Height="25.5" VerticalAlignment="Bottom" Width="100" Click="btn_Apply_Click" />
+                    <TextBox Text="{Binding Apply_Describe}" Grid.Column="1" Grid.ColumnSpan="6" Grid.Row="3" Height="69" HorizontalAlignment="Left" Margin="3,4,0,0" Name="txb_Fault" VerticalAlignment="Top" Width="493.606" />
+                </Grid>
+    		</Border>
+    		<Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2">
+    			<Grid Margin="-1">
+    				<Grid.RowDefinitions>
+    					<RowDefinition Height="0"/>
+    					<RowDefinition Height="30"/>
+    					<RowDefinition/>
+    				</Grid.RowDefinitions>
+    				<Grid.ColumnDefinitions>
+    					<ColumnDefinition Width="30"/>
+    					<ColumnDefinition Width="60"/>
+    					<ColumnDefinition Width="80"/>
+    					<ColumnDefinition Width="40"/>
+    					<ColumnDefinition Width="100"/>
+    					<ColumnDefinition Width="60"/>
+    					<ColumnDefinition Width="44.6426666666667"/>
+    					<ColumnDefinition Width="0.956*"/>
+    					<ColumnDefinition Width="0.044*"/>
+    				</Grid.ColumnDefinitions>
+    				<TextBlock Margin="0" TextWrapping="Wrap" Text="此栏由确认人填写" HorizontalAlignment="Center" VerticalAlignment="Center" Width="12" Grid.RowSpan="3" Foreground="#FF1F35E9"/>
+    				<TextBlock Grid.Column="4" Margin="0,0,0.667,9.92" TextWrapping="Wrap" Text="验收人：" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="2"/>
+                    <TextBox  Text="{Binding Check_User}" x:Name="txb_Check_Person" Grid.Column="5" Margin="3.333,0,-22,5.264" TextWrapping="Wrap" Height="23" Grid.Row="2" VerticalAlignment="Bottom" d:LayoutOverrides="Height"/>
+    				<TextBlock Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="验收描述：" HorizontalAlignment="Right" Grid.Row="1" d:LayoutOverrides="Height" VerticalAlignment="Center"/>
+                    <Button x:Name="btn_Check" Content="验收确认" Grid.Column="7" Margin="1.455,0,7.999,2.764" Grid.Row="2" Height="25.5" VerticalAlignment="Bottom" Width="100" Click="btn_Check_Click" />
+                    <TextBox Text="{Binding Check_Deseribe}" Grid.Column="1" Grid.ColumnSpan="7" Grid.Row="2" HorizontalAlignment="Left" Margin="6,0,0,32.264" Name="txb_Check_describe" Width="488.098" />
+                    <TextBlock Grid.Column="2" Margin="0,0,1,8.49" TextWrapping="Wrap" Text="验收结果：" HorizontalAlignment="Right" Grid.Row="2" Width="60" VerticalAlignment="Bottom"/>
+                    <ComboBox  SelectedValue="{Binding Check_Result}" x:Name="cmb_ResultCode" Grid.Column="3" Margin="3,0,-32.226,5" Height="23" Grid.Row="2" VerticalAlignment="Bottom" d:LayoutOverrides="Height"/>
+                    <TextBlock  Text="{Binding Check_Date}" Grid.Column="6" Margin="0,7.313,0,9" TextWrapping="Wrap"  HorizontalAlignment="Right" Grid.Row="1" d:LayoutOverrides="Height" Grid.ColumnSpan="2" Foreground="#FF1619CE"/>
+                </Grid>
+    		</Border>
+    		<Path Grid.Column="2" Data="M39,23 L61,165" Fill="#FFF4F4F5" HorizontalAlignment="Left" Margin="-0.25,-2.271,0,0.411" Grid.Row="1" Stretch="Fill" Stroke="Black" Width="1" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="6">
+    			<Path.RenderTransform>
+    				<TransformGroup>
+    					<ScaleTransform ScaleX="-1"/>
+    					<SkewTransform/>
+    					<RotateTransform/>
+    					<TranslateTransform/>
+    				</TransformGroup>
+    			</Path.RenderTransform>
+    		</Path>
+    		<Path Grid.Column="2" Data="M35.75,45.5 L153,45.5" Fill="#FFF4F4F5" Height="1" Grid.Row="1" Stretch="Fill" Stroke="Black" VerticalAlignment="Bottom"/>
+    		<Path Grid.Column="2" Data="M35.75,45.5 L153,45.5" Fill="#FFF4F4F5" Height="1" Grid.Row="2" Stretch="Fill" Stroke="Black" VerticalAlignment="Bottom"/>
+    	</Grid>
+        
+    </Grid>
+</Window>

@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FE842339-726F-426A-8472-38D8422D82AA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MCP_Model</RootNamespace>
+    <AssemblyName>MCP_Model</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdapterTestData.cs" />
+    <Compile Include="Binning.cs" />
+    <Compile Include="BoxInfo.cs" />
+    <Compile Include="ConsumableInfo.cs" />
+    <Compile Include="ConsumableReceive.cs" />
+    <Compile Include="ConsumableStorage.cs" />
+    <Compile Include="CustomersData.cs" />
+    <Compile Include="Dispose.cs" />
+    <Compile Include="Enum_Stes\E_Inspect.cs" />
+    <Compile Include="Enum_Stes\E_State.cs" />
+    <Compile Include="EquipmentInfo.cs" />
+    <Compile Include="Equipment_Maintain.cs" />
+    <Compile Include="Equipment_TypeList.cs" />
+    <Compile Include="e_Flow.cs" />
+    <Compile Include="E_Parameter.cs" />
+    <Compile Include="e_ProcessDraw.cs" />
+    <Compile Include="e_ProcessFlow.cs" />
+    <Compile Include="e_Rejects.cs" />
+    <Compile Include="e_ReworkProcess.cs" />
+    <Compile Include="e_Reworks.cs" />
+    <Compile Include="e_Solution.cs" />
+    <Compile Include="e_WorkOrder.cs" />
+    <Compile Include="FixtureInfo.cs" />
+    <Compile Include="FixtureList.cs" />
+    <Compile Include="ImageList.cs" />
+    <Compile Include="LabelCheck.cs" />
+    <Compile Include="LabInfo.cs" />
+    <Compile Include="LabVerify.cs" />
+    <Compile Include="MaterialInfo.cs" />
+    <Compile Include="Material_Inject.cs" />
+    <Compile Include="Material_Receive.cs" />
+    <Compile Include="MoveStore_ProductControl.cs" />
+    <Compile Include="MoveStore_Receive.cs" />
+    <Compile Include="MoveStore_Send.cs" />
+    <Compile Include="MultiFiber.cs" />
+    <Compile Include="Operation_log.cs" />
+    <Compile Include="OrderLabSet.cs" />
+    <Compile Include="OrderMaterial.cs" />
+    <Compile Include="Rejected.cs" />
+    <Compile Include="Rework.cs" />
+    <Compile Include="SPC_Config.cs" />
+    <Compile Include="StateList.cs" />
+    <Compile Include="sysUser.cs" />
+    <Compile Include="Encasement.cs" />
+    <Compile Include="EncasementSet.cs" />
+    <Compile Include="PrintRecord.cs" />
+    <Compile Include="UserInfo.cs" />
+    <Compile Include="User_3D_Test_Good.cs" />
+    <Compile Include="User_JDS_Test_Good.cs" />
+    <Compile Include="User_WK.cs" />
+    <Compile Include="View\InspectStandard.cs" />
+    <Compile Include="PackBatch.cs" />
+    <Compile Include="Pack_3D.cs" />
+    <Compile Include="Pack_Exfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerialNumber.cs" />
+    <Compile Include="sysdiagrams.cs" />
+    <Compile Include="TestStandard_3D.cs" />
+    <Compile Include="TestStandard_Exfo.cs" />
+    <Compile Include="WorkOrder.cs" />
+    <Compile Include="Workstation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AboutLogo.png">
+      <SubType>Image</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

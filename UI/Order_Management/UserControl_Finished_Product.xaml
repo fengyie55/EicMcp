@@ -1,0 +1,205 @@
+﻿<ad:DocumentContent x:Class="UI.UserControl_Finished_Product"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ad="clr-namespace:AvalonDock;assembly=AvalonDock"        
+             xmlns:extToolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended"
+
+             mc:Ignorable="d" FontSize="12"            
+             d:DesignHeight="640" d:DesignWidth="1040" Background="{StaticResource DocumentContent_Background}" Loaded="DocumentContent_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="31.27" />
+            <RowDefinition Height="608.73" />
+        </Grid.RowDefinitions>
+        <Border  BorderBrush="Silver" BorderThickness="1" Height="30" HorizontalAlignment="Left" Name="border1" VerticalAlignment="Top" Width="1040" Background="{StaticResource Border_Background}">
+            <Label FontSize="15" Foreground="White" Margin="0,0,35,0" HorizontalAlignment="Left" VerticalAlignment="Center">订单中心——成品装箱</Label>
+        </Border>
+        <Grid Margin="0,8,8,8" Grid.Row="1" HorizontalAlignment="Right" Width="1024">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="24"/>
+                <RowDefinition Height="24"/>
+                <RowDefinition Height="24"/>
+                <RowDefinition Height="24"/>
+                <RowDefinition Height="262.270358306189"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="140"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="140"/>
+                <ColumnDefinition Width="50"/>
+
+
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="384"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="0,5.543,0,5.77" Text="品名：" Grid.Row="2" d:LayoutOverrides="Height" HorizontalAlignment="Right">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock Margin="0,5.543,0,5.77" Text="规格：" Grid.Row="3" d:LayoutOverrides="Height" HorizontalAlignment="Right">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock Margin="0,5.906,0,5.405" Text="出货日期：" Grid.Row="6" d:LayoutOverrides="Height" HorizontalAlignment="Right">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock x:Name="Info_PeoductName" Margin="0,5.543,5,5.77" Text="ProductName" Grid.Column="1" Grid.Row="2" d:LayoutOverrides="Height" Grid.ColumnSpan="2">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock x:Name="Info_Model" Margin="0,5.543,5,5.77" Text="Model" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" d:LayoutOverrides="Height" Grid.ColumnSpan="2">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock Text="DeliveryDate" Grid.Column="1" Grid.Row="6" Margin="0,5.906,0,5.405" d:LayoutOverrides="Height" Name="Info_DeliveryDate">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock Margin="0,5.543,0,5.77" Text="已包装：" Grid.Row="4" d:LayoutOverrides="Height" HorizontalAlignment="Right">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock x:Name="Info_YetPack_Count" Margin="0,5.543,5,5.77" Text="Count" Grid.Column="1" Grid.Row="4" d:LayoutOverrides="Height" Grid.ColumnSpan="2">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock Margin="0,5.543,0,5.77" Text="已装箱：" Grid.Row="5" d:LayoutOverrides="Height" HorizontalAlignment="Right">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock x:Name="Info_YetEncasement_Count" Margin="0,5.543,0,5.77" Text="Count" Grid.Column="1" Grid.Row="5" d:LayoutOverrides="Height">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBox Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="&#xd;&#xa;&#xd;&#xa;" Height="23" VerticalAlignment="Center" Name="txb_OrderID" KeyUp="txb_OrderID_KeyUp" />
+            <ComboBox Grid.Column="1" Margin="0" Height="23" Grid.Row="1" VerticalAlignment="Center" Name="cmb_BatchNo" ItemsSource="{Binding}" DataContext="{Binding}" DropDownClosed="cmb_BatchNo_DropDownClosed" />
+            <TextBlock Margin="0" Text="工单单号：" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock Margin="0" Text="批号：" Grid.Row="1" d:LayoutOverrides="Height" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBox Grid.Column="4" Margin="0" TextWrapping="Wrap" Text="&#xa;&#xa;" Name="txb_BoxSN" Height="23" KeyUp="txb_BoxSN_KeyUp" VerticalAlignment="Center" />
+            <TextBlock Margin="0" Text="箱号：" d:LayoutOverrides="Height" HorizontalAlignment="Right" Grid.Column="3" VerticalAlignment="Center">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBox Grid.Column="2" Margin="0" TextWrapping="Wrap" Text="&#xa;&#xa;" Height="23" VerticalAlignment="Center" Width="40" IsEnabled="False" Name="txb_OrderCount" />
+            <TextBlock Text="跳线条码：" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Right" Margin="0" d:LayoutOverrides="Height" VerticalAlignment="Center">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBox Grid.Column="4" Margin="0" TextWrapping="Wrap" Text="&#xa;&#xa;" Width="140" Grid.Row="2" Name="txb_SerialNumber" Height="23" KeyUp="txb_SerialNumber_KeyUp" VerticalAlignment="Center" />
+            <DataGrid Margin="0" Grid.Row="11" Grid.ColumnSpan="8" d:LayoutOverrides="VerticalAlignment" Grid.RowSpan="2"/>
+            <TextBox Grid.Column="2" Margin="0" TextWrapping="Wrap" Text="&#xa;&#xa;" Height="23" Grid.Row="1" VerticalAlignment="Center" Width="40" IsEnabled="False" Name="txb_BatchCount" />
+            <TextBox Grid.Column="5" Margin="5,0,0,0" TextWrapping="Wrap" Text="&#xa;&#xa;" Width="40" IsEnabled="False" Name="txb_BoxCount" HorizontalAlignment="Left" Height="23" VerticalAlignment="Center" />
+            <TextBox Grid.Column="5" Margin="5,0,0,0" TextWrapping="Wrap" Text="&#xa;" Width="40" IsEnabled="False" Name="txb_DeviceCount" Height="23" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <TextBlock Margin="69.912,0.782,38.088,9.511" Text="数量：" Grid.Row="10" Grid.Column="4" RenderTransformOrigin="-0.372,0.439" d:LayoutOverrides="Height">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock Text="0" Grid.Column="4" Grid.Row="10" Margin="105.912,0.982,0,9.297" d:LayoutOverrides="Height" Name="lab_EncasementRecordCount">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock Margin="0,4.537,4,7.5" Text="DEVICE:" Grid.Row="7" HorizontalAlignment="Right" d:LayoutOverrides="Height">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock x:Name="Info_Device" Margin="0,4.536,5,7.5" Text="Device" Grid.Column="1" Grid.Row="7" d:LayoutOverrides="Height" Grid.ColumnSpan="2">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock Text="内盒标签 PN:" Grid.Column="3" d:LayoutOverrides="Height" Grid.Row="3" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBox Grid.Column="4" Margin="0" TextWrapping="Wrap" Text="&#xa;&#xa;" Width="140" Name="txb_Device" Height="23" KeyUp="txb_Device_KeyUp" Grid.Row="3" VerticalAlignment="Center" />
+            <TextBox Grid.Column="5" Margin="5,0,0,0" TextWrapping="Wrap" Text="&#xa;" Width="40" IsEnabled="False" Grid.Row="2" Name="txb_SackCount" HorizontalAlignment="Left" VerticalAlignment="Center" Height="23" />
+            <TextBlock Margin="0,3.005,4,7.3" Text="每盒数量:" Grid.Row="8" HorizontalAlignment="Right" d:LayoutOverrides="Height">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock x:Name="Info_DeviceQty" Margin="0,3.004,5,7.3" Text="DeviceQty" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" d:LayoutOverrides="Height">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock Margin="0,3,4,7.3" Text="每袋数量:" Grid.Row="9" HorizontalAlignment="Right" d:LayoutOverrides="Height">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBlock x:Name="Info_SackQty" Margin="0,2.999,5,7.3" Text="SackQty" Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="2" d:LayoutOverrides="Height">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <ListView Grid.Column="4" Grid.Row="4" Grid.RowSpan="6" Height="140" HorizontalAlignment="Left" Name="lsv_SerialNumberList" VerticalAlignment="Top" Width="190" ItemsSource="{Binding}" DataContext="{Binding}" Grid.ColumnSpan="2" Margin="0,8,0,0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="条码" DisplayMemberBinding="{Binding SN}" Width="140"/>
+                        <GridViewColumn Header="数量" DisplayMemberBinding="{Binding Qty}" Width="50"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <TextBlock Margin="0" Text="外箱ASN标签 PN：" Grid.Column="3" d:LayoutOverrides="Height" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlTextColorKey}}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBox Grid.Column="4" Margin="0" TextWrapping="Wrap" Text="&#xa;&#xa;" Width="140" x:Name="txb_W_BoxSN" Height="23" Grid.Row="1" IsEnabled="True" KeyUp="txb_W_BoxSN_KeyUp" VerticalAlignment="Center" />
+            <TextBlock x:Name="lab_BoxResult" Grid.Column="6" Margin="0" TextWrapping="Wrap" Text="Result" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16"/>
+            <TextBlock x:Name="lab_W_Result" Grid.Column="6" Margin="0" TextWrapping="Wrap" Text="Result" Grid.Row="1" HorizontalAlignment="Left" FontSize="16" d:LayoutOverrides="Height" VerticalAlignment="Center"/>
+            <ContentControl x:Name="ccl_Finished_Product_LabelControls" Grid.Column="7"  Grid.RowSpan="10" />
+            
+
+        </Grid>
+        <Button Content="搜索" Margin="0,4.959,10,6.311" Width="36" HorizontalAlignment="Right" d:LayoutOverrides="Width"/>
+        <TextBox Margin="0,4.343,53,5.926" TextWrapping="Wrap" Text="&#xa;&#xa;" HorizontalAlignment="Right" Width="140"/>
+        <TextBlock Margin="0,8,193,9.577" Text="箱号：" HorizontalAlignment="Right" d:LayoutOverrides="HorizontalAlignment, Height">
+            <TextBlock.Foreground>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlTextColorKey}}"/>
+            </TextBlock.Foreground>
+        </TextBlock>
+
+
+    </Grid>
+</ad:DocumentContent>

@@ -1,0 +1,775 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F6E9240A-3A36-42E4-A7C5-6340A3A4350A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UI</RootNamespace>
+    <AssemblyName>MCP.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20621.0</ExpressionBlendVersion>
+    <PublishUrl>\\qqqqqq-ms2\MCP\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <UpdateUrl>\\qqqqqq-ms2\MCP\</UpdateUrl>
+    <TargetCulture>zh-Hans</TargetCulture>
+    <ProductName>AO_MCP_System</ProductName>
+    <PublisherName>追风猎人</PublisherName>
+    <SuiteName>MCP_System</SuiteName>
+    <ApplicationRevision>8</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
+    <BootstrapperComponentsUrl>\\qqqq-ms2\DataFind\DotNetFX40</BootstrapperComponentsUrl>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>UI.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\MCS.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>10096658AFA949763FC3F01D8EE70C5F5D0E783D</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AvalonDock, Version=1.3.3571.0, Culture=neutral, PublicKeyToken=85a1e0ada7ec13e4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Fluent, Version=2.0.0.0, Culture=neutral, PublicKeyToken=3e436e32a8c5546f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Fluent.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageFileCache4">
+      <HintPath>..\packages\XAML.MapControl.1.5.0\lib\net40\ImageFileCache4.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.BtShlExtLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=109ff779a1b4cbc7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\MCP_DAL\Interop.BtShlExtLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MapControl.WPF4">
+      <HintPath>..\packages\XAML.MapControl.1.5.0\lib\net40\MapControl.WPF4.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Drawing" />
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\..\MyLib\ZhuifengLib\ZhuifengLib\LibFiles\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Microsoft.Windows.Design.Extensibility, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Windows.Design.Interaction, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="Seagull.BarTender.Print, Version=10.0.4.1, Culture=neutral, PublicKeyToken=109ff779a1b4cbc7, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MCP_DAL\Seagull.BarTender.Print.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Reactive">
+      <HintPath>..\packages\Rx_Experimental-Main.1.1.11111\lib\Net4\System.Reactive.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Windows.Threading">
+      <HintPath>..\packages\Rx_Experimental-Xaml.1.1.11111\lib\Net4\System.Reactive.Windows.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit.Design.4.0, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit.Expression.Design, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit.VisualStudio.Design, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.DataVisualization.Design" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="WPFVisifire.Charts, Version=4.1.4.0, Culture=neutral, PublicKeyToken=0cd785983078370b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\WPFVisifire.Charts.dll</HintPath>
+    </Reference>
+    <Reference Include="WPFVisifire.Gauges, Version=4.1.4.0, Culture=neutral, PublicKeyToken=bf0af9b99ac47981, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\WPFVisifire.Gauges.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Cls_Ini.cs" />
+    <Compile Include="EquipmentMS\ConsumableMS\frm_Consumable_InStorage.xaml.cs">
+      <DependentUpon>frm_Consumable_InStorage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="eProcess\frm_Set_Process.xaml.cs">
+      <DependentUpon>frm_Set_Process.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="eProcess\frm_SetReWork.xaml.cs">
+      <DependentUpon>frm_SetReWork.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Finished_Product_labelControls.xaml.cs">
+      <DependentUpon>Finished_Product_labelControls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frm_UpdataRecode.xaml.cs">
+      <DependentUpon>frm_UpdataRecode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HumanResources\frm_WK_SetUser.xaml.cs">
+      <DependentUpon>frm_WK_SetUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HumanResources\frm_EmployeeOvertime.xaml.cs">
+      <DependentUpon>frm_EmployeeOvertime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HumanResources\frm_Employee_MS.xaml.cs">
+      <DependentUpon>frm_Employee_MS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HumanResources\frm_ReportForms.xaml.cs">
+      <DependentUpon>frm_ReportForms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HumanResources\frm_Tarining_MS.xaml.cs">
+      <DependentUpon>frm_Tarining_MS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HumanResources\EmployeeEditWindow.xaml.cs">
+      <DependentUpon>EmployeeEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fer_Control\frm_FerInput.xaml.cs">
+      <DependentUpon>frm_FerInput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fer_Control\frm_FerReceive.xaml.cs">
+      <DependentUpon>frm_FerReceive.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EquipmentMS\EquipmentMS\frm_EquipmentInfo.xaml.cs">
+      <DependentUpon>frm_EquipmentInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EquipmentMS\EquipmentMS\frm_EquipmentMS_Main.xaml.cs">
+      <DependentUpon>frm_EquipmentMS_Main.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EquipmentMS\EquipmentMS\frm_Equipment_Maintenance.xaml.cs">
+      <DependentUpon>frm_Equipment_Maintenance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EquipmentMS\ConsumableMS\frm_Consumable.xaml.cs">
+      <DependentUpon>frm_Consumable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EquipmentMS\FixtureMS\frm_Fixture.xaml.cs">
+      <DependentUpon>frm_Fixture.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EquipmentMS\ConsumableMS\frm_ConsumableMS_Main.xaml.cs">
+      <DependentUpon>frm_ConsumableMS_Main.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EquipmentMS\FixtureMS\frm_FixtureMS_Main.xaml.cs">
+      <DependentUpon>frm_FixtureMS_Main.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Generate_Repot.xaml.cs">
+      <DependentUpon>frm_Generate_Repot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HumanResources\frm_HumanResources.xaml.cs">
+      <DependentUpon>frm_HumanResources.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Requisition.xaml.cs">
+      <DependentUpon>frm_Requisition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Info_Management\frm_WorkstationHelper.xaml.cs">
+      <DependentUpon>frm_WorkstationHelper.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Info_Management\OrderInfo\frm_OrderInfo_WorkstationRecive.xaml.cs">
+      <DependentUpon>frm_OrderInfo_WorkstationRecive.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fer_Control\frm_OrderMaterialReceive.xaml.cs">
+      <DependentUpon>frm_OrderMaterialReceive.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fer_Control\frm_ProductInStore.xaml.cs">
+      <DependentUpon>frm_ProductInStore.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frm_SecarcInfo.xaml.cs">
+      <DependentUpon>frm_SecarcInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fer_Control\frm_Store_Send.xaml.cs">
+      <DependentUpon>frm_Store_Send.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frm_User.xaml.cs">
+      <DependentUpon>frm_User.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LabelControlsModel.cs" />
+    <Compile Include="Public_Module\MCP_CS.cs" />
+    <Compile Include="My_Control_OrderInfo.xaml.cs">
+      <DependentUpon>My_Control_OrderInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setting_Storage\frm_Setting_Print.xaml.cs">
+      <DependentUpon>frm_Setting_Print.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReWork\frm_ReWorkSetting.xaml.cs">
+      <DependentUpon>frm_ReWorkSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReWork\frm_ReWork.xaml.cs">
+      <DependentUpon>frm_ReWork.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setting_Storage\frm_OrderMaterialControl.xaml.cs">
+      <DependentUpon>frm_OrderMaterialControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlTools\frm_Tools_SPC.xaml.cs">
+      <DependentUpon>frm_Tools_SPC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Info_Management\OrderInfo\frm_OrderProduct_InStorage.xaml.cs">
+      <DependentUpon>frm_OrderProduct_InStorage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Info_Management\OrderInfo\frm_OrderInject_Material.xaml.cs">
+      <DependentUpon>frm_OrderInject_Material.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Info_Management\OrderInfo\frm_OrderReciveMaterial.xaml.cs">
+      <DependentUpon>frm_OrderReciveMaterial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Public_Module\My_MessageBox.cs" />
+    <Compile Include="Setting_Storage\Setting_Storagle.xaml.cs">
+      <DependentUpon>Setting_Storagle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Order_Management\UserControl_Inspect_Packaging.xaml.cs">
+      <DependentUpon>UserControl_Inspect_Packaging.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Order_Management\UserControl_Finished_Product.xaml.cs">
+      <DependentUpon>UserControl_Finished_Product.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Order_Management\UserControl_Label_Print.xaml.cs">
+      <DependentUpon>UserControl_Label_Print.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Material_Controler\UserControl_Material_Management.xaml.cs">
+      <DependentUpon>UserControl_Material_Management.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Order_Management\UserControl_Report.xaml.cs">
+      <DependentUpon>UserControl_Report.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Public_Module\User_Verify.xaml.cs">
+      <DependentUpon>User_Verify.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Info_Management\OrderInfo\UserControl_OrderInfo.xaml.cs">
+      <DependentUpon>UserControl_OrderInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Order_Management\UserControl_Pigtail_Inspect.xaml.cs">
+      <DependentUpon>UserControl_Pigtail_Inspect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Order_Management\UserControl_PrintBarcode.xaml.cs">
+      <DependentUpon>UserControl_PrintBarcode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Simulation.cs" />
+    <Compile Include="UserControl_ProductInfo.xaml.cs">
+      <DependentUpon>UserControl_ProductInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Order_Management\UserControl_OrderControl.xaml.cs">
+      <DependentUpon>UserControl_OrderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows_Style\BaseWindow.cs" />
+    <Page Include="EquipmentMS\ConsumableMS\frm_Consumable_InStorage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="eProcess\frm_Set_Process.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="eProcess\frm_SetReWork.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Finished_Product_labelControls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frm_UpdataRecode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HumanResources\frm_WK_SetUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="HumanResources\frm_EmployeeOvertime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HumanResources\frm_Employee_MS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HumanResources\frm_ReportForms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HumanResources\frm_Tarining_MS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HumanResources\EmployeeEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Fer_Control\frm_FerInput.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fer_Control\frm_FerReceive.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EquipmentMS\EquipmentMS\frm_EquipmentInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EquipmentMS\EquipmentMS\frm_EquipmentMS_Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EquipmentMS\EquipmentMS\frm_Equipment_Maintenance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EquipmentMS\ConsumableMS\frm_Consumable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EquipmentMS\FixtureMS\frm_Fixture.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EquipmentMS\ConsumableMS\frm_ConsumableMS_Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EquipmentMS\FixtureMS\frm_FixtureMS_Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frm_Generate_Repot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HumanResources\frm_HumanResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frm_Requisition.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Info_Management\frm_WorkstationHelper.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Info_Management\OrderInfo\frm_OrderInfo_WorkstationRecive.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fer_Control\frm_OrderMaterialReceive.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fer_Control\frm_ProductInStore.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frm_SecarcInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fer_Control\frm_Store_Send.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frm_User.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="My_Control_OrderInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Setting_Storage\frm_Setting_Print.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReWork\frm_ReWorkSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReWork\frm_ReWork.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Setting_Storage\frm_OrderMaterialControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlTools\frm_Tools_SPC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource\DataGrid_Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Info_Management\OrderInfo\frm_OrderProduct_InStorage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Info_Management\OrderInfo\frm_OrderInject_Material.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Info_Management\OrderInfo\frm_OrderReciveMaterial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource\ButtonStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resource\Dictionary_Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainFile\frm_Main.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainFile\frm_Main.xaml.cs">
+      <DependentUpon>frm_Main.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="MainFile\login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource\PlayButtonStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Setting_Storage\Setting_Storagle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Order_Management\UserControl_Inspect_Packaging.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Order_Management\UserControl_Finished_Product.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Order_Management\UserControl_Label_Print.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Material_Controler\UserControl_Material_Management.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Order_Management\UserControl_Report.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Public_Module\User_Verify.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Info_Management\OrderInfo\UserControl_OrderInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource\TextBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Order_Management\UserControl_Pigtail_Inspect.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Order_Management\UserControl_PrintBarcode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl_ProductInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Order_Management\UserControl_OrderControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows_Style\BaseWindowStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainFile\login.xaml.cs">
+      <DependentUpon>login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Fakes Include="Fakes\AvalonDock.fakes" />
+    <Fakes Include="Fakes\Fluent.fakes" />
+    <None Include="Help.CHM" />
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\load.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\19392w233-4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\MCS.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\default.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\修改口令.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\奖罚管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\工资总结.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\工资管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\打印.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\操作员管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\数据备份.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\更改操作员.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\查询.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\档案管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\系统管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\考勤津贴.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\考评管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\调动管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\部门管理.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MyLib\ZhuifengLib\ZhuifengLib\ZhuifengLib.csproj">
+      <Project>{ac67be14-18df-411d-8648-584814f9bc5b}</Project>
+      <Name>ZhuifengLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MCP_Bll\Bll.csproj">
+      <Project>{8029D6C6-8248-4BE1-AF1E-AB9D667D098B}</Project>
+      <Name>Bll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MCP_Model\Model.csproj">
+      <Project>{FE842339-726F-426A-8472-38D8422D82AA}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\161147.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Xml_Source\XML_RejectsList.xml">
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\130607103251454d3563c3ad62.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\20120818153847_ids5c.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\80674.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\50fd5c7c11077.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\删除.ico" />
+    <Resource Include="Images\添加.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\109242.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBRUN">
+      <Guid>{EA544A21-C82D-11D1-A3E4-00A0C90AEA82}</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>9</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.0\Microsoft.Expression.Blend.WPF.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,159 @@
+﻿<Window x:Class="UI.frm_Fixture"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:UI"
+        Title="frm_Fixture" Height="640" Width="1040" Loaded="Window_Loaded">
+     <Grid Background="{DynamicResource NormalBrush}">
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width="600"/>
+    		<ColumnDefinition Width="425"/>
+    		<ColumnDefinition/>
+    	</Grid.ColumnDefinitions>
+    	<Grid.RowDefinitions>
+    		<RowDefinition Height="Auto" MinHeight="30"/>
+    		<RowDefinition Height="576"/>
+    		<RowDefinition Height="*"/>
+    	</Grid.RowDefinitions>
+          <Grid x:Name="grd_Ti" Grid.ColumnSpan="3" Background="{DynamicResource NormalBrush}">
+        	<Grid.ColumnDefinitions>
+        		<ColumnDefinition Width="160"/>
+        		<ColumnDefinition Width="60"/>
+        		<ColumnDefinition Width="147.02"/>
+        		<ColumnDefinition Width="167.183"/>
+        		<ColumnDefinition Width="496.797"/>
+        		<ColumnDefinition Width="9"/>
+        		<ColumnDefinition/>
+        	</Grid.ColumnDefinitions>
+            <Label Content="治具管理-治具信息" Foreground="#FF00020C" FontSize="18.667" VerticalAlignment="Center" Grid.ColumnSpan="2" FontWeight="Bold"/>
+            
+        </Grid>
+          <Grid Grid.ColumnSpan="3"/>
+    	<Grid Margin="0,8,0,0" Grid.Row="1" Name="grd_EquipmentInfo" Height="226" VerticalAlignment="Top">
+    		<Grid.Background>
+    			<ImageBrush/>
+    		</Grid.Background>
+    		<Grid.ColumnDefinitions>
+    			<ColumnDefinition Width="5"/>
+    			<ColumnDefinition Width="65"/>
+    			<ColumnDefinition Width="120"/>
+    			<ColumnDefinition Width="70"/>
+    			<ColumnDefinition Width="140"/>
+    			<ColumnDefinition Width="70"/>
+    			<ColumnDefinition Width="123"/>
+    			<ColumnDefinition/>
+    		</Grid.ColumnDefinitions>
+    		<Grid.RowDefinitions>
+    			<RowDefinition Height="25"/>
+    			<RowDefinition Height="25"/>
+    			<RowDefinition Height="25"/>
+    			<RowDefinition Height="25"/>
+    			<RowDefinition Height="25"/>
+    			<RowDefinition Height="25"/>
+    			<RowDefinition Height="25"/>
+    			<RowDefinition Height="25"/>
+				
+
+
+    			<RowDefinition Height="25"/>
+    			<RowDefinition/>
+    		</Grid.RowDefinitions>
+    		<TextBlock Grid.Column="3" Margin="0,6" TextWrapping="Wrap" Text="功能描述：" HorizontalAlignment="Right" Grid.Row="6" d:LayoutOverrides="Height" VerticalAlignment="Center"/>
+    		<TextBox x:Name="txb_FunctionRemarks" Grid.Column="4" Margin="0,4,0,0" TextWrapping="Wrap" Text="" Grid.Row="6" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
+    		<TextBlock Grid.Column="3" Margin="0,6.656,0,4.656" TextWrapping="Wrap" Text="规格型号：" HorizontalAlignment="Right" Grid.Row="5" d:LayoutOverrides="Height"/>
+    		<TextBox x:Name="txb_Model" Grid.Column="4" Margin="0,2,0,0" TextWrapping="Wrap" Text="" Grid.Row="5" Grid.ColumnSpan="3" d:LayoutOverrides="GridBox, VerticalMargin"/>
+    		<TextBlock Grid.Column="5" Margin="0,6.656,-1,4.656" TextWrapping="Wrap" Text="版本：" HorizontalAlignment="Right" Grid.Row="2" d:LayoutOverrides="HorizontalAlignment, Height"/>
+    		<ComboBox x:Name="cmb_Versions" Grid.Column="6" Margin="1,2,-1,0" Grid.Row="2" d:LayoutOverrides="VerticalMargin">
+                <ComboBoxItem Content="V1.0" />
+                <ComboBoxItem Content="V2.0" />
+                <ComboBoxItem Content="V3.0" />
+                <ComboBoxItem Content="V4.0" />
+                <ComboBoxItem Content="V5.0" />
+            </ComboBox>
+            <TextBlock Grid.Column="5" Margin="0,5.656,-1,5.656" TextWrapping="Wrap" Text="安全库存：" HorizontalAlignment="Right" Grid.Row="1" d:LayoutOverrides="Height"/>
+    		<TextBox x:Name="txb_SafeCount" Grid.Column="6" Margin="1,1,0,1" TextWrapping="Wrap" Text="" HorizontalAlignment="Left" Width="59.667" Grid.Row="1"/>
+    		<ComboBox x:Name="cmb_Unit" Grid.Column="6" Margin="60.667,1,-1,1" Grid.Row="1">
+                <ComboBoxItem Content="PCS" />
+                <ComboBoxItem Content="台" />
+            </ComboBox>
+            <TextBlock Grid.Column="5" Margin="0,6.656,-1,4.656" TextWrapping="Wrap" Text="图纸路径：" HorizontalAlignment="Right" Grid.Row="3" d:LayoutOverrides="Height"/>
+    		<TextBox x:Name="txb_DrawingPatch" Grid.Column="6" Margin="1,2,28,0" TextWrapping="Wrap" Text="" Grid.Row="3" d:LayoutOverrides="VerticalMargin"/>
+    		<TextBlock Grid.Column="5" Margin="0,6.656,-1,4.656" TextWrapping="Wrap" Text="照片：" HorizontalAlignment="Right" Grid.Row="4" d:LayoutOverrides="HorizontalAlignment, Height"/>
+    		<TextBox x:Name="txb_PicID" Grid.Column="6" Margin="1,2,28,0" TextWrapping="Wrap" Text="" Grid.Row="4" d:LayoutOverrides="VerticalMargin"/>
+    		<TextBlock Grid.Column="3" Margin="0,5.656,-1,5.656" TextWrapping="Wrap" Text="关联设备：" HorizontalAlignment="Right" d:LayoutOverrides="Height" Grid.Row="4"/>
+    		<TextBox x:Name="txb_Correlation" Grid.Column="4" Margin="1,1,-1,1" TextWrapping="Wrap" Text="" Grid.Row="4"/>
+    		<TextBlock Grid.Column="3" Margin="0,5.656,-1,5.656" TextWrapping="Wrap" Text="治具编号：" HorizontalAlignment="Right" d:LayoutOverrides="Height" Grid.Row="1"/>
+    		<TextBox x:Name="txb_BarCode" Grid.Column="4" Margin="1,1,-1,1" TextWrapping="Wrap" Text="" Grid.Row="1"/>
+    		<Button x:Name="btn_SetPic" Content="..." Margin="0,2,0,0" RenderTransformOrigin="0.411,0.484" Grid.Column="6" Grid.Row="4" HorizontalAlignment="Right" Width="24" d:LayoutOverrides="VerticalMargin"/>
+    		<TextBlock Grid.Column="3" Margin="0,5.656,-1,5.656" TextWrapping="Wrap" Text="治具名称：" HorizontalAlignment="Right" Grid.Row="2" d:LayoutOverrides="Height"/>
+    		<TextBox x:Name="txb_Name" Grid.Column="4" Margin="1,1,-1,1" TextWrapping="Wrap" Text="" Grid.Row="2"/>
+    		<TextBlock Grid.Column="3" Margin="0,5.656,-1,5.656" TextWrapping="Wrap" Text="别名：" Grid.Row="3" HorizontalAlignment="Right" d:LayoutOverrides="HorizontalAlignment, Height"/>
+    		<TextBox x:Name="txb_AliasName" Grid.Column="4" Margin="1,1,-1,1" TextWrapping="Wrap" Text="" Grid.Row="3"/>
+            <Button x:Name="btn_SetDwingPatch" Content="..." Margin="0,2,0,0" RenderTransformOrigin="0.411,0.484" Grid.Column="6" Grid.Row="3" HorizontalAlignment="Right" Width="24" d:LayoutOverrides="VerticalMargin" Click="btn_SetDwingPatch_Click" />
+            <TreeView x:Name="trv_FixtureView" Grid.ColumnSpan="2" Grid.Column="1" Grid.RowSpan="10" MouseDoubleClick="trv_FixtureView_MouseDoubleClick"  >
+                <TreeView.ItemTemplate  >
+                    <HierarchicalDataTemplate DataType="{x:Type local:PropertyNodeItem}" ItemsSource="{Binding Path=Children}" >                       
+                        <StackPanel Orientation="Horizontal" >                           
+                            <Image VerticalAlignment="Center" Source="{Binding Icon}" Width="16" Height="16" Margin="0,0,2,2"></Image>                            
+                            <TextBlock VerticalAlignment="Center" Text="{Binding DisplayName}"></TextBlock>
+                            <Image VerticalAlignment="Center" Source="{Binding EditIcon}"  Margin="2,0,0,0"></Image>                            
+                            <StackPanel.ToolTip>                              
+                                <TextBlock VerticalAlignment="Center" Text="{Binding Name}" TextWrapping="Wrap" MaxWidth="200" ></TextBlock>                                
+                            </StackPanel.ToolTip>                            
+                        </StackPanel>                        
+                    </HierarchicalDataTemplate>
+                    
+                </TreeView.ItemTemplate>
+              
+                <TreeView.ContextMenu >
+                    <ContextMenu Name="cm" StaysOpen="true">
+                        <MenuItem Header="添加" Name="Mei_Add" Icon="E:\\Working\\MCP\\UI\\Images\\添加.ico"  Click="Mei_Add_Checked" />
+                        <MenuItem Header="删除" Name="Mei_Delete" Icon="E:\\Working\\MCP\\UI\\Images\\删除.ico" Click="Mei_Delete_Checked"  />
+                    </ContextMenu>
+                </TreeView.ContextMenu>
+            </TreeView>
+            <TextBlock Grid.Column="3" Margin="0,4.656,0,6.656" TextWrapping="Wrap" Text="总成编号：" HorizontalAlignment="Right" d:LayoutOverrides="Height"/>
+            <TextBox x:Name="txb_AssetNumber" Grid.Column="4" Margin="0,0,0,2" TextWrapping="Wrap" Text=""/>
+            <TextBlock Grid.Column="5" Margin="0,4.656,0,6.656" TextWrapping="Wrap" Text="总成名称：" HorizontalAlignment="Right" d:LayoutOverrides="Height"/>
+            <TextBox x:Name="txb_Assrt_Name" Grid.Column="6" Margin="0,0,1,2" TextWrapping="Wrap" Text=""/>
+        </Grid>
+        <DataGrid x:Name="dgv_" Margin="0,238,0,8" Grid.Row="1"/>
+        <Image Grid.Column="1" Grid.Row="1" Height="322" HorizontalAlignment="Left" Margin="2,246,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="416" Source="/MCP.UI;component/Images/130607103251454d3563c3ad62.jpg" />
+    	<Grid Grid.Column="1" Height="226" Margin="8,8,7,0" Grid.Row="1" VerticalAlignment="Top" Background="{DynamicResource NormalBorderBrush}">
+    		<Grid.ColumnDefinitions>
+    			<ColumnDefinition Width="107.83"/>
+    			<ColumnDefinition/>
+    		</Grid.ColumnDefinitions>
+    		<Grid Grid.Column="1" Margin="0">
+    			<Grid.RowDefinitions>
+    				<RowDefinition Height="35"/>
+    				<RowDefinition Height="35"/>
+    				<RowDefinition Height="35"/>
+    				<RowDefinition/>
+    			</Grid.RowDefinitions>
+    			<TextBlock Margin="0" TextWrapping="Wrap" Text="选项:" HorizontalAlignment="Left" d:LayoutOverrides="Height" VerticalAlignment="Center"/>
+    			<Button x:Name="btn_Search" Content="查找" HorizontalAlignment="Right" Margin="0,0,2,0" Width="50" Height="25" Click="btn_Search_Click" />
+    			<TextBox Margin="140,5,55,5" TextWrapping="Wrap" Height="25" Name="txb_Search_Value" />
+    			<ComboBox Margin="34,5,0,5" HorizontalAlignment="Left" Width="102" Height="25" Name="cmb_Search_Type" />
+                <DataGrid Margin="0,1,2,0" Name="dgv_FixInfo_List" SelectionMode="Single" Grid.Row="1" Grid.RowSpan="3" MouseDoubleClick="dgv_FixInfo_List_MouseDoubleClick" />
+            </Grid>
+    		<Grid>
+    			<Grid.RowDefinitions>
+    				<RowDefinition Height="35"/>
+    				<RowDefinition Height="35"/>
+    				<RowDefinition Height="35"/>
+    				<RowDefinition Height="35"/>
+    				<RowDefinition Height="50"/>
+    				<RowDefinition Height="35"/>
+    				<RowDefinition/>
+    			</Grid.RowDefinitions>
+    			<Button Content="新建治具" Margin="8,0,10,0" x:Name="btn_Add" Click="btn_Add_Click" Height="30" VerticalAlignment="Center" />
+    			<Button Content="信息变更" Margin="8,2,10,3" x:Name="btn_Edit" Click="btn_Edit_Click" Grid.Row="2" Height="30" VerticalAlignment="Center" />
+    			<Button Content="新增部件" Height="30" Margin="8,0,10,5" VerticalAlignment="Center" Grid.Row="1" Name="btn_Add_Parts" Click="btn_Add_Parts_Click" />
+    			<Button Content="保存更改" Margin="6,0,10,0" x:Name="btn_Save" Background="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" Click="btn_Save_Click" Grid.Row="5" Height="30" VerticalAlignment="Center" />
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

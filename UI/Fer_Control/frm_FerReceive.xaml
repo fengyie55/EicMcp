@@ -1,0 +1,21 @@
+﻿<Window x:Class="UI.frm_FerReceive"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" 
+        Title="frm_OrderInfo_WorkstationRecive" Height="500" Width="610" Background="{StaticResource Background_1}" WindowStartupLocation="CenterScreen" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="216"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.RowSpan="3" >
+            <DockPanel LastChildFill="False" Height="35" VerticalAlignment="Top" Background="{StaticResource Border_Background}">
+                <Label Content="工单信息—Ferrule领料" Height="28" x:Name="label6" FontWeight="Normal" FontSize="16" />
+            </DockPanel>
+        </Grid>
+
+    </Grid>
+</Window>

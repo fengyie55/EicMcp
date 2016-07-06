@@ -1,0 +1,8 @@
+﻿<Window x:Class="UI.frm_Consumable_InStorage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="frm_Consumable_InStorage" Height="339" Width="392">
+    <Grid>
+        
+    </Grid>
+</Window>

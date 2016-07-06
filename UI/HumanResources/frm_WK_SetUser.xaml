@@ -1,0 +1,55 @@
+﻿<Window x:Class="UI.frm_WK_SetUser"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"	
+	x:Name="Window"
+	Title="frm_WK_SetUser"
+	Width="640" Height="480" Loaded="Window_Loaded">
+
+	<Grid x:Name="LayoutRoot">
+		<Grid Margin="0" Background="{DynamicResource back_01}">
+            <GroupBox Header="搜寻" Height="63" HorizontalAlignment="Right" Margin="0,6,24,0" Name="groupBox1" VerticalAlignment="Top" Width="272">
+                <Grid />
+            </GroupBox>
+            <ListView x:Name="lst_WK_UserList" Margin="2,8,312,165" MouseDoubleClick="lst_WK_UserList_MouseDoubleClick">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="工作站" DisplayMemberBinding="{Binding WK}" Width="80"/>
+                        <GridViewColumn Header="班别" DisplayMemberBinding="{Binding ClassType}" Width="50"/>
+                        <GridViewColumn Header="工号" DisplayMemberBinding="{Binding JobNum}" Width="80"/>
+                        <GridViewColumn Header="姓名" DisplayMemberBinding="{Binding Name}" Width="80"/>
+                        
+                    </GridView>
+                </ListView.View>
+            </ListView>
+			<Button x:Name="btn_Add" Content="添加" HorizontalAlignment="Right" Margin="0,256,230,164" Width="60" Click="btn_Add_Click" />
+			<Button x:Name="btn_Edit" Content="编辑" HorizontalAlignment="Right" Margin="0,256,166,164" Width="60" Click="btn_Edit_Click" />
+			<Button x:Name="btn_Delete" Content="删除" HorizontalAlignment="Right" Margin="0,256,102,164" Width="60" Click="btn_Delete_Click" />
+			<Grid x:Name="grd_User" HorizontalAlignment="Right" Margin="0,79,110,0" Width="180" Height="160" VerticalAlignment="Top" d:LayoutOverrides="Height" DataContext="{Binding}">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0.256*"/>
+					<ColumnDefinition Width="0.744*"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="0.25*"/>
+					<RowDefinition Height="0.25*"/>
+					<RowDefinition Height="0.25*"/>
+					<RowDefinition Height="0.25*"/>
+				</Grid.RowDefinitions>
+                <ComboBox SelectedValue="{Binding WK}" Margin="0" Grid.Column="1" Height="27" Name="cmb_WK" />
+                <ComboBox SelectedValue="{Binding ClassType}" Margin="0" Grid.Row="1" Grid.Column="1" Height="27" Name="cmb_ClassType" />
+                <TextBox  Text="{Binding JobNum}" Margin="0" TextWrapping="Wrap" Grid.Row="2" Grid.Column="1" Height="27" Name="txb_JobNum" KeyUp="txb_JobNum_KeyUp" />
+                <TextBox  Text="{Binding Name}"  Margin="0" TextWrapping="Wrap" Grid.Row="3" Grid.Column="1" d:LayoutOverrides="VerticalAlignment" Height="27" Name="txb_Name" />
+				<TextBlock Margin="0" TextWrapping="Wrap" Text="工作站" VerticalAlignment="Center" d:LayoutOverrides="Width" HorizontalAlignment="Center"/>
+				<TextBlock Margin="0" TextWrapping="Wrap" Text="班别" Grid.Row="1" d:LayoutOverrides="Width, Height" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+				<TextBlock Margin="0" TextWrapping="Wrap" Text="工号" Grid.Row="2" d:LayoutOverrides="Width, Height" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+				<TextBlock Margin="0" TextWrapping="Wrap" Text="姓名" Grid.Row="3" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" />
+			</Grid>
+            <Button Content="查找" Height="28" HorizontalAlignment="Right" Margin="0,27,41,0" Name="btn_Search" VerticalAlignment="Top" Width="63" Click="btn_Search_Click" />
+            <ComboBox Height="28" HorizontalAlignment="Right" Margin="0,27,110,0" Name="cmb_WorkList" VerticalAlignment="Top" Width="134" />
+            <Label Content="工作站" Height="23" HorizontalAlignment="Right" Margin="0,30,244,0" VerticalAlignment="Top" Width="46" />
+            <Button Content="保存" HorizontalAlignment="Right" Margin="0,256,38,164" Name="btn_Save" Width="60" Click="btn_Save_Click" />
+        </Grid>
+	</Grid>
+</Window>

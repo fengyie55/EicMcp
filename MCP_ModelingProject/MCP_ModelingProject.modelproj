@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{d00a14a7-bb3d-40e6-bb45-9896abb8824e}</ProjectGuid>
+    <ArchitectureToolsVersion>1.0.0.0</ArchitectureToolsVersion>
+    <Name>MCP_ModelingProject</Name>
+    <RootNamespace>MCP_ModelingProject</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" />
+  <ItemGroup>
+    <Folder Include="ModelDefinition\" />
+    <Content Include="AssemblyDependencies.dgml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\MCP_ModelingProject.uml">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MCP_Bll\MCP_Bll.csproj">
+      <Name>MCP_Bll</Name>
+      <Project>{8029d6c6-8248-4be1-af1e-ab9d667d098b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MCP_DAL\MCP_DAL.csproj">
+      <Name>MCP_DAL</Name>
+      <Project>{2eec6101-d4ff-4b5b-b473-f414e51f0a2e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\UI\UI.csproj">
+      <Name>UI</Name>
+      <Project>{f6e9240a-3a36-42e4-a7c5-6340a3a4350a}</Project>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

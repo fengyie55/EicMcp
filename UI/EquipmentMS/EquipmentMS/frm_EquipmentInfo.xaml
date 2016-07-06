@@ -1,0 +1,172 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d" x:Class="UI.frm_EquipmentInfo"
+        Title="frm_EquipmentInfo" Height="640" Width="1040" Background="{StaticResource DocumentContent_Background}" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Grid>
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width="600"/>
+    		<ColumnDefinition Width="425"/>
+    		<ColumnDefinition/>
+    	</Grid.ColumnDefinitions>
+    	<Grid.RowDefinitions>
+    		<RowDefinition Height="Auto" MinHeight="30"/>
+    		<RowDefinition Height="576"/>
+    		<RowDefinition Height="*"/>
+    	</Grid.RowDefinitions>
+          <Grid x:Name="grd_Ti" Grid.ColumnSpan="3">
+          	<Grid.Background>
+          		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+          			<GradientStop Color="#FF0D413E" Offset="0"/>
+          			<GradientStop Color="#FF0F4541" Offset="1"/>
+          			<GradientStop Color="#FF0C413E"/>
+          			<GradientStop Color="#FF0F504C"/>
+          			<GradientStop Color="#FF0F4D49" Offset="1"/>
+          			<GradientStop Color="#FF0C413E"/>
+          			<GradientStop Color="#FF15605C" Offset="0.496"/>
+          			<GradientStop Color="#FF145E5A" Offset="0.685"/>
+          		</LinearGradientBrush>
+          	</Grid.Background>
+        	<Grid.ColumnDefinitions>
+        		<ColumnDefinition Width="160"/>
+        		<ColumnDefinition Width="60"/>
+        		<ColumnDefinition Width="147.02"/>
+        		<ColumnDefinition Width="167.183"/>
+        		<ColumnDefinition Width="496.797"/>
+        		<ColumnDefinition Width="9"/>
+        		<ColumnDefinition/>
+        	</Grid.ColumnDefinitions>
+            <Label Content="设备管理-设备信息" Foreground="White" FontSize="18.667" VerticalAlignment="Center" FontWeight="Bold" Grid.ColumnSpan="2"/>
+            
+        </Grid>
+          <Grid Grid.ColumnSpan="3"/>
+    	<Grid Margin="0,8,0,233" Grid.Row="1" Background="#FF25726D" Name="grd_EquipmentInfo">
+    		<Grid.ColumnDefinitions>
+    			<ColumnDefinition Width="5"/>
+    			<ColumnDefinition Width="65"/>
+    			<ColumnDefinition Width="120"/>
+    			<ColumnDefinition Width="70"/>
+    			<ColumnDefinition Width="140"/>
+    			<ColumnDefinition Width="70"/>
+    			<ColumnDefinition Width="123"/>
+    			<ColumnDefinition/>
+    		</Grid.ColumnDefinitions>
+    		<Grid.RowDefinitions>
+    			<RowDefinition Height="25"/>
+    			<RowDefinition Height="25"/>
+    			<RowDefinition Height="25"/>
+    			<RowDefinition Height="25"/>
+    			<RowDefinition Height="25"/>
+    			<RowDefinition Height="25"/>
+    			<RowDefinition Height="25"/>
+    			<RowDefinition Height="25"/>
+				<RowDefinition Height="25"/>
+    			<RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+				<RowDefinition Height="25"/>
+
+
+    			<RowDefinition Height="25"/>
+    			<RowDefinition/>
+    		</Grid.RowDefinitions>
+    		<TextBlock Grid.Column="3" Margin="0" TextWrapping="Wrap" Text="财产编号：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+    		<TextBox x:Name="txb_AssetNum" Grid.Column="4" Margin="0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Height="23"/>
+    		<TextBlock Grid.Column="3" Margin="0" TextWrapping="Wrap" Text="财产名称：" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center"/>
+    		<TextBox x:Name="txb_AssetName" Grid.Column="4" Margin="0" TextWrapping="Wrap" Text="" Grid.Row="1" VerticalAlignment="Center" Height="23"/>
+    		<TextBlock Grid.Column="3" Margin="0" TextWrapping="Wrap" Text="功能描述：" HorizontalAlignment="Right" Grid.Row="6" VerticalAlignment="Center"/>
+    		<TextBox x:Name="txb_FunctionDescription" Grid.Column="4" Margin="0,2" TextWrapping="Wrap" Text="" Grid.Row="6" Grid.ColumnSpan="3" Grid.RowSpan="2" Height="46"/>
+    		<TextBlock Grid.Column="3" Margin="0" TextWrapping="Wrap" Text="规格：" HorizontalAlignment="Right" Grid.Row="5" VerticalAlignment="Center"/>
+    		<TextBox x:Name="txb_EquipmentSpecification" Grid.Column="4" Margin="0,1" TextWrapping="Wrap" Text="" Grid.Row="5" Grid.ColumnSpan="3" Height="23"/>
+    		<TextBlock Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="资产类别：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+    		<ComboBox x:Name="cmb_AssetType" Grid.Column="2" Margin="0" VerticalAlignment="Center" Height="23"/>
+    		<TextBlock Grid.Column="3" Margin="0" TextWrapping="Wrap" Text="型号：" HorizontalAlignment="Right" Grid.Row="4" VerticalAlignment="Center"/>
+    		<TextBox x:Name="txb_EquipmentModel" Grid.Column="4" Margin="0,1" TextWrapping="Wrap" Text="" Grid.Row="4" Grid.ColumnSpan="3" Height="23"/>
+    		<TextBlock Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="所属部门：" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center"/>
+    		<ComboBox x:Name="cmb_Department" Grid.Column="2" Margin="0" Grid.Row="1" VerticalAlignment="Center" Height="23"/>
+    		<TextBlock Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="安装位置：" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Center"/>
+    		<ComboBox x:Name="cmb_InstallationSite" Grid.Column="2" Margin="0,0,0,1" Grid.Row="2" VerticalAlignment="Bottom" Height="23"/>
+    		<TextBlock Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="增加方式：" HorizontalAlignment="Right" Grid.Row="3" VerticalAlignment="Center"/>
+    		<ComboBox x:Name="cmb_AddMode" Grid.Column="2" Margin="0" Grid.Row="3" VerticalAlignment="Center" Height="23"/>
+    		<TextBlock Grid.Column="1" Margin="0,5.656" TextWrapping="Wrap" Text="交付人员：" HorizontalAlignment="Right" Grid.Row="10" />
+    		<TextBlock Grid.Column="1" Margin="0,5.718,-0.084,5.592" TextWrapping="Wrap" Text="验收人员：" HorizontalAlignment="Right" Grid.Row="11" d:LayoutOverrides="Height"/>
+    		<TextBox x:Name="txb_CheckUser" Grid.Column="2" Margin="0.084,1.062,-0.084,0.938" TextWrapping="Wrap" Text="" Grid.Row="11"/>
+    		<TextBlock Grid.Column="1" Margin="0,5.718,-0.084,3.592" TextWrapping="Wrap" Text="保管人员：" HorizontalAlignment="Right" Grid.Row="12" d:LayoutOverrides="Height"/>
+    		<TextBox x:Name="txb_CareUser" Grid.Column="2" TextWrapping="Wrap" Text="" Grid.Row="12" Height="23"/>
+    		<TextBlock Grid.Column="3" Margin="0" TextWrapping="Wrap" Text="生产厂家：" HorizontalAlignment="Right" Grid.Row="8" VerticalAlignment="Center"/>
+    		<TextBox x:Name="txb_Supplier" Grid.Column="4" Margin="0" TextWrapping="Wrap" Text="" Grid.Row="8" VerticalAlignment="Center" Height="23"/>
+    		<TextBlock Grid.Column="3" Margin="0" TextWrapping="Wrap" Text="制造编号：" HorizontalAlignment="Right" Grid.Row="3" VerticalAlignment="Center"/>
+    		<TextBox x:Name="txb_MakeNum" Grid.Column="4" Margin="0" TextWrapping="Wrap" Text="" Grid.Row="3" VerticalAlignment="Center" Height="23"/>
+    		<TextBlock Grid.Column="3" Margin="0,5.656" TextWrapping="Wrap" Text="生产日期：" HorizontalAlignment="Right" Grid.Row="9" d:LayoutOverrides="Height"/>
+    		<DatePicker x:Name="dtp_ManufacturingDate" Grid.Column="4" Margin="0,0,17,0" Grid.Row="9" RenderTransformOrigin="1.114,0.425"/>
+    		<TextBlock Grid.Column="1" Margin="0,5.655,-0.084,5.656" TextWrapping="Wrap" Text="登陆日期：" HorizontalAlignment="Right" Grid.Row="8" d:LayoutOverrides="Height"/>
+    		<DatePicker x:Name="dtp_LoginDate" Grid.Column="2" Margin="0.084,0.999,-0.084,1.001" Grid.Row="8"/>
+    		<TextBlock Grid.Column="1" Margin="0,5.655,-0.084,5.656" TextWrapping="Wrap" Text="保养日期：" HorizontalAlignment="Right" Grid.Row="6" d:LayoutOverrides="Height"/>
+    		<DatePicker x:Name="dtp_MaintenanceDate" Grid.Column="2" Margin="0.084,0.999,-0.084,1.001" Grid.Row="6"/>
+    		<TextBlock Grid.Column="1" Margin="0,5.655,-0.084,5.656" TextWrapping="Wrap" Text="校验日期：" HorizontalAlignment="Right" Grid.Row="4" d:LayoutOverrides="Height"/>
+    		<DatePicker x:Name="dtp_VerigyDate" Grid.Column="2" Margin="0.084,0.999,-0.084,1.001" Grid.Row="4"/>
+    		<TextBlock Grid.Column="1" Margin="0,5.655,-0.084,5.656" TextWrapping="Wrap" Text="校验间隔：" HorizontalAlignment="Right" Grid.Row="5" d:LayoutOverrides="Height"/>
+    		<TextBox x:Name="txb_VerifyInterval" Grid.Column="2" Margin="0.084,0.999,29.416,1.001" TextWrapping="Wrap" Text="" Grid.Row="5"/>
+    		<TextBlock Grid.Column="1" Margin="0,5.655,-0.084,5.656" TextWrapping="Wrap" Text="保养间隔：" HorizontalAlignment="Right" Grid.Row="7" d:LayoutOverrides="Height"/>
+    		<TextBox x:Name="txb_MaintenanceInterval" Grid.Column="2" Margin="0.084,0.999,29.416,1.001" TextWrapping="Wrap" Text="" Grid.Row="7"/>
+    		<TextBlock Grid.Column="2" Margin="0,5.655,9.916,5.656" TextWrapping="Wrap" Text="月" HorizontalAlignment="Right" Grid.Row="5" d:LayoutOverrides="HorizontalAlignment, Height"/>
+    		<TextBlock Grid.Column="2" Margin="0,5.655,9.916,5.656" TextWrapping="Wrap" Text="月" HorizontalAlignment="Right" Grid.Row="7" d:LayoutOverrides="HorizontalAlignment, Height"/>
+    		<TextBlock Grid.Column="5" Margin="0" TextWrapping="Wrap" Text="效率：" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Center"/>
+    		<TextBox x:Name="txb_Efficiency" Grid.Column="6" Margin="0,0,16,0" TextWrapping="Wrap" Text="" Grid.Row="2" VerticalAlignment="Center" Height="25"/>
+    		<TextBlock Grid.Column="5" Margin="0" TextWrapping="Wrap" Text="稼动率OEE：" HorizontalAlignment="Right" Grid.Row="3" VerticalAlignment="Center"/>
+    		<TextBox x:Name="txb_EquipmentOee" Grid.Column="6" Margin="0" TextWrapping="Wrap" Text="" Grid.Row="3" VerticalAlignment="Center" Height="25"/>
+    		<TextBlock Grid.Column="6" Margin="0,0,2,0" TextWrapping="Wrap" Text="/h" HorizontalAlignment="Right" Grid.Row="2" d:LayoutOverrides="HorizontalAlignment" RenderTransformOrigin="-0.667,0.427" VerticalAlignment="Center"/>
+    		<TextBlock Grid.Column="5" Margin="0" TextWrapping="Wrap" Text="状态：" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+    		<ComboBox x:Name="cmb_State" Grid.Column="6" Margin="0" VerticalAlignment="Center" Height="25"/>
+    		<TextBlock Grid.Column="5" Margin="0" TextWrapping="Wrap" Text="数量：" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center"/>
+    		<TextBox x:Name="txb_Count" Grid.Column="6" Margin="0,1" TextWrapping="Wrap" Text="" HorizontalAlignment="Left" Width="59.667" Grid.Row="1" Height="23"/>
+    		<ComboBox x:Name="cmb_Unit" Grid.Column="6" Margin="59.667,1,0,1" Grid.Row="1" Height="23"/>
+    		<TextBlock Grid.Column="3" Margin="0" TextWrapping="Wrap" Text="别名：" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+    		<TextBox x:Name="txb_AliasName" Grid.Column="4" Margin="0" TextWrapping="Wrap" Text="" Grid.Row="2" VerticalAlignment="Center" Height="23"/>
+    		<TextBlock Grid.Column="3" Margin="0,4.656,0,6.656" TextWrapping="Wrap" Text="官方网址：" HorizontalAlignment="Right" Grid.Row="10" d:LayoutOverrides="Height"/>
+    		<TextBox x:Name="txb_OfficialWedsite" Grid.Column="4" Margin="0,0,0,2" TextWrapping="Wrap" Text="" Grid.Row="10"/>
+    		<TextBlock Grid.Column="3" Margin="0,4.656,0,6.656" TextWrapping="Wrap" Text="供应商TEL：" HorizontalAlignment="Right" Grid.Row="11" d:LayoutOverrides="Height"/>
+    		<TextBox x:Name="txb_SupplierTel" Grid.Column="4" Margin="0,0,0,2" TextWrapping="Wrap" Text="" Grid.Row="11"/>
+    		<TextBlock Grid.Column="3" Margin="0,4.656" TextWrapping="Wrap" Text="售后TEL：" HorizontalAlignment="Right" Grid.Row="12" d:LayoutOverrides="Height"/>
+    		<TextBox x:Name="txb_AferSaleTel" Grid.Column="4" Margin="0" TextWrapping="Wrap" Text="" Grid.Row="12"/>
+    		<TextBlock Grid.Column="5" Margin="0" TextWrapping="Wrap" Text="安全规程：" HorizontalAlignment="Right" Grid.Row="9" VerticalAlignment="Center"/>
+    		<TextBox x:Name="txb_SafetySpecification" Grid.Column="6" Margin="0,0,30,0" TextWrapping="Wrap" Text="" Grid.Row="9" VerticalAlignment="Center" Height="23"/>
+    		<Button x:Name="btn_SafetySpecification" Content="..." Margin="0,0,4,0" RenderTransformOrigin="0.411,0.484" Grid.Column="6" Grid.Row="9" HorizontalAlignment="Right" Width="24" VerticalAlignment="Center" Height="23"/>
+    		<TextBlock Grid.Column="5" Margin="0,5.656" TextWrapping="Wrap" Text="操作说明：" HorizontalAlignment="Right" Grid.Row="10" d:LayoutOverrides="Height"/>
+    		<TextBox x:Name="txb_OI" Grid.Column="6" Margin="0,1,30,1" TextWrapping="Wrap" Text="" Grid.Row="10"/>
+    		<Button x:Name="btn_OI" Content="..." Margin="0,1,4,1" RenderTransformOrigin="0.411,0.484" Grid.Column="6" Grid.Row="10" HorizontalAlignment="Right" Width="24"/>
+    		<TextBlock Grid.Column="5" Margin="0,5.656" TextWrapping="Wrap" Text="点检表：" HorizontalAlignment="Right" Grid.Row="11" d:LayoutOverrides="Height"/>
+    		<TextBox x:Name="txb_ChechSheet" Grid.Column="6" Margin="0,1,30,1" TextWrapping="Wrap" Text="" Grid.Row="11"/>
+    		<Button x:Name="btn_ChechSheet" Content="..." Margin="0,1,4,1" RenderTransformOrigin="0.411,0.484" Grid.Column="6" Grid.Row="11" HorizontalAlignment="Right" Width="24"/>
+    		<TextBlock Grid.Column="1" Margin="0,5.655,-0.084,5.656" TextWrapping="Wrap" Text="耐用年限：" HorizontalAlignment="Right" Grid.Row="9" d:LayoutOverrides="Height"/>
+    		<TextBox x:Name="txb_UsefulLife" Grid.Column="2" Margin="0.084,0.999,29.416,1.001" TextWrapping="Wrap" Text="" Grid.Row="9"/>
+    		<TextBlock Grid.Column="2" Margin="0,5.655,9.916,5.656" TextWrapping="Wrap" Text="年" HorizontalAlignment="Right" Grid.Row="9" d:LayoutOverrides="HorizontalAlignment, Height"/>
+    		<TextBlock Grid.Column="5" Margin="0,5.656" TextWrapping="Wrap" Text="设备图片：" HorizontalAlignment="Right" Grid.Row="8" d:LayoutOverrides="Height"/>
+    		<TextBox x:Name="txb_PhotoPatch" Grid.Column="6" Margin="0,1,30,1" TextWrapping="Wrap" Text="" Grid.Row="8"/>
+    		<Button x:Name="btn_PhotoPatch" Content="..." Margin="0,1,4,1" RenderTransformOrigin="0.411,0.484" Grid.Column="6" Grid.Row="8" HorizontalAlignment="Right" Width="24"/>
+    		<TextBox x:Name="txb_DeliveryUser" Grid.Column="2" Margin="0,1" TextWrapping="Wrap" Text="" Grid.Row="10"/>
+    		<TextBlock Grid.Column="5" Margin="0,5.656" TextWrapping="Wrap" Text="治具&amp;附件：" HorizontalAlignment="Right" Grid.Row="12" d:LayoutOverrides="Height"/>
+    		<TextBox Grid.Column="6" Margin="0,1,30,1" TextWrapping="Wrap" Text="" Grid.Row="12"/>
+    		<Button Content="..." Margin="0,1,4,1" RenderTransformOrigin="0.411,0.484" Grid.Column="6" Grid.Row="12" HorizontalAlignment="Right" Width="24"/>
+    	</Grid>
+    	<ScrollViewer Margin="8,238,2,8" Grid.Row="1" Grid.Column="1">
+    		<ScrollViewer.Background>
+    			<ImageBrush ImageSource="/MCP.UI;component/Images/130607103251454d3563c3ad62.jpg"/>
+    		</ScrollViewer.Background>
+    	</ScrollViewer>
+    	<DataGrid Margin="0,0,0,8" Grid.Row="1" Height="221" VerticalAlignment="Bottom" Name="dgv_Maintain" MouseDoubleClick="dgv_Maintain_MouseDown" />
+    	<Grid Grid.Column="1" Height="226" Margin="8,8,2,0" Grid.Row="1" VerticalAlignment="Top" Background="{DynamicResource NormalBorderBrush}">
+    		<Button Content="设备添加" HorizontalAlignment="Left" Height="31" Margin="8,13,0,0" VerticalAlignment="Top" Width="90" Name="btn_Add" Click="btn_Add_Click" />
+    		<Button Content="点检表" Height="31" Margin="127.312,13,196,0" VerticalAlignment="Top" IsEnabled="False" />
+    		<Button Content="安全规程" Height="31" Margin="0,13,102,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="90" IsEnabled="False" />
+    		<Button Content="操作说明" Height="31" Margin="0,13,8,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="90" RenderTransformOrigin="0.411,0.484" IsEnabled="False" />
+    		<Button Content="信息变更" HorizontalAlignment="Left" Height="31" Margin="8,48,0,0" VerticalAlignment="Top" Width="90" Name="btn_Edit" Click="btn_Edit_Click" />
+    		<Button Content="资产报废" HorizontalAlignment="Left" Margin="8,83,0,112" Width="90"/>
+    		<Button Content="申请维修" HorizontalAlignment="Left" Margin="8,0,0,77" Width="90" Height="31" VerticalAlignment="Bottom" Name="btn_Equipment_Maintenance" Click="btn_Equipment_Maintenance_Click" />
+    		<Button Content="设备校验" Height="31" Margin="8,0,0,42" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="90" IsEnabled="False" />
+    		<Button Content="治具列表" Height="31" Margin="127.312,48,196,0" VerticalAlignment="Top" IsEnabled="False" />
+            <Button Content="保存更改" Height="31" HorizontalAlignment="Left" Margin="317,0,0,7" VerticalAlignment="Bottom" Width="90" Name="btn_Save" Click="btn_Save_Click" />
+        </Grid>
+    </Grid>
+</Window>

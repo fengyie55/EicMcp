@@ -1,0 +1,74 @@
+﻿<ad:DocumentContent
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:ad="clr-namespace:AvalonDock;assembly=AvalonDock"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" x:Class="UI.frm_Generate_Repot"
+        Title="frm_Generate_Repot" Height="640" Width="1040">
+    <Grid>
+    	<Grid>
+    		<Grid.ColumnDefinitions>
+    			<ColumnDefinition Width="10"/>
+    			<ColumnDefinition Width="760*"/>
+    			<ColumnDefinition Width="230"/>	
+                <ColumnDefinition Width="10" />
+            </Grid.ColumnDefinitions>
+    		<Grid.RowDefinitions>
+    			<RowDefinition Height="0.043*"/>
+    			<RowDefinition Height="0.929*"/>
+    			<RowDefinition Height="0.028*"/>
+    		</Grid.RowDefinitions>
+    		<Grid.Background>
+    			<SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+    		</Grid.Background>
+            <Grid Grid.Column="2" Margin="0,1.942,0,0" Grid.Row="1">
+    			<Grid.RowDefinitions>
+    				<RowDefinition Height="30"/>
+    				<RowDefinition Height="30"/>
+    				<RowDefinition Height="30"/>
+    				<RowDefinition Height="30"/>
+    				<RowDefinition Height="30"/>
+    				<RowDefinition Height="30"/>
+    				<RowDefinition Height="30"/>
+    				<RowDefinition Height="30"/>
+    				<RowDefinition Height="30"/>
+    				<RowDefinition Height="30"/>
+    				<RowDefinition Height="30"/>
+    				<RowDefinition Height="30"/>
+    				<RowDefinition Height="30"/>
+    				<RowDefinition/>
+    			</Grid.RowDefinitions>
+    			<Label Content="工单:" HorizontalAlignment="Left" Margin="8,5.156,0,1.156" d:LayoutOverrides="Height"/>
+    			<Button x:Name="btn_Generate" Content="生成数据" Margin="0,3.824,0,0.176" RenderTransformOrigin="0.723,1.953" Click="btn_Generate_Click" Grid.Row="9" />
+    			<TextBox x:Name="txb_OrderID" Margin="56,6.313,0,0" TextWrapping="Wrap" Text="" KeyUp="txb_OrderID_KeyUp" d:LayoutOverrides="Height" />
+    			<Label Content="接头:" HorizontalAlignment="Left" Margin="8,6.312,0,0" Grid.Row="1" d:LayoutOverrides="Height"/>
+    			<TextBox x:Name="txb_Conection" Margin="56,6.313,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" d:LayoutOverrides="Height"/>
+    			<Label Content="开始SN:" HorizontalAlignment="Left" Margin="0,5.156,0,1.156" Grid.Row="2" d:LayoutOverrides="Height"/>
+    			<TextBox x:Name="txb_Start_SN" Margin="56,6.313,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" d:LayoutOverrides="Height"/>
+    			<Label Content="结尾SN :" HorizontalAlignment="Left" Margin="0,8.313,0,-2.001" Grid.Row="3" d:LayoutOverrides="Height"/>
+    			<TextBox x:Name="txb_EndSN" Margin="56,6.313,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" d:LayoutOverrides="Height"/>
+    			<CheckBox x:Name="ckb_Wava_1310nm" Content="1310nm" Margin="56,7.98,99.102,8.332" Grid.Row="5" ClickMode="Press" d:LayoutOverrides="Height" IsChecked="True" />
+    			<CheckBox x:Name="ckb_Wava_1550nm" Content="1550nm" HorizontalAlignment="Right" Margin="0,7.824,8,8.489" Grid.Row="5" Width="63" ClickMode="Press" d:LayoutOverrides="Height" IsChecked="True" />
+    			<Label Content="最小值" Margin="65,2.98,104.266,3.332" Grid.Row="6" d:LayoutOverrides="Width, Height"/>
+    			<Label Content="最大值" Margin="0,2.98,21,3.332" Grid.Row="6" HorizontalAlignment="Right" d:LayoutOverrides="Height"/>
+    			<TextBox x:Name="txb_IL_Min" Margin="56,2.98,99.102,3.332" Grid.Row="7" TextWrapping="Wrap" Text="" d:LayoutOverrides="Height"/>
+    			<TextBox x:Name="txb_IL_Max" Margin="0,2.98,8,3.332" Grid.Row="7" TextWrapping="Wrap" Text="" HorizontalAlignment="Right" Width="72.164" d:LayoutOverrides="Height"/>
+    			<Label Content="IL:" HorizontalAlignment="Left" Margin="20,3.137,0,3.176" Grid.Row="7" d:LayoutOverrides="Height"/>
+    			<TextBox x:Name="txb_RL_Min" Margin="56,2.98,99.102,3.332" Grid.Row="8" TextWrapping="Wrap" Text="" d:LayoutOverrides="Height"/>
+    			<TextBox x:Name="txb_RL_Max" Margin="0,2.98,8,3.332" Grid.Row="8" TextWrapping="Wrap" Text="" HorizontalAlignment="Right" Width="72.164" d:LayoutOverrides="Height"/>
+    			<Label Content="RL:" HorizontalAlignment="Left" Margin="20,5.993,0,0.176" Grid.Row="8" d:LayoutOverrides="Height"/>
+    			<Button x:Name="btn_ClearList" Content="清空列表" Margin="0,0,0,0.176" RenderTransformOrigin="0.723,1.953" Grid.Row="12" Click="btn_ClearList_Click" Height="26" VerticalAlignment="Bottom" />
+    			<Button x:Name="btn_Export_To_txt" Content="导出Txt" Margin="0,3.824,0,0.176" RenderTransformOrigin="0.723,1.953" Grid.Row="10" Click="btn_Export_To_txt_Click" />
+    			<Button x:Name="btn_Save_To_Server" Content="保存至数据库" Margin="0,3.824,0,0.176" RenderTransformOrigin="0.723,1.953" Grid.Row="11" Click="btn_Save_To_Server_Click" />
+    			<Button x:Name="btn_Generate_SNList" Content="生成SN列表" Margin="0,3.001,0,0.999" RenderTransformOrigin="0.723,1.953" Grid.Row="4" Click="btn_Generate_SNList_Click" />
+    		</Grid>
+    		<Label x:Name="lab_dataCount" Content="数据记录：0条" Grid.Column="1" HorizontalAlignment="Left" Margin="0,4,0,0" Width="201" VerticalAlignment="Center"/>
+    		<TextBox x:Name="txb_Note" Grid.Column="2" Height="150" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom"/>
+    		<ListBox x:Name="lst_SNList" Grid.Row="1" Grid.Column="1" Margin="0,1.942,8,0" HorizontalAlignment="Right" Width="148" />
+    		<Label x:Name="lab_SNCount" Content="条码：0条" Grid.Column="1" HorizontalAlignment="Right" Margin="0,4,8,0" Width="149" VerticalAlignment="Center"/>
+            <DataGrid Grid.Column="1" Margin="0,0,162,0" Name="dgv_dataList" Grid.Row="1" />
+        </Grid>
+        
+    </Grid>
+</ad:DocumentContent>
