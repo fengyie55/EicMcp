@@ -1,0 +1,7 @@
+﻿namespace ZhuifengLib
+{
+    class SqlWhereHelper
+    {
+        
+    }
+}

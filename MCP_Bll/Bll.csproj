@@ -132,7 +132,7 @@
     <Compile Include="Entity_Sets\XmlDatasetConvert.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MyLib\ZhuifengLib\ZhuifengLib\ZhuifengLib.csproj">
+    <ProjectReference Include="..\ZhuifengLib\ZhuifengLib\ZhuifengLib.csproj">
       <Project>{ac67be14-18df-411d-8648-584814f9bc5b}</Project>
       <Name>ZhuifengLib</Name>
     </ProjectReference>

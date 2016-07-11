@@ -50,7 +50,7 @@ namespace UI
             long tem_StataSN =0,tem_EndSN=0;
             long.TryParse(txb_Start_SN.Text.Trim(),out tem_StataSN);
             long.TryParse(txb_EndSN.Text.Trim(),out tem_EndSN);
-            
+ 
             _W_SNList = GenerateSN(_W_OrderInfo, tem_StataSN, tem_EndSN);
             lst_SNList.ItemsSource = _W_SNList;
 
@@ -165,9 +165,12 @@ namespace UI
             }
             else if (_OrderInfo.InspectMethod == Maticsoft.Model.E_InspectMethod.四十八芯检测)
             {
-                Generate_SN_MoreCode(_StatSN, _EndSN, _tem,48);
+                Generate_SN_MoreCode2(_StatSN, _EndSN, _tem, 6, 8);
             }
-           
+            else if (_OrderInfo.InspectMethod == Maticsoft.Model.E_InspectMethod.配组_九十六芯)
+            {
+                Generate_SN_MoreCode2(_StatSN, _EndSN, _tem,12, 8);
+            }
             else
             {
                 for (long sn = _StatSN; sn <= _EndSN; sn++)
@@ -190,6 +193,22 @@ namespace UI
                 }
             }
         }
+
+        private static void Generate_SN_MoreCode2(long _StatSN, long _EndSN, ArrayList _tem,int MoreCode_Count2 ,int MoreCode_Count)
+        {
+            for (long sn = _StatSN; sn <= _EndSN; sn++)
+            {
+                for(int teem =1;teem <= MoreCode_Count2; teem++)
+                {
+                    for (int tem = 1; tem <= MoreCode_Count; tem++)
+                    {
+                        _tem.Add(sn.ToString() + "-"+teem.ToString("00") + "-" + tem.ToString());
+                    }
+                }
+                
+            }
+        }
+
 
         /// <summary>
         /// 生成数据

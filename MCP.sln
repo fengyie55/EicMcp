@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40302.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{F6E9240A-3A36-42E4-A7C5-6340A3A4350A}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -26,7 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E85C89
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZhuifengLib", "..\MyLib\ZhuifengLib\ZhuifengLib\ZhuifengLib.csproj", "{AC67BE14-18DF-411D-8648-584814F9BC5B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZhuifengLib", "ZhuifengLib\ZhuifengLib\ZhuifengLib.csproj", "{AC67BE14-18DF-411D-8648-584814F9BC5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
