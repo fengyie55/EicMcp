@@ -186,8 +186,8 @@ namespace Maticsoft.DAL
                 asql += " WHERE " + e.sqlWhere + "  AND (Result LIKE '%Passed') )";
                 e.TestData = dbs_Exfo.Query(asql);
             }
-            e.PigtailList = Get_PigtailList(e.TestData, 13);
-           // e.PiagtilNum = e.TestData.Tables[0].Rows[0][""].ToString();
+            e.PigtailList = Get_PigtailList_Name(e.TestData);
+            // e.PiagtilNum = e.TestData.Tables[0].Rows[0][""].ToString();
         }
 
         /// <summary>
@@ -420,6 +420,8 @@ namespace Maticsoft.DAL
             }
             return tem;
         }
+
+
 
         /// <summary>
         /// 获取用户测试数据数组

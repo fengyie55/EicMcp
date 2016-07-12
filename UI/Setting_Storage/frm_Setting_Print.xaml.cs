@@ -16,16 +16,21 @@ namespace UI
     /// </summary>
     public partial class frm_Setting_Print : DocumentContent
     {
+        Engine btEngine;
+        ObservableCollection<Maticsoft.Model.LabInfo> _WTT_LabInfo = new ObservableCollection<Maticsoft.Model.LabInfo>();
+        private byte[] imBytes;
+        Maticsoft.Model.LabVerify _W_LabVerify = new Maticsoft.Model.LabVerify();
+
         public frm_Setting_Print()
         {
             InitializeComponent();
+            try
+            {
+                btEngine = new Engine(true);
+            }catch (Exception ex) { My_MessageBox.My_MessageBox_Message("启动BT线程时发生错误，请确定是否安装Bt软件!\r\n" + ex.Message); }
+          
         }
-        Engine btEngine = new Engine(true); 
-        ObservableCollection<Maticsoft.Model.LabInfo> _WTT_LabInfo= new ObservableCollection<Maticsoft.Model.LabInfo>();        
-        private byte[] imBytes;
-        Maticsoft.Model.LabVerify _W_LabVerify = new Maticsoft.Model.LabVerify();
-       
-
+     
         //
         //载入模板信息
         //
