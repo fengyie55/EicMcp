@@ -26,7 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E85C89
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZhuifengLib", "..\MyLib\ZhuifengLib\ZhuifengLib\ZhuifengLib.csproj", "{AC67BE14-18DF-411D-8648-584814F9BC5B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZhuifengLib", "ZhuifengLib\ZhuifengLib\ZhuifengLib.csproj", "{AC67BE14-18DF-411D-8648-584814F9BC5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -347,6 +347,16 @@ namespace UI
 
                     double d = double.Parse(_OrderInfo.Tables[0].Rows[0]["批量"].ToString());
                     txb_Order_Count.Text = d.ToString("0");
+
+                    //增加根据品名选择检测类型 2016-07-06
+                    if (txb_Model.Text.Contains("SM"))
+                    {
+                        cmb_InspectType.SelectedIndex = 0;
+                    }
+                    else if (txb_Model.Text.Contains("MM"))
+                    {
+                        cmb_InspectType.SelectedIndex = 2;
+                    }
                 }
                 else
                 {
