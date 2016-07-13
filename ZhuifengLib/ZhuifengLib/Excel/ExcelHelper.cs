@@ -42,6 +42,28 @@ namespace ZhuifengLib
         }
 
         /// <summary>
+        /// 插入一行数据到Excel
+        /// </summary>
+        /// <param name="parameterList"></param>
+        public void InsertRow(List<InsertExcelParameter> parameterList, int InsertRowsCount)
+        {
+            ISheet tb = wk.GetSheet(wk.GetSheetName(0));
+            int rowIndex = startRow;
+            for (int t = rowIndex; t <= InsertRowsCount; t++)
+            {
+                IRow row = tb.CreateRow(t);
+                foreach (var par in parameterList)
+                {
+                    row.CreateCell(GetCollectionIndex(par.Type)).SetCellValue(string.Format("{0}", par.Paramenter));
+                }
+            }
+
+            FileStream fs2 = File.Create(Patch);
+            wk.Write(fs2);   //向打开的这个xls文件中写入mySheet表并保存。
+        }
+
+
+        /// <summary>
         /// 插入多行数据到模板
         /// </summary>
         /// <param name="parameterList"></param>

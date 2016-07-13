@@ -240,7 +240,7 @@ namespace Maticsoft.DAL
                 //1.获取默认打印机 填充数据 2.开始打印  3.计数清零 4.Exfo待打印数据列表清零        
                 //获取默认打印机
                 PrintDocument fPrintDocument = new PrintDocument();
-                Delete_ExcelData(ExcelPath);
+                Delete_ExcelData(ExcelPath,24);
                 //填充打印数据源
                 foreach (DataSet _Temds in _WTT_NotPrintList)
                     Install_data_ToExcel(_Temds);
@@ -255,7 +255,7 @@ namespace Maticsoft.DAL
                 btFormat.Close(SaveOptions.SaveChanges);
                 _LabCount = 0;
                 _WTT_NotPrintList.Clear();
-                Delete_ExcelData(ExcelPath);
+                Delete_ExcelData(ExcelPath,24);
             }
             catch (System.Exception ex) { My_MessageBox.My_MessageBox_Message(ex.Message); }
         }
@@ -561,7 +561,7 @@ namespace Maticsoft.DAL
         /// </summary>
         /// <param name="_Patch"></param>
         /// <returns></returns>
-        private bool Delete_ExcelData(string _Patch)
+        public static bool Delete_ExcelData(string _Patch,int deleteRows)
         {
             try
             {
@@ -572,7 +572,7 @@ namespace Maticsoft.DAL
                 xlApp.Workbooks._Open(_Patch);
                 Excel._Worksheet oSheet = (Excel._Worksheet)xlApp.Sheets.get_Item(1);
                 //删除指定区域
-                for (int t = 0; t < 24; t++)
+                for (int t = 0; t < deleteRows; t++)
                 {
                     Excel.Range m_objRange = (Excel.Range)oSheet.Rows[2, System.Reflection.Missing.Value];
                     m_objRange.EntireRow.Delete(Excel.XlDeleteShiftDirection.xlShiftUp);

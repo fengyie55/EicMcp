@@ -8,6 +8,8 @@ using System;
 using System.IO;
 using System.Windows.Media.Imaging;
 using System.Linq;
+using Seagull.BarTender.Print.Database;
+using System.Collections.Generic;
 
 namespace UI
 {
@@ -27,10 +29,11 @@ namespace UI
             try
             {
                 btEngine = new Engine(true);
-            }catch (Exception ex) { My_MessageBox.My_MessageBox_Message("启动BT线程时发生错误，请确定是否安装Bt软件!\r\n" + ex.Message); }
-          
+            }
+            catch (Exception ex) { My_MessageBox.My_MessageBox_Message("启动BT线程时发生错误，请确定是否安装Bt软件!\r\n" + ex.Message); }
+
         }
-     
+
         //
         //载入模板信息
         //
@@ -39,11 +42,11 @@ namespace UI
             try
             {
                 _WTT_LabInfo.Clear(); //清空列表
-               // string Patch = "D:\\模板\\PrintTemplates\\HP_Templates\\" + cmb_LabTemplate.Text.Trim();
+                                      // string Patch = "D:\\模板\\PrintTemplates\\HP_Templates\\" + cmb_LabTemplate.Text.Trim();
                 string Patch = "\\\\QQQQQQ-MS2\\Templates\\PrintTemplates\\HP_Templates\\" + cmb_LabTemplate.Text.Trim();
-                 
+
                 btEngine.Start();
-                LabelFormatDocument btFormat = btEngine.Documents.Open(Patch);              
+                LabelFormatDocument btFormat = btEngine.Documents.Open(Patch);
                 DataSet ds = Maticsoft.BLL.XmlDatasetConvert.ConvertXMLToDataSet(btFormat.SubStrings.XML);
                 //                                
                 if (ds.Tables[0].Rows.Count > 0)
@@ -52,8 +55,8 @@ namespace UI
                     {
                         _WTT_LabInfo.Add(new Maticsoft.Model.LabInfo() { Name = dr["Name"].ToString(), Value = dr["Value"].ToString() });
                     }
-                 //排序
-                   // _WTT_LabInfo = new ObservableCollection<Maticsoft.Model.LabInfo>(_WTT_LabInfo.OrderBy(P=>P.Name));
+                    //排序
+                    // _WTT_LabInfo = new ObservableCollection<Maticsoft.Model.LabInfo>(_WTT_LabInfo.OrderBy(P=>P.Name));
 
                 }
                 else { My_MessageBox.My_MessageBox_Message("未找到要设置的模板信息，请确认模板设置是否正确！"); }
@@ -62,7 +65,7 @@ namespace UI
                 btEngine.Stop();
             }
             //获取异常信息
-            catch(Exception ex) { My_MessageBox.My_MessageBox_Message("加载模板信息过程中发生错误!\r\n"+ex.Message); }
+            catch (Exception ex) { My_MessageBox.My_MessageBox_Message("加载模板信息过程中发生错误!\r\n" + ex.Message); }
         }
         //
         //窗体载入事件
@@ -85,7 +88,7 @@ namespace UI
                 }
                 cmb_LabTemplate.ItemsSource = browsingFormats;
             }
-            catch (Exception ex) { My_MessageBox.My_MessageBox_Erry("未启动ＢＴ线程！此模式下只可进行标签核对功能！\r\n"+ex.Message); }
+            catch (Exception ex) { My_MessageBox.My_MessageBox_Erry("未启动ＢＴ线程！此模式下只可进行标签核对功能！\r\n" + ex.Message); }
         }
         //
         //工单单号  事件：KeyUp
@@ -145,10 +148,10 @@ namespace UI
                     lab_State.Content = "正在删除数据.....";
                     //删除原有数据   
                     _M_LabSetInfo.Delete(_LabSet.Lab_ID);
-                    _M_LabInfo.Delete(_LabSet.Lab_ID.ToString());                    
+                    _M_LabInfo.Delete(_LabSet.Lab_ID.ToString());
                     //添加新数据数据
-                    Save_LabInfo();                 
-                    
+                    Save_LabInfo();
+
                 }
             }
         }
@@ -206,7 +209,7 @@ namespace UI
 
                 Resolution t = new Resolution(ImageResolution.Screen);
 
-                
+
 
                 btFormat2.ExportImageToFile(path, ImageType.JPEG, Seagull.BarTender.Print.ColorDepth.ColorDepth256, new Resolution(3840, 2160), OverwriteOptions.Overwrite);
 
@@ -235,7 +238,7 @@ namespace UI
                 lab_State.Content = "生成完成！";
                 // System.Diagnostics.Process.Start("explorer.exe", FilePath); //打开指定文件夹
             }
-            catch (Exception ex) { My_MessageBox.My_MessageBox_Erry("错误\r\n"+ex.Message); }
+            catch (Exception ex) { My_MessageBox.My_MessageBox_Erry("错误\r\n" + ex.Message); }
 
         }
 
@@ -257,7 +260,7 @@ namespace UI
                 BI.StreamSource = new MemoryStream(imBytes);  //bufPic是图片二进制，byte类型
                 BI.EndInit();
                 image1.Source = BI;//image是XAML页面上定义的Image控件       
-               // System.Diagnostics.Process.Start("explorer.exe", FilePath); //打开指定文件夹
+                                   // System.Diagnostics.Process.Start("explorer.exe", FilePath); //打开指定文件夹
 
                 //显示工单中设置的检测标准
                 dgv_InspecStandard.ItemsSource = MCP_CS.InseectStandaer.GetModelList(_W_LabVerify.Orm_ID);
@@ -315,7 +318,7 @@ namespace UI
             //                  
             Maticsoft.BLL.LabInfo _M_LabInfo = new Maticsoft.BLL.LabInfo();
             Maticsoft.BLL.OrderLabSet _M_OrderLabSet = new Maticsoft.BLL.OrderLabSet();
-           
+
             // 标签打印信息设置
             _OrderLabSet = new Maticsoft.Model.OrderLabSet()
             {
@@ -329,20 +332,21 @@ namespace UI
             string labID = _M_OrderLabSet.GetModel(_M_OrderLabSet.Add(_OrderLabSet)).Lab_ID.ToString();
             foreach (Maticsoft.Model.LabInfo lab in _WTT_LabInfo)
             {
-                lab.Lab_ID = labID;           
+                lab.Lab_ID = labID;
                 _M_LabInfo.Add(lab);
             }
-           
-           
+
+
             Save_LabVerify();
         }
-        
+
+        LabelFormatDocument btFormat2;
         private void Save_LabVerify()
-        {                    
+        {
             //---------------------------生产图片
             string Patch = "\\\\QQQQQQ-MS2\\Templates\\PrintTemplates\\HP_Templates\\" + cmb_LabTemplate.Text.Trim();
             btEngine.Start();
-            LabelFormatDocument btFormat2 = btEngine.Documents.Open(Patch);
+            btFormat2 = btEngine.Documents.Open(Patch);
             //填充打印数据源
             foreach (Maticsoft.Model.LabInfo _lin in _WTT_LabInfo)
             {
@@ -367,7 +371,7 @@ namespace UI
             imBytes = File.ReadAllBytes(path);
             string LabPicID = "";
 
-          
+
             //---------------------------保存图片
             Maticsoft.Model.ImageList _ImageList = new Maticsoft.Model.ImageList()
             {
@@ -375,7 +379,7 @@ namespace UI
                 Name = cmb_BatchNo.Text.Trim(),
                 Remarks = cmb_LabTemplate.Text.Trim()
             };
-            Maticsoft.Model.ImageList _tem = MCP_CS.ImageList.GetModel("Name = '"+cmb_BatchNo.Text.Trim()+"'");
+            Maticsoft.Model.ImageList _tem = MCP_CS.ImageList.GetModel("Name = '" + cmb_BatchNo.Text.Trim() + "'");
             if (_tem != null)
             {
                 _tem.Im = imBytes;
@@ -390,7 +394,7 @@ namespace UI
             }
             //--------------------------END
 
-           
+
             //--------------------------保存待核对标签数据
             Maticsoft.Model.LabVerify _Ver = new Maticsoft.Model.LabVerify()
             {
@@ -402,14 +406,14 @@ namespace UI
             };
             Maticsoft.Model.LabVerify _tem2 = MCP_CS.LabVerify.GetModel("Pb_ID = '" + cmb_BatchNo.Text.Trim() + "'");
             if (_tem2 != null)
-            {              
+            {
                 _tem2.IsVerify = "0";
                 _tem2.LabPic_ID = LabPicID;
                 _tem2.UserID = null;
                 MCP_CS.LabVerify.Update(_tem2);
             }
             else { MCP_CS.LabVerify.Add(_Ver); }
-            
+
             //--------------------------END
 
             //清空控件信息
@@ -418,18 +422,64 @@ namespace UI
             txb_OrderID.Text = "";
             cmb_BatchNo.Text = "";
             cmb_LabTemplate.Text = "";
-           
+
             My_MessageBox.My_MessageBox_Message("标签设置成功！");
         }
-                       
+
+
+
+
+
+
+
+
         #endregion
 
-       
 
-        
-        
+        //打印外带标签
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string Patch = @"D:\模板\PrintTemplates\HP_Templates\" + cmb_LabTemplate.Text.Trim();
+                btEngine.Start();
+                btFormat2 = btEngine.Documents.Open(Patch);
 
-       
-    
+                string patch = @"D:\模板\PrintTemplates\Data_Source\" + cmb_LabTemplate.Text.Trim().Substring(0, cmb_LabTemplate.Text.Trim().Length - 4) + ".xlsx";
+                Install_data_ToExcel(patch);
+
+                Messages messages = null;
+                btFormat2.Print("PrintJob1", out messages);
+                
+                My_MessageBox.My_MessageBox_Message("打印完毕！");
+
+                Maticsoft.DAL.My_Print.Delete_ExcelData(patch, int.Parse(txb_PrintCount.Text.Trim()));
+
+            }
+            catch (Exception ex) { My_MessageBox.My_MessageBox_Message(ex.Message); }
+        }
+
+        /// <summary>
+        ///  install Data TO Excel
+        ///  Export 
+        /// </summary>
+        private bool Install_data_ToExcel(string patch)
+        {
+            ZhuifengLib.ExcelHelper excelHelper = new ZhuifengLib.ExcelHelper(patch);
+            var ParList = new List<ZhuifengLib.InsertExcelParameter>();
+            int tem = int.Parse(txb_PrintCount.Text.Trim());
+
+            foreach (Maticsoft.Model.LabInfo _lin in _WTT_LabInfo)
+            {
+                if (_lin.Name == "Qty") { _lin.Value = txb_QtyValue.Text.Trim(); }
+                ParList.Add(new ZhuifengLib.InsertExcelParameter() { Type = _lin.Name, Paramenter = _lin.Value });
+            }
+
+            excelHelper.InsertRow(ParList, tem);
+
+            return true;
+        }
+
+
     }
 }

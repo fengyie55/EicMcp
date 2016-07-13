@@ -10,54 +10,64 @@
     xmlns:wf ="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
              mc:Ignorable="d" FontSize="12"            
              d:DesignHeight="640" d:DesignWidth="1040" Background="{StaticResource DocumentContent_Background}" Loaded="DocumentContent_Loaded">
-    <Grid Name="tt">
-    	<Grid.ColumnDefinitions>
-    		<ColumnDefinition Width="85"/>
-    		<ColumnDefinition Width="160"/>
-    		<ColumnDefinition Width="241"/>
-    		<ColumnDefinition Width="540"/>
-    		<ColumnDefinition Width="4"/>
-    		<ColumnDefinition />
-    	</Grid.ColumnDefinitions>
-    	<Grid.RowDefinitions>
-    		<RowDefinition Height="32.07"/>
-    		<RowDefinition Height="27"/>
-    		<RowDefinition Height="27"/>
+
+    <Grid Name="tt" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="85"/>
+            <ColumnDefinition Width="160"/>
+            <ColumnDefinition Width="241"/>
+            <ColumnDefinition Width="540"/>
+            <ColumnDefinition Width="4"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="27"/>
             <RowDefinition Height="27" />
             <RowDefinition Height="27" />
-            <RowDefinition Height="480" />
-            <RowDefinition Height="52*" />
-    	</Grid.RowDefinitions>
-        <Border BorderBrush="Silver" BorderThickness="1" HorizontalAlignment="Left" x:Name="border1" Width="1031.535" Background="{StaticResource Border_Background}" Margin="0,0,0,2" Grid.ColumnSpan="5" d:LayoutOverrides="GridBox" >
-            <Label FontSize="15" Foreground="White" Content="标签打印设置" HorizontalAlignment="Left"/>
-        </Border>
-        <TextBox x:Name="txb_OrderID" Margin="0,1.5" Grid.Row="1" TextWrapping="Wrap" Text="" RenderTransformOrigin="0.923,0.58" KeyUp="txb_OrderID_KeyUp" Grid.Column="1" Height="24" />
-        <Label Content="工单单号:" Grid.Row="1" Margin="0,0,-0.001,0" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-        <ComboBox x:Name="cmb_BatchNo" Margin="0,1.5" Grid.Row="2" ItemsSource="{Binding}" DisplayMemberPath="BatchNo" Grid.Column="1" d:LayoutOverrides="HorizontalAlignment" Height="24" />
-        <Button x:Name="btn_Save" Content="保存" HorizontalAlignment="Right" Margin="0,1,7,1" Grid.Row="4" Width="72" Click="btn_Save_Click" Grid.Column="2" Height="25" />
-        <Label Content="批号:" Margin="0,0,-0.001,0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-        <TextBox x:Name="txb_Batch_OptionCount" Margin="0,2,0,1" Grid.Row="4" TextWrapping="Wrap" Text="" Width="56" Grid.Column="1" d:LayoutOverrides="GridBox" HorizontalAlignment="Left" Height="24"/>
-        <Label Content="选择模板:" Grid.Row="3" VerticalAlignment="Center" Margin="0,3,0,1" RenderTransformOrigin="0.436,0.476" HorizontalAlignment="Right"/>
-        <ComboBox x:Name="cmb_LabTemplate" Margin="0,2,0,1" Grid.Row="3" d:LayoutOverrides="HorizontalAlignment" Height="24" Grid.Column="1" />
-        <Button Grid.Row="3" Height="20" HorizontalAlignment="Right" Margin="0,4,188,3" x:Name="btn_ChangeBT_Template" VerticalAlignment="Center" Width="48" Content="载入" Click="btn_ChangeBT_Template_Click" Grid.Column="2" />
-        <DataGrid Margin="5,6,7,0" Grid.Row="5" Name="dgv_TemplateInfo" SelectionUnit="CellOrRowHeader"  CanUserAddRows="False" ItemsSource="{Binding}" AutoGenerateColumns="False" CellEditEnding="dgv_TemplateInfo_CellEditEnding" Grid.ColumnSpan="3">
+            <RowDefinition Height="509" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBox x:Name="txb_OrderID" Margin="0,2,0,1" TextWrapping="Wrap" Text="" RenderTransformOrigin="0.923,0.58" KeyUp="txb_OrderID_KeyUp" Grid.Column="1" />
+        <Label Content="工单单号:" Margin="0,1" VerticalAlignment="Center" HorizontalAlignment="Right" Height="25" Width="61"/>
+        <ComboBox x:Name="cmb_BatchNo" Margin="0,1,0,2" Grid.Row="1" ItemsSource="{Binding}" DisplayMemberPath="BatchNo" Grid.Column="1" />
+        <Button x:Name="btn_Save" Content="保存" HorizontalAlignment="Right" Margin="0,1,7,1" Grid.Row="3" Width="72" Click="btn_Save_Click" Grid.Column="2" />
+        <Label Content="批号:" Margin="0,1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Height="25" Width="37"/>
+        <TextBox x:Name="txb_Batch_OptionCount" Margin="0,2,0,1" Grid.Row="3" TextWrapping="Wrap" Text="" Width="56" Grid.Column="1" HorizontalAlignment="Left"/>
+        <Label Content="选择模板:" Grid.Row="2" VerticalAlignment="Center" Margin="0,3,0,1" RenderTransformOrigin="0.436,0.476" HorizontalAlignment="Right" Height="23" Width="61"/>
+        <ComboBox x:Name="cmb_LabTemplate" Margin="0,2,0,1" Grid.Row="2" Grid.Column="1" />
+        <Button Grid.Row="2" Height="20" HorizontalAlignment="Right" Margin="0,4,188,3" x:Name="btn_ChangeBT_Template" VerticalAlignment="Center" Width="48" Content="载入" Click="btn_ChangeBT_Template_Click" Grid.Column="2" />
+        <DataGrid Margin="5,6,7,0" Grid.Row="4" Name="dgv_TemplateInfo" SelectionUnit="CellOrRowHeader"  CanUserAddRows="False" ItemsSource="{Binding}" AutoGenerateColumns="False" CellEditEnding="dgv_TemplateInfo_CellEditEnding" Grid.ColumnSpan="3">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Header="Name"  Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 <DataGridTextColumn Header="Value" Width="340" Binding="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="数量:" Margin="0,4,0,0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right" />
-        <Button Grid.Column="2" Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="4,2,0,0" Name="btn_Lad_OrderLabInfo" VerticalAlignment="Top" Width="49" Content="载入" Click="btn_Lad_OrderLabInfo_Click" />
-        <Button Content="预览" Grid.Column="2" Grid.Row="4" Height="23" HorizontalAlignment="Left" Margin="5,2,0,0" Name="btn_YL" VerticalAlignment="Top" Width="48" Click="btn_YL_Click" />
-        <DataGrid Grid.Column="3" Margin="0,0,98.333,0" Grid.Row="1" Grid.RowSpan="4" Name="dgv_Not_Verify" SelectionChanged="dgv_Not_Verify_SelectionChanged" />
-        <Button x:Name="btn_Verify" Content="确认" HorizontalAlignment="Right" Grid.Row="2" Width="94.333" Grid.Column="3" Grid.RowSpan="3" FontSize="32" Height="79" VerticalAlignment="Bottom" Click="btn_Verify_Click" />
-        <Button Content="载入" Grid.Column="3" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="448,4,0,0" Name="btn_Lading_NotVerify" VerticalAlignment="Top" Width="94" Click="btn_Lading_NotVerify_Click" />
-        <Label Content="State" Grid.Row="6" Height="28" HorizontalAlignment="Left" Margin="5,0,0,0" Name="lab_State" VerticalAlignment="Top" Width="474" Grid.ColumnSpan="3" />
-        <Image Height="358" HorizontalAlignment="Left" Margin="0,122,0,0" Name="image1" Source="/MCP.UI;component/Images/130607103251454d3563c3ad62.jpg" Stretch="Fill" VerticalAlignment="Top" Width="540" Grid.Column="3" Grid.Row="5" />
-        <DataGrid Margin="0,6,2,361" Name="dgv_InspecStandard" Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2" />
+        <Label Content="数量:" Margin="0,4,0,0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" Height="23" Width="37" />
+        <Button Grid.Column="2" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="4,2,0,0" Name="btn_Lad_OrderLabInfo" VerticalAlignment="Top" Width="49" Content="载入" Click="btn_Lad_OrderLabInfo_Click" />
+        <Button Content="预览" Grid.Column="2" Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="5,2,0,0" Name="btn_YL" VerticalAlignment="Top" Width="48" Click="btn_YL_Click" />
+        <DataGrid Grid.Column="3" Margin="0,4,98,400" Grid.RowSpan="3" Name="dgv_Not_Verify" SelectionChanged="dgv_Not_Verify_SelectionChanged" Grid.Row="2" />
+        <Button x:Name="btn_Verify" Content="确认" HorizontalAlignment="Right" Grid.Row="4" Width="94" Grid.Column="3" FontSize="32" Height="79" VerticalAlignment="Bottom" Click="btn_Verify_Click" Margin="0,0,2,430" />
+        <Button Content="载入" Grid.Column="3" Height="34" HorizontalAlignment="Left" Margin="444,10,0,0" Name="btn_Lading_NotVerify" VerticalAlignment="Top" Width="94" Click="btn_Lading_NotVerify_Click" Grid.Row="2" Grid.RowSpan="2" />
+        <Label Content="State" Grid.Row="5" Height="28" HorizontalAlignment="Left" Margin="5,0,0,-5" Name="lab_State" VerticalAlignment="Top" Width="474" Grid.ColumnSpan="3" />
+        <Image Height="298" HorizontalAlignment="Left" Margin="0,211,0,0" Name="image1" Source="/MCP.UI;component/Images/130607103251454d3563c3ad62.jpg" Stretch="Fill" VerticalAlignment="Top" Width="538" Grid.Column="3" Grid.Row="4" />
+        <DataGrid Margin="239,114,0,298" Name="dgv_InspecStandard" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2" />
+        <GroupBox x:Name="groupBox" Grid.Column="3" Header="外袋打印" Grid.RowSpan="2">
+            <StackPanel Orientation="Horizontal">
+                <Label VerticalAlignment="Center">Qty内容</Label>
+                <TextBox Name="txb_QtyValue" Width="120" VerticalContentAlignment="Center"/>
+                <Label VerticalAlignment="Center">打印数量</Label>
+                <TextBox Name="txb_PrintCount" Width="120" VerticalContentAlignment="Center"/>
+                <Button Width="100" Click="Button_Click_1">打印</Button>
+            </StackPanel>
+        </GroupBox>
     </Grid>
-   
-    
+
+
+
+
+
+
 
 </ad:DocumentContent>
 

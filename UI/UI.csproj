@@ -702,6 +702,10 @@
     <None Include="Images\部门管理.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MCP_DAL\DAL.csproj">
+      <Project>{2eec6101-d4ff-4b5b-b473-f414e51f0a2e}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ZhuifengLib\ZhuifengLib\ZhuifengLib.csproj">
       <Project>{ac67be14-18df-411d-8648-584814f9bc5b}</Project>
       <Name>ZhuifengLib</Name>
