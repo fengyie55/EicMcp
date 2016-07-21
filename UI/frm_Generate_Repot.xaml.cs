@@ -165,6 +165,14 @@ namespace UI
             }
             else if (_OrderInfo.InspectMethod == Maticsoft.Model.E_InspectMethod.四十八芯检测)
             {
+                Generate_SN_MoreCode(_StatSN, _EndSN, _tem, 48);
+            }
+            else if (_OrderInfo.InspectMethod == Maticsoft.Model.E_InspectMethod.配组_二十四芯)
+            {
+                Generate_SN_MoreCode2(_StatSN, _EndSN, _tem, 3, 8);
+            }
+            else if (_OrderInfo.InspectMethod == Maticsoft.Model.E_InspectMethod.配组_四十八芯)
+            {
                 Generate_SN_MoreCode2(_StatSN, _EndSN, _tem, 6, 8);
             }
             else if (_OrderInfo.InspectMethod == Maticsoft.Model.E_InspectMethod.配组_九十六芯)
