@@ -232,32 +232,32 @@ namespace Maticsoft.DAL
         /// </summary>
         protected virtual void onPrint()
         {
-            try
-            {
-                string ExcelName = _WTT_LabSetInfo.Tables[0].Rows[0]["LabName"].ToString();
-                string ExcelPath = "D:\\模板\\PrintTemplates\\Data_Source\\" + ExcelName.Substring(0, ExcelName.Length - 4) + ".xlsx";
+            //try
+            //{
+            string ExcelName = _WTT_LabSetInfo.Tables[0].Rows[0]["LabName"].ToString();
+            string ExcelPath = "D:\\模板\\PrintTemplates\\Data_Source\\" + ExcelName.Substring(0, ExcelName.Length - 4) + ".xlsx";
 
-                //1.获取默认打印机 填充数据 2.开始打印  3.计数清零 4.Exfo待打印数据列表清零        
-                //获取默认打印机
-                PrintDocument fPrintDocument = new PrintDocument();
-                Delete_ExcelData(ExcelPath,24);
-                //填充打印数据源
-                foreach (DataSet _Temds in _WTT_NotPrintList)
-                    Install_data_ToExcel(_Temds);
+            //1.获取默认打印机 填充数据 2.开始打印  3.计数清零 4.Exfo待打印数据列表清零        
+            //获取默认打印机
+            PrintDocument fPrintDocument = new PrintDocument();
+            Delete_ExcelData(ExcelPath, 24);
+            //填充打印数据源
+            foreach (DataSet _Temds in _WTT_NotPrintList)
+                Install_data_ToExcel(_Temds);
 
-                Messages messages = null;
-                //设置打印模板
-                LabelFormatDocument btFormat = btEngine.Documents.Open(LabPatch + LabName);
-                //设置打印机
-                btFormat.PrintSetup.PrinterName = fPrintDocument.PrinterSettings.PrinterName;
-                btFormat.Activate();
-                Result result = btFormat.Print("PrintJob1", out messages);
-                btFormat.Close(SaveOptions.SaveChanges);
-                _LabCount = 0;
-                _WTT_NotPrintList.Clear();
-                Delete_ExcelData(ExcelPath,24);
-            }
-            catch (System.Exception ex) { My_MessageBox.My_MessageBox_Message(ex.Message); }
+            Messages messages = null;
+            //设置打印模板
+            LabelFormatDocument btFormat = btEngine.Documents.Open(LabPatch + LabName);
+            //设置打印机
+            btFormat.PrintSetup.PrinterName = fPrintDocument.PrinterSettings.PrinterName;
+            btFormat.Activate();
+            Result result = btFormat.Print("PrintJob1", out messages);
+            btFormat.Close(SaveOptions.SaveChanges);
+            _LabCount = 0;
+            _WTT_NotPrintList.Clear();
+            Delete_ExcelData(ExcelPath, 24);
+            //}
+            //catch (System.Exception ex) { My_MessageBox.My_MessageBox_Message(ex.Message); }
         }
 
 
@@ -457,7 +457,9 @@ namespace Maticsoft.DAL
                 //SET SN
                 if (_Tem_Name == "SN")
                 {
-                    _Tem_Value = _ds.Tables[0].Rows[0]["SN"].ToString().Substring(0, 10);
+                    _Tem_Value = _ds.Tables[0].Rows[0]["SN"].ToString();
+                    if (_Tem_Value.Length > 10)
+                        _Tem_Value = _Tem_Value.Substring(0, 10);
 
                     //添加标签打印记录
                     _PrintRecord.SN = _Tem_Value;
@@ -521,7 +523,7 @@ namespace Maticsoft.DAL
 
 
 
-        
+
 
 
 
@@ -561,7 +563,7 @@ namespace Maticsoft.DAL
         /// </summary>
         /// <param name="_Patch"></param>
         /// <returns></returns>
-        public static bool Delete_ExcelData(string _Patch,int deleteRows)
+        public static bool Delete_ExcelData(string _Patch, int deleteRows)
         {
             try
             {

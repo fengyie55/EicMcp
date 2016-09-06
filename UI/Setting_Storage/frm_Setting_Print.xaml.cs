@@ -441,7 +441,7 @@ namespace UI
         {
             try
             {
-                string Patch = @"D:\模板\PrintTemplates\HP_Templates\" + cmb_LabTemplate.Text.Trim();
+                string Patch = @"D:\模板\PrintTemplates\HP_Templates\" + cmb_LabTemplate.Text.Trim().Substring(0, cmb_LabTemplate.Text.Trim().Length - 3)+ "大袋.btw";
                 btEngine.Start();
                 btFormat2 = btEngine.Documents.Open(Patch);
 

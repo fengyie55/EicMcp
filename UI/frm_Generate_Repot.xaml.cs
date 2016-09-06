@@ -169,15 +169,27 @@ namespace UI
             }
             else if (_OrderInfo.InspectMethod == Maticsoft.Model.E_InspectMethod.配组_二十四芯)
             {
-                Generate_SN_MoreCode2(_StatSN, _EndSN, _tem, 3, 8);
+                Generate_SN_MoreCode(_StatSN, _EndSN, _tem, 3, 8);
             }
             else if (_OrderInfo.InspectMethod == Maticsoft.Model.E_InspectMethod.配组_四十八芯)
             {
-                Generate_SN_MoreCode2(_StatSN, _EndSN, _tem, 6, 8);
+                Generate_SN_MoreCode(_StatSN, _EndSN, _tem, 6, 8);
             }
             else if (_OrderInfo.InspectMethod == Maticsoft.Model.E_InspectMethod.配组_九十六芯)
             {
-                Generate_SN_MoreCode2(_StatSN, _EndSN, _tem,12, 8);
+                Generate_SN_MoreCode(_StatSN, _EndSN, _tem,12, 8);
+            }
+            else if (_OrderInfo.InspectMethod == Maticsoft.Model.E_InspectMethod.TFK十二芯检测x2)
+            {
+                Generate_SN_MoreCode(_StatSN, _EndSN, _tem, 2, 12);
+            }
+            else if (_OrderInfo.InspectMethod == Maticsoft.Model.E_InspectMethod.TFK二十四芯检测x2)
+            {
+                Generate_SN_MoreCode(_StatSN, _EndSN, _tem, 2, 24);
+            }
+            else if (_OrderInfo.InspectMethod == Maticsoft.Model.E_InspectMethod.TFK一芯检测x2)
+            {
+                Generate_SN_MoreCode(_StatSN, _EndSN, _tem, 2);
             }
             else
             {
@@ -202,7 +214,7 @@ namespace UI
             }
         }
 
-        private static void Generate_SN_MoreCode2(long _StatSN, long _EndSN, ArrayList _tem,int MoreCode_Count2 ,int MoreCode_Count)
+        private static void Generate_SN_MoreCode(long _StatSN, long _EndSN, ArrayList _tem,int MoreCode_Count2 ,int MoreCode_Count)
         {
             for (long sn = _StatSN; sn <= _EndSN; sn++)
             {
