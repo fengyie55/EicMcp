@@ -126,9 +126,9 @@
             </TextBlock.Background>
         </TextBlock>
         <Label Content="开始条码:" Margin="0,1,0,0" x:Name="label8_Copy" Grid.Row="16" HorizontalAlignment="Right" FontSize="12" VerticalAlignment="Center" />
-        <TextBox x:Name="txb_Batch_StartSn" Grid.Column="1" Margin="0,0,20,0" Grid.Row="16" TextWrapping="Wrap" Height="19" />
+        <TextBox x:Name="txb_Batch_StartSn" Grid.Column="1" Margin="0,0,20,24" Grid.Row="16" TextWrapping="Wrap" Grid.RowSpan="2" />
         <Label Content="批量:" x:Name="label8_Copy2" Grid.Row="17" FontSize="12" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.RowSpan="2" RenderTransformOrigin="0.514,0.438" />
-        <TextBox x:Name="txb_Batch_Count"  Grid.Column="1" Margin="0,0,104,0" Grid.Row="17" TextWrapping="Wrap"  VerticalAlignment="Center" Height="19" />
+        <TextBox x:Name="txb_Batch_Count"  Grid.Column="1" Margin="0,1,104,0" Grid.Row="17" TextWrapping="Wrap"  VerticalAlignment="Center" Height="24" />
         <Button x:Name="btn_Batch_Print" Content="打印" Grid.Column="1" Grid.Row="17" Height="23" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="61" Margin="76,0,20,0" Click="btn_Batch_Print_Click" />
     </Grid>
 </ad:DocumentContent>

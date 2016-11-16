@@ -129,9 +129,9 @@ namespace Maticsoft.Bll
                 Model.InspectConfigProduct productInspectConfig = new Model.InspectConfigProduct();
                 if (orderInfo?.Tables[0]?.Rows.Count > 0)
                 {
-                    productInspectConfig.ProductId = orderInfo.Tables[0].Rows[0][""].ToString();
-                    productInspectConfig.ProductName = orderInfo.Tables[0].Rows[0][""].ToString();
-                    productInspectConfig.Model = orderInfo.Tables[0].Rows[0][""].ToString();
+                    productInspectConfig.ProductId = orderInfo.Tables[0].Rows[0]["品号"].ToString();
+                    productInspectConfig.ProductName = orderInfo.Tables[0].Rows[0]["品名"].ToString();
+                    productInspectConfig.Model = orderInfo.Tables[0].Rows[0]["规格"].ToString();
                     productInspectConfig.LabelName = labName;
                     productInspectConfig.LabelContentConfig = EntityString<Model.LabInfo>.GetEntityToStringJson(labContentList);
 
