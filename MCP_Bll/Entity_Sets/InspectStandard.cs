@@ -4,6 +4,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Collections.ObjectModel;
+using System.Linq;
+
 namespace Maticsoft.BLL
 {
     public partial class InspectStandard
@@ -58,6 +60,17 @@ namespace Maticsoft.BLL
             DataSet ds = dal.GetList(orderID);
             return DataTableToList(ds.Tables[0]);
         }
+
+        /// <summary>
+        /// 获取检测标准
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public Model.InspectStandard GetInspectStandardBy(string orderId)
+        {
+            return GetModelList(orderId).ToList().FirstOrDefault();
+        }
+
         /// <summary>
         /// 获得数据列表
         /// </summary>

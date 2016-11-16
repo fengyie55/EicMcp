@@ -194,7 +194,7 @@ namespace Maticsoft.BLL
        {
            //开始填充数据            
            DataSet temdata = e.ImportData;
-           int rowIndex = 7;
+           int rowIndex = 10;
            int colIndex = 0;
 
            //填充数据
@@ -220,7 +220,7 @@ namespace Maticsoft.BLL
        {
            //开始填充数据            
            ArrayList _SN_Data = e.SN_DataList;
-           int rowIndex = 7;  
+           int rowIndex = 10;  
            int maxcount = e.SN_DataList.Count;
 
            foreach (DataSet temds in _SN_Data)
@@ -272,7 +272,7 @@ namespace Maticsoft.BLL
        {
            //开始填充数据            
            ArrayList _SN_Data = e.SN_DataList;
-           int rowIndex = 7;  
+           int rowIndex = 10;  
            int maxcount =e.SN_DataList.Count;
          
            foreach (DataSet temds in _SN_Data)

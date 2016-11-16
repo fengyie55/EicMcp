@@ -1,6 +1,6 @@
 ﻿<Window x:Class="UI.frm_Main"
                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"                 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"                 
                      xmlns:ad="clr-namespace:AvalonDock;assembly=AvalonDock"
                      Height="720" Width="1200" Title="MCP制造与办公管控平台"       
                      WindowStyle="None"  Background="Transparent" AllowsTransparency="True" 
@@ -40,22 +40,13 @@
                             <ad:DockableContent Title="导航菜单" DefaultElement="{Binding ElementName=presetTreeView}" >
                                 <TreeView x:Name="presetTreeView" Grid.Row="2" Background="#FF9AC7E8" FontSize="14" BorderBrush="#FF103C85">
                                     <TreeViewItem Header="Welecome to MCP" />
-                                    
+
                                     <TreeViewItem Header="信息中心">
-                                        <TreeViewItem Header="1.员工信息"/>
-                                        <TreeViewItem Header="2.设备信息"/>
                                         <TreeViewItem Header="3.工单信息" Name="InformationCenter_OrderInfo" MouseDoubleClick="InformationCenter_OrderInfo_MouseDoubleClick" />
                                         <TreeViewItem Header="4.产品信息" Name="Info_ProductInfo" MouseDoubleClick="Info_ProductInfo_MouseDoubleClick" />
                                         <TreeViewItem Header="5.管理助手" Name="Info_Wk_Helper" MouseDoubleClick="Info_Wk_Helper_MouseDoubleClick"/>
                                     </TreeViewItem>
                                     <TreeViewItem Header="订单中心">
-                                        <TreeViewItem Header="1.信息设置">
-                                            <TreeViewItem Name="Setting_Storage"        Header="1.检测设置"    MouseDoubleClick="Setting_Storage_MouseDoubleClick" />
-                                            <TreeViewItem Name="Setting_LabPrint"       Header="2.打印设置"    MouseDoubleClick="Setting_LabPrint_MouseDoubleClick" />
-                                            <TreeViewItem Name="Setting_OrderMaterial"  Header="3.管控设置"    MouseDoubleClick="Setting_OrderMaterial_MouseDoubleClick"/>
-                                            <TreeViewItem Name="Report_Generate"        Header="4.测试报告"    MouseDoubleClick="Report_Generate_MouseDoubleClick"/>
-                                            <TreeViewItem Name="Setting_Flow"           Header="5.工序设置"    MouseDoubleClick="Setting_Flow_MouseDoubleClick"/>
-                                        </TreeViewItem>
                                         <TreeViewItem Name="Inspect_InspectPigtail"  Header="2.线材预检"    MouseDoubleClick="Inspect_InspectPigtail_MouseDoubleClick"/>
                                         <TreeViewItem Name="Inspect_Spackaging"  Header="3.出货包装"    MouseDoubleClick="Inspect_Spackaging_MouseDoubleClick"/>
                                         <TreeViewItem Name="Label_Print"         Header="4.标签补打"    MouseDoubleClick="Label_Print_MouseDoubleClick"/>
@@ -64,12 +55,14 @@
                                         <TreeViewItem Name="OrderControl"        Header="7.工单管理"    MouseDoubleClick="OrderControl_MouseDoubleClick" />
                                         <TreeViewItem Name="Reports"             Header="8.报告导出"    MouseDoubleClick="Reports_MouseDoubleClick"/>
                                     </TreeViewItem>
-
-                                    <TreeViewItem Header="人力资源" >
-                                        <TreeViewItem Header="1.员工管理" Name="HR_Employee" MouseDoubleClick="HR_Employee_MouseDoubleClick" />
-                                        <TreeViewItem Header="2.员工列表" Name="UserList" MouseDoubleClick="UserList_MouseDoubleClick"/>
-                                        <TreeViewItem Header="3.生产报表" Name="ReportForms" MouseDoubleClick="ReportForms_MouseDoubleClick"/>
+                                    <TreeViewItem Header="信息设置">
+                                        <TreeViewItem Name="Setting_Storage"        Header="1.检测设置"    MouseDoubleClick="Setting_Storage_MouseDoubleClick" />
+                                        <TreeViewItem Name="Setting_LabPrint"       Header="2.打印设置"    MouseDoubleClick="Setting_LabPrint_MouseDoubleClick" />
+                                        <TreeViewItem Name="Setting_OrderMaterial"  Header="3.管控设置"    MouseDoubleClick="Setting_OrderMaterial_MouseDoubleClick"/>
+                                        <TreeViewItem Name="Report_Generate"        Header="4.测试报告"    MouseDoubleClick="Report_Generate_MouseDoubleClick"/>
+                                        <TreeViewItem Name="Setting_Flow"           Header="5.工序设置"    MouseDoubleClick="Setting_Flow_MouseDoubleClick"/>
                                     </TreeViewItem>
+                                    
                                     <TreeViewItem Header="设备平台">
                                         <TreeViewItem Header="1.设备管理" Name="EquipmentMS_Main"   MouseDoubleClick="EquipmentMS_Main_MouseDoubleClick"/>
                                         <TreeViewItem Header="2.治具管理" Name="FixtureMS_Main"     MouseDoubleClick="FixtureMS_Main_MouseDoubleClick"/>
@@ -78,23 +71,10 @@
                                     <TreeViewItem Name="Material_Management" Header="耗材平台"    >
                                         <TreeViewItem Header="1.耗材管理" Name="ConsumableMS_Main"  MouseDoubleClick="ConsumableMS_Main_MouseDoubleClick"/>                                    
                                     </TreeViewItem>
-                                    <TreeViewItem Header="SOP平台">
-                                        <TreeViewItem Header="1.SOP维护"/>
-                                    </TreeViewItem>
+
                                     <TreeViewItem Name="ControlTools" Header="管制工具">
                                         <TreeViewItem Header="1.SPC" Name="Tools_SPC" MouseDoubleClick="Tools_SPC_MouseDoubleClick"/>
                                     </TreeViewItem>
-                                    <TreeViewItem Header="验证工具">
-                                        <TreeViewItem Header="1.MPO测试数据读取" Name="MPO_DataSearch" MouseDoubleClick="MPO_DataSearch_MouseDoubleClick"/>
-                                    </TreeViewItem>
-                                    <TreeViewItem Header="系统帮助">
-                                        <TreeViewItem Header="系统帮助" Name="Help" MouseDoubleClick="Help_MouseDoubleClick"/>
-                                        <TreeViewItem Header="更新履历" Name="UpdateRecode" MouseDoubleClick="UpdateRecode_MouseDoubleClick"/>
-                                    </TreeViewItem>
-                                   
-                                        
-                                   
-                                    <TreeViewItem Header="用户管理" Name="UserControl" MouseDoubleClick="UserControl_MouseDoubleClick" />
                                 </TreeView>
                             </ad:DockableContent>
                           

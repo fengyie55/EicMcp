@@ -91,6 +91,10 @@
     <Compile Include="FixtureInfo.cs" />
     <Compile Include="FixtureList.cs" />
     <Compile Include="ImageList.cs" />
+    <Compile Include="InspectConfig3D.cs" />
+    <Compile Include="InspectConfigExfo.cs" />
+    <Compile Include="InspectConfigProduct.cs" />
+    <Compile Include="InspectConfigProductLabInfo.cs" />
     <Compile Include="LabelCheck.cs" />
     <Compile Include="LabVerify.cs" />
     <Compile Include="Material_Inject.cs" />

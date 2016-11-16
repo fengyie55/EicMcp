@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data;
-using Excel = Microsoft.Office.Interop.Excel;
 using System.Threading;
-using System.Collections; 
+using System.Collections;
 
 namespace Maticsoft.BLL
 {
@@ -221,7 +217,7 @@ namespace Maticsoft.BLL
                 Mythread_ExReport.IsBackground = true;
                 Mythread_ExReport.Start();
                 Mythread_ExReport.Join();
-                _WTT_E.StatUpProgressBar(0, temCount, _WTT_List.Count);
+                _WTT_E.StatUpProgressBar(0, _WTT_List.Count, temCount);
             }
             My_MessageBox.My_MessageBox_Message("导出完成！");
 

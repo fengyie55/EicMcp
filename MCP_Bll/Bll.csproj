@@ -39,6 +39,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -69,6 +70,11 @@
     <Compile Include="FixtureList.cs" />
     <Compile Include="E_Process\ICls_Flow.cs" />
     <Compile Include="E_Process\IDraw_Process.cs" />
+    <Compile Include="InspectConfig3D.cs" />
+    <Compile Include="InspectConfigExfo.cs" />
+    <Compile Include="InspectConfigManage.cs" />
+    <Compile Include="InspectConfigProduct.cs" />
+    <Compile Include="InspectConfigProductLabInfo.cs" />
     <Compile Include="LabelCheck.cs" />
     <Compile Include="Operation_log.cs" />
     <Compile Include="OrderInfo\Cls_OrderInfo.cs" />

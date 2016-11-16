@@ -23,7 +23,7 @@ namespace UI
         DataSet ds_Record = new DataSet();                                       //数据记录
         Maticsoft.BLL.ZMing zm = new Maticsoft.BLL.ZMing();                      //公共类
         ZhuifengLib.JudgeOddOrEven _Judge_Odd = new ZhuifengLib.JudgeOddOrEven(); //判断奇偶
-        int DeleteRecord = 0;                                                    //待删除记录
+
 
         #region 公共模块
         /*****************************   公共模块   *********************************/
@@ -35,25 +35,17 @@ namespace UI
            
             //获取报告导出模板
             string[] browsingFormats; // 存放文件名
-            browsingFormats = System.IO.Directory.GetFiles("D:\\模板\\ReportTemplates\\", "*.xls");   // FolderPath 文件夹路径  *.btw 文家后缀          
+            browsingFormats = System.IO.Directory.GetFiles(@"\\192.168.0.65\Templates\ReportTemplates\", "*.xls");   // FolderPath 文件夹路径  *.btw 文家后缀          
             int temIndex = 0;
             foreach (string tem in browsingFormats)
             {
-                browsingFormats[temIndex] = tem.Substring(22);
+                browsingFormats[temIndex] = tem.Substring(41);
                 temIndex++;
             }
             cmb_TemplateList.ItemsSource = browsingFormats;
         }
         
-        //结构体定义  传递删除参数
-        private struct DataDelivery
-        {
-            public string _BarCode ;           //数据
-            public int Option ;               //选项数据
-            public bool? IsDeleteSourceData ; //是否删除原始数据
-            public object[] SNlist ;         //SN数据
-
-        }
+     
         /*  End  */
 
         #endregion
@@ -356,12 +348,6 @@ namespace UI
         {
             if (ckb_Report_orderID.IsChecked == true) { txb_Report_OrderID_3D.IsEnabled = true; } else { txb_Report_OrderID_3D.IsEnabled = false; }
         }
-
-       
-
-        
-
-       
         /*****************************   END  *********************************/
     }
 }

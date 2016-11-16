@@ -5,8 +5,7 @@ using System.Collections.ObjectModel;
 using System;
 using System.Data;
 using System.Windows.Data;
-
-
+using System.Linq;
 
 namespace UI
 {
@@ -19,7 +18,7 @@ namespace UI
         {
             InitializeComponent();
         }
-    
+
         #region 全局变量
 
         /**************** 实体类   ************************/
@@ -29,10 +28,16 @@ namespace UI
         //包装批号
         ObservableCollection<Maticsoft.Model.PackBatch> _packBatch
             = new ObservableCollection<Maticsoft.Model.PackBatch>();
-       
+
         //检测标准
         ObservableCollection<Maticsoft.Model.InspectStandard> _ISD
             = new ObservableCollection<Maticsoft.Model.InspectStandard>();
+
+
+        Maticsoft.Bll.InspectConfigManage _M_InspectConfig = new Maticsoft.Bll.InspectConfigManage();
+
+
+
         //工单物料
         DataSet _dt_OrderMaterial = new DataSet();
 
@@ -74,9 +79,8 @@ namespace UI
                 txb_Order_Count.Text = wod.Count;
                 cmb_InspectMethod.Text = wod.InspectMethod.ToString();
                 cmb_InspectType.Text = wod.InspectType.ToString();
-                cmb_WorkShop.Text = wod.Workshop.ToString();
-                date_DeliveryDate.Text = wod.DeliveryDate;
-               // cmb_LabType.Text = wod.LabelType;             
+             
+                // cmb_LabType.Text = wod.LabelType;             
 
                 _ISD = _M_InspectStandard.GetModelList(txb_FindOrderID.Text);
                 dgv_Inspect_Standard_Info.ItemsSource = _ISD;
@@ -88,7 +92,7 @@ namespace UI
                 My_MessageBox.My_MessageBox_Message("工单：" + txb_FindOrderID.Text + "基本信息未找到！");
             }
         }
-       
+
 
         #endregion
 
@@ -101,8 +105,8 @@ namespace UI
         {
             //检查填写的信息是否完整
             if (txb_OrderID.Text == "" || txb_ProductName.Text == "" || txb_Model.Text == "" || txb_Order_Count.Text == "" ||
-                cmb_InspectMethod.Text == "" || cmb_InspectType.Text == "" || date_DeliveryDate.Text == "" ||
-                txb_Model.Text == ""   || cmb_WorkShop.Text == "")
+                cmb_InspectMethod.Text == "" || cmb_InspectType.Text == "" ||
+                txb_Model.Text == "" )
             {
                 My_MessageBox.My_MessageBox_Erry("请检查工单信息是否设置完整！\r\n请补充后重试！");
             }
@@ -115,7 +119,7 @@ namespace UI
                         + "已经存在，继续将替换原有工单！\r\n是否继续添加", "系统提示",
                         MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
                     {
-                       // _M_WorkOrder.Delete(txb_OrderID.Text.ToString());    //删除原有数据     
+                        // _M_WorkOrder.Delete(txb_OrderID.Text.ToString());    //删除原有数据     
 
                         Maticsoft.Model.WorkOrder _temWorkdOrder = new Maticsoft.Model.WorkOrder();
                         _temWorkdOrder = _M_WorkOrder.GetModel(txb_OrderID.Text.Trim());
@@ -123,6 +127,16 @@ namespace UI
                     }
                 }
                 else { Add_orderInfo(); }                                   //添加数据
+
+
+                //添加配置信息 2016-11-8
+                _M_InspectConfig.SavaBaseInspectConfigInfo(txb_OrderID.Text, new Maticsoft.Model.InspectConfigProduct()
+                {
+                    ProductName = txb_ProductName.Text,
+                    Model = txb_Model.Text,
+                    InspectMethod = cmb_InspectMethod.Text,
+                    InspectType = cmb_InspectType.Text
+                });
             }
         }
         /****************************************** Method ******************************************/
@@ -134,7 +148,8 @@ namespace UI
         {
             Maticsoft.Model.WorkOrder _temWorkdOrder = new Maticsoft.Model.WorkOrder();
             _temWorkdOrder = _M_WorkOrder.GetModel(txb_OrderID.Text.Trim());
-            Maticsoft.Model.WorkOrder _workOrder = new Maticsoft.Model.WorkOrder(){
+            Maticsoft.Model.WorkOrder _workOrder = new Maticsoft.Model.WorkOrder()
+            {
                 OrderID = txb_OrderID.Text.ToString(),    //工单单号
                 Client = "Ezconn",
                 ProductName = txb_ProductName.Text.ToString(),
@@ -143,24 +158,24 @@ namespace UI
                 //枚举类型的检测方法
                 InspectMethod = (Maticsoft.Model.E_InspectMethod)Enum.Parse(typeof(Maticsoft.Model.E_InspectMethod),
                 cmb_InspectMethod.SelectedItem.ToString(), false),
-               
-                //枚举类型检测选项
-                InspectType =(Maticsoft.Model.E_InspectType)Enum.Parse(typeof(Maticsoft.Model.E_InspectType),
-                cmb_InspectType.Text.ToString(),false),
 
-                DeliveryDate = date_DeliveryDate.Text.ToString(),
-              //  LabelType = cmb_LabType.Text.ToString(),
-                ModelNo = txb_Model.Text.ToString(),           
-                Workshop = cmb_WorkShop.Text.ToString(),
-                State = "待生产" 
-                 };
-            
+                //枚举类型检测选项
+                InspectType = (Maticsoft.Model.E_InspectType)Enum.Parse(typeof(Maticsoft.Model.E_InspectType),
+                cmb_InspectType.Text.ToString(), false),
+
+               
+                //  LabelType = cmb_LabType.Text.ToString(),
+                ModelNo = txb_Model.Text.ToString(),
+              
+                State = "待生产"
+            };
+
 
             //判断是否添加成功
             if (_M_WorkOrder.Add(_workOrder))
-            {                
+            {
                 _dt_OrderMaterial = _M_WorkOrder.GetOrderMaterial(txb_OrderID.Text);                                 //工单物料需领用量
-               
+
                 Add_orderMaterial(_dt_OrderMaterial);     //添加工单中的物料清单    
                 Add_MaterialInfo(_dt_OrderMaterial);      //添加物料信息  暂时使用 用于收集物料信息                 
                 //弹出提示信息               
@@ -185,7 +200,7 @@ namespace UI
                         }
                     }
                 }
-                else { My_MessageBox.My_MessageBox_Message("开始条码 为空 将不进行条码添加！");  }
+                else { My_MessageBox.My_MessageBox_Message("开始条码 为空 将不进行条码添加！"); }
                 #region 清空文本框
                 txb_OrderID.Text = "";
                 txb_ProductName.Text = "";
@@ -193,9 +208,7 @@ namespace UI
                 txb_Order_Count.Text = "";
                 cmb_InspectMethod.Text = "";
                 cmb_InspectType.Text = "";
-                date_DeliveryDate.Text = "";               
-                txb_Model.Text = "";               
-                cmb_WorkShop.Text = "";              
+                txb_Model.Text = "";
                 txb_Stat_SN.Text = "";
                 _GLL_Lst_SerialNumber.Clear();
                 #endregion
@@ -213,9 +226,9 @@ namespace UI
         /// <returns></returns>
         private void Add_orderInfo(Maticsoft.Model.WorkOrder _workOrder)
         {
-           
-            
-             _workOrder = new Maticsoft.Model.WorkOrder()
+
+
+            _workOrder = new Maticsoft.Model.WorkOrder()
             {
                 OrderID = txb_OrderID.Text.ToString(),    //工单单号
                 Client = "Ezconn",
@@ -224,17 +237,17 @@ namespace UI
                 Count = txb_Order_Count.Text.ToString(),
                 //枚举类型的检测方法
                 InspectMethod = (Maticsoft.Model.E_InspectMethod)Enum.Parse(typeof(Maticsoft.Model.E_InspectMethod),
-                cmb_InspectMethod.SelectedItem.ToString(), false),
+               cmb_InspectMethod.SelectedItem.ToString(), false),
 
                 //枚举类型检测选项
                 InspectType = (Maticsoft.Model.E_InspectType)Enum.Parse(typeof(Maticsoft.Model.E_InspectType),
-                cmb_InspectType.Text.ToString(), false),
+               cmb_InspectType.Text.ToString(), false),
 
-                DeliveryDate = date_DeliveryDate.Text.ToString(),
+             
                 //  LabelType = cmb_LabType.Text.ToString(),
                 ModelNo = txb_Model.Text.ToString(),
-                Workshop = cmb_WorkShop.Text.ToString(),
-                State = "待生产" , 
+              
+                State = "待生产",
                 ID_Key = _workOrder.ID_Key
             };
 
@@ -265,7 +278,7 @@ namespace UI
                             MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.OK)
                         {
                             // _M_SerialNumber.DeleteList("OrderID = '" + txb_OrderID.Text.Trim() + "'");
-                            
+
                             addSerialNumber(long.Parse(txb_Stat_SN.Text.ToString()), int.Parse(txb_Order_Count.Text));
                         }
                     }
@@ -278,9 +291,9 @@ namespace UI
                 txb_Order_Count.Text = "";
                 cmb_InspectMethod.Text = "";
                 cmb_InspectType.Text = "";
-                date_DeliveryDate.Text = "";
+               
                 txb_Model.Text = "";
-                cmb_WorkShop.Text = "";
+              
                 txb_Stat_SN.Text = "";
                 _GLL_Lst_SerialNumber.Clear();
                 #endregion
@@ -299,14 +312,14 @@ namespace UI
         /// <param name="_endSN"></param>
         private void addSerialNumber(long _startSN, int _orderCount)
         {
-            string temInfo="";
+            string temInfo = "";
             //条码
             Maticsoft.Model.SerialNumber _serialNumber = new Maticsoft.Model.SerialNumber() { OrderID = txb_OrderID.Text.ToString() };
             //检测方法
-            Maticsoft.Model.E_InspectMethod temInspectMethod =(Maticsoft.Model.E_InspectMethod)Enum.Parse(typeof(Maticsoft.Model.E_InspectMethod),
+            Maticsoft.Model.E_InspectMethod temInspectMethod = (Maticsoft.Model.E_InspectMethod)Enum.Parse(typeof(Maticsoft.Model.E_InspectMethod),
                 cmb_InspectMethod.SelectedItem.ToString(), false);
             _M_SerialNumber.InspectMethod = temInspectMethod;
-            
+
             //显示结果
             if (temInspectMethod == Maticsoft.Model.E_InspectMethod.配组_八芯_SAMHALL
                 || temInspectMethod == Maticsoft.Model.E_InspectMethod.配组_二十四芯_SAMHALL
@@ -320,12 +333,12 @@ namespace UI
                     temCount++;
                 }
                 _GLL_Lst_SerialNumber.Clear();
-                temInfo  = "操作完成！成功添加：" + temCount + "条\r\n失败:0条";
+                temInfo = "操作完成！成功添加：" + temCount + "条\r\n失败:0条";
             }
             else
             {
                 int temOrderCount = int.Parse(txb_Order_Count.Text.ToString());
-                temInfo = _M_SerialNumber.Add(_serialNumber, _startSN,temOrderCount);
+                temInfo = _M_SerialNumber.Add(_serialNumber, _startSN, temOrderCount);
             }
             My_MessageBox.My_MessageBox_Message(temInfo);
         }
@@ -335,42 +348,67 @@ namespace UI
         //
         private void txb_OrderID_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if (e.Key == System.Windows.Input.Key.Enter)
+            try
             {
-                DataSet _OrderInfo = _M_WorkOrder.GetOrderInfo(txb_OrderID.Text);                                    //工单基本信息
-                if (_OrderInfo != null)
+                if (e.Key == System.Windows.Input.Key.Enter)
                 {
-                    _dt_OrderMaterial = _M_WorkOrder.GetOrderMaterial(txb_OrderID.Text);                                 //工单物料需领用量            
-                    //窗体控件显示
-                    txb_ProductName.Text = _OrderInfo.Tables[0].Rows[0]["品名"].ToString();
-                    txb_Model.Text = _OrderInfo.Tables[0].Rows[0]["规格"].ToString();
-
-                    double d = double.Parse(_OrderInfo.Tables[0].Rows[0]["批量"].ToString());
-                    txb_Order_Count.Text = d.ToString("0");
-
-                    //增加根据品名选择检测类型 2016-07-06
-                    if (txb_Model.Text.Contains("SM"))
+                    DataSet _OrderInfo = _M_WorkOrder.GetOrderInfo(txb_OrderID.Text);                                    //工单基本信息
+                    if (_OrderInfo != null)
                     {
-                        cmb_InspectType.SelectedIndex = 0;
+                        _dt_OrderMaterial = _M_WorkOrder.GetOrderMaterial(txb_OrderID.Text);                                 //工单物料需领用量            
+                                                                                                                             //窗体控件显示
+                        txb_ProductName.Text = _OrderInfo.Tables[0].Rows[0]["品名"].ToString();
+                        txb_Model.Text = _OrderInfo.Tables[0].Rows[0]["规格"].ToString();
+
+                        double d = double.Parse(_OrderInfo.Tables[0].Rows[0]["批量"].ToString());
+                        txb_Order_Count.Text = d.ToString("0");
+
+                        //增加根据品名选择检测类型 2016-07-06
+                        if (txb_Model.Text.Contains("SM"))
+                        {
+                            cmb_InspectType.SelectedIndex = 0;
+                        }
+                        else if (txb_Model.Text.Contains("MM"))
+                        {
+                            cmb_InspectType.SelectedIndex = 2;
+                        }
+
+                        //从配置文件中载入此产品的配置信息 2016-11-8 
+                        var temInspcetConfig = _M_InspectConfig.GetInspectConfigBy(txb_OrderID.Text);
+                        //找到了该工单的配置信息
+                        if (temInspcetConfig != null)
+                        {
+                            cmb_InspectMethod.Text = temInspcetConfig.InspectMethod;
+                            cmb_InspectType.Text = temInspcetConfig.InspectType;
+
+                            var inspectStandardList = _M_InspectConfig.GetInspectStandard(txb_OrderID.Text);
+                            _ISD.Clear();
+                            inspectStandardList.ForEach((m) =>
+                            {
+                                m.OrderID = txb_OrderID.Text;
+                                _ISD.Add(m);
+                            });
+                        }
+
                     }
-                    else if (txb_Model.Text.Contains("MM"))
+                    else
                     {
-                        cmb_InspectType.SelectedIndex = 2;
+                        My_MessageBox.My_MessageBox_Message("未找到工单信息！请手动输入或查询ERP是否存在该工单！！");
                     }
-                }
-                else
-                {
-                    My_MessageBox.My_MessageBox_Message("未找到工单信息！请手动输入或查询ERP是否存在该工单！！");
                 }
             }
+            catch { }
+
+            //在此进行下同步 用完立即删除此行
+            //syncDataExtracted();
         }
-        
+
         /// <summary>
         /// 添加工单物料
         /// </summary>
         private void Add_orderMaterial(DataSet _Order_Material_Data)
         {
-            
+
             Maticsoft.BLL.OrderMaterial _OrM = new OrderMaterial();
             //如果已经添加则不进行添加
             if (!_OrM.Exists("OrderID='" + txb_OrderID.Text + "'"))
@@ -380,15 +418,15 @@ namespace UI
                     _OrM.Add(dr, txb_OrderID.Text);
                 }
             }
-             
+
         }
-        
+
         /// <summary>
         /// 添加物料信息
         /// </summary>
         private void Add_MaterialInfo(DataSet _Order_Material_Data)
         {
-            
+
             Maticsoft.BLL.MaterialInfo _MaterialInfo = new MaterialInfo();
 
             foreach (DataRow dr in _Order_Material_Data.Tables[0].Rows)
@@ -398,9 +436,9 @@ namespace UI
                     _MaterialInfo.Add(dr);
                 }
             }
-             
+
         }
-        
+
         //名称：结束条码控件
         //功能：输入数字后按回车键 算出结束编码
         private void txb_End_SN_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
@@ -409,7 +447,7 @@ namespace UI
             {
                 if (txb_Stat_SN.Text != "" && txb_End_SN.Text != "")
                 {
-                    txb_End_SN.Text = (long.Parse(txb_Stat_SN.Text.Trim()) + (int.Parse(txb_End_SN.Text.Trim())-1)).ToString();
+                    txb_End_SN.Text = (long.Parse(txb_Stat_SN.Text.Trim()) + (int.Parse(txb_End_SN.Text.Trim()) - 1)).ToString();
                 }
             }
         }
@@ -431,7 +469,7 @@ namespace UI
                     _SerialNumber.OrderID = txb_OrderID.Text.Trim();
                     _SerialNumber.State = Maticsoft.Model.E_Barcode_State.Not_Pack.ToString();
                     _SerialNumber.Type = cmb_SerialNumberType.Text.Trim();
-                    
+
 
                     _SerialNumber.SN = i.ToString();
                     _GLL_Lst_SerialNumber.Add(_SerialNumber);
@@ -445,7 +483,7 @@ namespace UI
         #endregion
 
         #region 批号添加模块
-        Maticsoft.Model.WorkOrder _GLL_BatchNo_TemWork = new Maticsoft.Model.WorkOrder(); 
+        Maticsoft.Model.WorkOrder _GLL_BatchNo_TemWork = new Maticsoft.Model.WorkOrder();
         //
         //载入工单批号信息
         //
@@ -457,8 +495,8 @@ namespace UI
                 {
                     DataSet temDs = _M_PackBatch.GetList("OrderID = '" + txb_Batch_OrderID.Text.Trim() + "'");
                     dgv_PackBatch_Info.ItemsSource = temDs.Tables[0].DefaultView;
-                                     
-                    _GLL_BatchNo_TemWork =  _M_WorkOrder.GetModel(txb_Batch_OrderID.Text.Trim());
+
+                    _GLL_BatchNo_TemWork = _M_WorkOrder.GetModel(txb_Batch_OrderID.Text.Trim());
                     if (_GLL_BatchNo_TemWork != null)
                     {
                         txb_BatchNo_OrderID_Count.Text = _GLL_BatchNo_TemWork.Count;
@@ -474,7 +512,7 @@ namespace UI
                             txb_ClientSN_Count.IsEnabled = false;
                         }
                     }
-                    else { My_MessageBox.My_MessageBox_Message("未找到工单信息！"); }                    
+                    else { My_MessageBox.My_MessageBox_Message("未找到工单信息！"); }
                 }
             }
         }
@@ -557,7 +595,7 @@ namespace UI
             int orderIDCount = 0, batchCount = 0;
             Maticsoft.Model.WorkOrder _Order = MCP_CS._M_WorkOrder.GetModel(OrderID);
             int.TryParse(_Order.Count, out orderIDCount);
-            batchCount =  MCP_CS._M_PackBatch.Get_BatchCount("OrderID= '"+OrderID+"'");
+            batchCount = MCP_CS._M_PackBatch.Get_BatchCount("OrderID= '" + OrderID + "'");
 
             if (orderIDCount < (batchCount + _Count))
             {
@@ -586,7 +624,7 @@ namespace UI
                 TemSerialNumber.Type = Maticsoft.Model.E_SerialNumber_Type.ClientSN.ToString();
                 TemSerialNumber.State = Maticsoft.Model.E_Barcode_State.Not_Pack.ToString();
                 TemSerialNumber.SN = _StartSN.ToString();
-                
+
                 _M_SerialNumber.Add(TemSerialNumber);
                 _StartSN++;
             }
@@ -596,7 +634,7 @@ namespace UI
         //检测类型下拉菜单
         private void cmb_InspectMethod_DropDownClosed(object sender, EventArgs e)
         {
-            if (cmb_InspectMethod.Text == Maticsoft.Model.E_InspectMethod.配组_八芯_SAMHALL.ToString() || 
+            if (cmb_InspectMethod.Text == Maticsoft.Model.E_InspectMethod.配组_八芯_SAMHALL.ToString() ||
                 cmb_InspectMethod.Text == Maticsoft.Model.E_InspectMethod.配组_二十四芯_SAMHALL.ToString() ||
                 cmb_InspectMethod.Text == Maticsoft.Model.E_InspectMethod.配组_四十八芯_SAMHALL.ToString() ||
                 cmb_InspectMethod.Text == Maticsoft.Model.E_InspectMethod.配组_九十六芯_SAMHALL.ToString())
@@ -619,7 +657,7 @@ namespace UI
 
 
         #endregion
-       
+
         #region 装箱设置模块
         //******************************** 临时类 ********************
         ObservableCollection<Customer> customers = new ObservableCollection<Customer>();
@@ -627,8 +665,8 @@ namespace UI
         class Customer
         {
             public string BoxSN { get; set; }
-            public string Qty  { get; set; }
-            public string State { get; set; } 
+            public string Qty { get; set; }
+            public string State { get; set; }
         }
         //***********************************************************
 
@@ -638,7 +676,7 @@ namespace UI
         private void cbx_pinxiang_Checked(object sender, System.Windows.RoutedEventArgs e)
         {
             if (cbx_Pak_pinxiang.IsChecked == true)
-            {                
+            {
                 lab_PinXiang_SN.Visibility = System.Windows.Visibility.Visible;
                 lab_PinXiangCount.Visibility = System.Windows.Visibility.Visible;
                 txb_Pak_Pinxiang_SN.Visibility = System.Windows.Visibility.Visible;
@@ -646,7 +684,7 @@ namespace UI
                 btn_Pak_PinXiang_Add.Visibility = System.Windows.Visibility.Visible;
             }
             else
-            {                
+            {
                 lab_PinXiang_SN.Visibility = System.Windows.Visibility.Hidden;
                 lab_PinXiangCount.Visibility = System.Windows.Visibility.Hidden;
                 txb_Pak_Pinxiang_SN.Visibility = System.Windows.Visibility.Hidden;
@@ -662,7 +700,7 @@ namespace UI
             if (txb_Pak_BoxQty.Text != "")
             {
                 lsv_BoxSN_List.DataContext = view;
-               // customers.Clear();
+                // customers.Clear();
                 int temCount = AddBoxSN(txb_Pak_BoxQianZhui.Text.Trim(), txb_Pak_BoxQty.Text.Trim(),
                        int.Parse(txb_Pak_Start_BoxSN.Text.Trim()), int.Parse(txb_Pak_End_BoxSN.Text.Trim()));
                 My_MessageBox.My_MessageBox_Message("成功生成箱号：" + temCount + "条");
@@ -689,7 +727,7 @@ namespace UI
 
             view.Source = customers;
             //清空
-            txb_Pak_Pinxiang_SN.Text="";
+            txb_Pak_Pinxiang_SN.Text = "";
             txb_Pak_PinXiangCount.Text = "";
         }
         //
@@ -703,8 +741,8 @@ namespace UI
                 {
                     Maticsoft.BLL.PackBatch _temPackBatch = new PackBatch();
                     Maticsoft.BLL.WorkOrder _M_TemWorkOrder = new WorkOrder();
-                    cmb_Pak_BatchNo.DataContext = _temPackBatch.GetList("OrderID='"+txb_Pak_OrderID.Text.Trim()+"'").Tables[0];
-                    
+                    cmb_Pak_BatchNo.DataContext = _temPackBatch.GetList("OrderID='" + txb_Pak_OrderID.Text.Trim() + "'").Tables[0];
+
                     cmb_Pak_BatchNo.DisplayMemberPath = "BatchNo";
                     Maticsoft.Model.WorkOrder _Orm = _M_TemWorkOrder.GetModel(txb_Pak_OrderID.Text.Trim());
                     if (_Orm.OrderID != null) { txb_Pak_OrderCount.Text = _Orm.Count; }//工单批量
@@ -726,7 +764,7 @@ namespace UI
                 //****保存装箱设置               
                 EncasementSet _M_EncasementSet = new EncasementSet();
                 Maticsoft.Model.EncasementSet _EncasementSet = _M_EncasementSet.GetModel(cmb_Pak_BatchNo.Text.Trim());
-                         
+
                 if (_EncasementSet.BatchNo == null)
                 {
                     _EncasementSet.BatchNo = cmb_Pak_BatchNo.Text.Trim();
@@ -736,14 +774,14 @@ namespace UI
 
                     _M_EncasementSet.Add(_EncasementSet); //添加
                 }
-                else 
+                else
                 {
                     _EncasementSet.BatchNo = cmb_Pak_BatchNo.Text.Trim();
                     _EncasementSet.Device = txb_Pak_Device.Text.Trim();
                     _EncasementSet.DeviceQty = txb_Pak_DeviceCount.Text.Trim();
                     _EncasementSet.SackQty = txb_Pak_SackQty.Text.Trim();
 
-                    _M_EncasementSet.Update(_EncasementSet); 
+                    _M_EncasementSet.Update(_EncasementSet);
                 }
 
                 //保存箱号
@@ -752,8 +790,8 @@ namespace UI
                 BoxInfo _M_BoxInfo = new BoxInfo();
                 foreach (Customer Temcutomer in customers)
                 {
-                    _TemBoxInfo = _M_BoxInfo.GetModel("BoxSN = '"+Temcutomer.BoxSN+"'");
-                                  
+                    _TemBoxInfo = _M_BoxInfo.GetModel("BoxSN = '" + Temcutomer.BoxSN + "'");
+
                     if (_TemBoxInfo.BoxSN == null)   //如果不存在则添加  否则 更新
                     {
                         _TemBoxInfo.BatchNo = cmb_Pak_BatchNo.Text.Trim();
@@ -763,11 +801,11 @@ namespace UI
                         _TemBoxInfo.Qty = Temcutomer.Qty;
                         _M_BoxInfo.Add(_TemBoxInfo);
                     }
-                    else 
+                    else
                     {
                         _TemBoxInfo.BatchNo = cmb_Pak_BatchNo.Text.Trim();
                         _TemBoxInfo.Type = "BoxSN";
-                       // _TemBoxInfo.State = "NotEncasement";
+                        // _TemBoxInfo.State = "NotEncasement";
                         _TemBoxInfo.BoxSN = Temcutomer.BoxSN;
                         _TemBoxInfo.Qty = Temcutomer.Qty;
 
@@ -798,7 +836,7 @@ namespace UI
 
                 //保存箱号
                 BoxInfo _M_BoxInfo = new BoxInfo();
-                lsv_BoxSN_List.DataContext = _M_BoxInfo.GetModelList("BatchNo ='" + cmb_Pak_BatchNo.Text.Trim() + "'","");
+                lsv_BoxSN_List.DataContext = _M_BoxInfo.GetModelList("BatchNo ='" + cmb_Pak_BatchNo.Text.Trim() + "'", "");
             }
         }
 
@@ -806,7 +844,7 @@ namespace UI
 
 
         /**************************** Method ***********************/
-        private int AddBoxSN(string TemSN,string Count, int startSN, int EndSN)
+        private int AddBoxSN(string TemSN, string Count, int startSN, int EndSN)
         {
             string Tem = "";
             int TemCount = 0;
@@ -818,7 +856,7 @@ namespace UI
             }
             return TemCount;
         }
-              
+
         #endregion
 
         #region 检测标准
@@ -834,7 +872,7 @@ namespace UI
                 bool _TemVerification = false;
                 for (int t = 0; t < _ISD.Count; t++)
                 {
-                    if (_ISD.Count > 0 && txb_InspectStandard_OrderID.Text == _ISD[t].OrderID && 
+                    if (_ISD.Count > 0 && txb_InspectStandard_OrderID.Text == _ISD[t].OrderID &&
                         cmb_InspectStandardType.Text == _ISD[t].Type)
                     {
                         _TemVerification = true; break;
@@ -857,11 +895,11 @@ namespace UI
                 {
                     InspectAdd();   //添加
                     InspectStandard_InputTxb_Clear();
-                }                  
+                }
             }
             else
             {
-                My_MessageBox.My_MessageBox_Erry("检测标准信息不完整，请检测并补充完整后。重试！");              
+                My_MessageBox.My_MessageBox_Erry("检测标准信息不完整，请检测并补充完整后。重试！");
             }
         }
         //
@@ -872,7 +910,7 @@ namespace UI
             if (_ISD.Count > 0)
             {
                 _M_InspectStandard.Delete(_ISD[0].OrderID);
-            }          
+            }
             int TemAddCount = 0;                         //记录操作所影响的记录数
             for (int t = 0; t < _ISD.Count; t++)         //循环添加数据
             {
@@ -885,12 +923,16 @@ namespace UI
             }
             if (TemAddCount >= 1)                         //判断是否添加成功
             {
+                //添加检测标准 2016-11-8
+                _M_InspectConfig.SavaInspectStandard(txb_OrderID.Text, _ISD.ToList());
+
+
                 My_MessageBox.My_MessageBox_Message("数据添加成功！\r\n " + _TemMessage + "\r\n共添加记录 " + TemAddCount + "");
-                 _ISD.Clear();  //清空检测标准列表
+                _ISD.Clear();  //清空检测标准列表
                 _TemMessage = "";
             }
             else { My_MessageBox.My_MessageBox_Erry("数据添加失败！"); }
-             
+
         }
         //
         //移除
@@ -909,11 +951,11 @@ namespace UI
         private void dgv_Inspect_Standard_Info_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             try
-            {              
+            {
                 Maticsoft.Model.InspectStandard _Tem = (Maticsoft.Model.InspectStandard)dgv_Inspect_Standard_Info.SelectedItem;
                 txb_InspectStandard_OrderID.Text = _Tem.OrderID;
                 cmb_InspectStandardType.Text = _Tem.Type;
-                txb_IL_Max.Text = _Tem.IL_Max;             
+                txb_IL_Max.Text = _Tem.IL_Max;
                 txb_IL_Min.Text = _Tem.IL_Min;
                 txb_RL_Max.Text = _Tem.RL_Max;
                 txb_RL_Min.Text = _Tem.RL_Min;
@@ -935,7 +977,7 @@ namespace UI
         /// </summary>
         private void InspectAdd()
         {
-             _ISD.Add(new Maticsoft.Model.InspectStandard()
+            _ISD.Add(new Maticsoft.Model.InspectStandard()
             {
                 OrderID = txb_InspectStandard_OrderID.Text,
                 Type = cmb_InspectStandardType.Text,
@@ -953,8 +995,8 @@ namespace UI
                 AO_Max = txb_AO_Max.Text,
                 AO_Min = txb_AO_Min.Text
             }
-            );
-             
+           );
+
         }
 
         /// <summary>
@@ -970,7 +1012,7 @@ namespace UI
             {
                 return false;
             }
-            else { return true; }            
+            else { return true; }
         }
         /// <summary>
         /// 清空输入文本框
@@ -993,37 +1035,49 @@ namespace UI
             txb_AO_Max.Text = "";
             txb_AO_Min.Text = "";
         }
-        
+
         #endregion
 
 
-        
+
+        public void syncDataExtracted()
+        {
+            var temOrderList = _M_WorkOrder.GetList("");  //获取现存的所有工单
+            var _M_OrderLabSet = new OrderLabSet();
+            var _M_OrderLabContent = new LabInfo();
+
+            foreach (DataRow row in temOrderList.Tables[0].Rows)
+            {
+                var mProductInfo = new Maticsoft.Model.InspectConfigProduct();
+                string mOrderId = row["OrderID"].ToString();
+
+                //保存基本信息
+                mProductInfo.ProductId = _M_WorkOrder.GetProductId(mOrderId);
+                mProductInfo.ProductName = row["ProductName"].ToString();
+                mProductInfo.Model = row["Model"].ToString();
+                mProductInfo.InspectMethod = row["InspectMethod"].ToString();
+                mProductInfo.InspectType = row["InspectType"].ToString();
+
+                _M_InspectConfig.SavaBaseInspectConfigInfo(mOrderId, mProductInfo);
+
+                //保存打印信息
+                var labname = _M_OrderLabSet.GetModelBy(mOrderId);
+                mProductInfo.LabelName = labname?.LabName;
+                var labContentLsit = _M_OrderLabContent.GetModelList("Lab_ID = '" + labname?.Lab_ID + "'");
+
+                _M_InspectConfig.SavaPrintConfig(mOrderId, labname?.LabName, labContentLsit);
+
+                //保存检测信息
+                var inspectStandardList = _M_InspectStandard.GetModelList(mOrderId).ToList();
+                _M_InspectConfig.SavaInspectStandard(mOrderId, inspectStandardList);
+
+                var tem = _M_InspectConfig.GetInspectConfigBy(mOrderId);
 
 
-        
-       
-
-        
-
-        
-        
-        
-
-        
-
-        
-
-
-      
-
-       
-
-     
-
-       
-        
-       
-
-                         
+                 
+            }
+            MessageBox.Show("好");
+        }
     }
 }
+

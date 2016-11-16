@@ -28,7 +28,7 @@ namespace Maticsoft.DAL
 	{
 		public CustomersData()
 		{}
-        DbHelperSQL dbs = new DbHelperSQL();
+		DbHelperSQL dbs = new DbHelperSQL();
 		#region  BasicMethod
 
 		/// <summary>

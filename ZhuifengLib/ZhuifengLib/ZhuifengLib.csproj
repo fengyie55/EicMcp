@@ -76,6 +76,7 @@
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -90,6 +91,7 @@
   <ItemGroup>
     <Compile Include="ClsFtp.cs" />
     <Compile Include="ControlsVerify.cs" />
+    <Compile Include="EntityString.cs" />
     <Compile Include="Excel\ExcelHelper.cs" />
     <Compile Include="ExtensionFiles\ExtensionMethod.cs" />
     <Compile Include="GetIP.cs" />

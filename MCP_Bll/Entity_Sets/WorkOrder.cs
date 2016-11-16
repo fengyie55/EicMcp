@@ -11,68 +11,78 @@ namespace Maticsoft.BLL
 	{
 		private readonly Maticsoft.DAL.WorkOrder dal=new Maticsoft.DAL.WorkOrder();
 		
-        /// <summary>
-        /// 获取工单须发料件
-        /// </summary>
-        /// <param name="OrderID">512-1311001</param>
-        /// <returns></returns>
-        public DataSet GetOrderMaterial(string OrderID)
-        {
-            return dal.GetOrderMaterial(OrderID);
-        }
+		/// <summary>
+		/// 获取工单须发料件
+		/// </summary>
+		/// <param name="OrderID">512-1311001</param>
+		/// <returns></returns>
+		public DataSet GetOrderMaterial(string OrderID)
+		{
+			return dal.GetOrderMaterial(OrderID);
+		}
 
-        /// <summary>
-        /// 获取工单信息
-        /// </summary>
-        /// <param name="OrderID">512-1311001</param>
-        /// <returns></returns>
-        public DataSet GetOrderInfo(string OrderID)
-        {
-            return dal.GetOrderInfo(OrderID);
-        }
+		/// <summary>
+		/// 获取工单信息
+		/// </summary>
+		/// <param name="OrderID">512-1311001</param>
+		/// <returns></returns>
+		public DataSet GetOrderInfo(string OrderID)
+		{
+			return dal.GetOrderInfo(OrderID);
+		}
+
+		/// <summary>
+		/// 获取产品品号
+		/// </summary>
+		/// <param name="orderId"></param>
+		/// <returns></returns>
+		public string GetProductId(string orderId)
+		{
+			return dal.GetProductId(orderId);
+		}
 		#region  BasicMethod
 
-        /// <summary>
-        /// 获取记录总数
-        /// </summary>
-        /// <param name="orderID">工单单号</param>
-        /// <returns></returns>
-        public int GetCount(string orderID)
-        {
-            return dal.GetRecordCount("OrderID='" + orderID + "'");
-            
-        }
+		/// <summary>
+		/// 获取记录总数
+		/// </summary>
+		/// <param name="orderID">工单单号</param>
+		/// <returns></returns>
+		public int GetCount(string orderID)
+		{
+			return dal.GetRecordCount("OrderID='" + orderID + "'");
+			
+		}
 
-         /// <summary>
-        /// 获取工单的总批量
-        /// </summary>
-        /// <param name="_OrderList"></param>
-        /// <returns></returns>
-        public double GetOrderListCount(string[] _OrderList)
-        {
-            return dal.GetOrderListCount(_OrderList);
-        }
+		 /// <summary>
+		/// 获取工单的总批量
+		/// </summary>
+		/// <param name="_OrderList"></param>
+		/// <returns></returns>
+		public double GetOrderListCount(string[] _OrderList)
+		{
+			return dal.GetOrderListCount(_OrderList);
+		}
 
-        /// <summary>
-        /// 获取工单列表
-        /// </summary>
-        /// <param name="sqlWhere"></param>
-        /// <returns></returns>
-        public string[] GetOrdList(string sqlWhere) 
-        {
-            List<Model.WorkOrder> _TemOrderList = GetModelList(sqlWhere);
-            string[] _OrderList = new string[_TemOrderList.Count];
-            int t = 0;
-            foreach(Model.WorkOrder _Order in _TemOrderList)
-            {
-                if(_Order != null)
-                {
-                    _OrderList[t] = _Order.OrderID;
-                    t++;
-                }
-            }
-            return _OrderList;
-        }
+		/// <summary>
+		/// 获取工单列表
+		/// </summary>
+		/// <param name="sqlWhere"></param>
+		/// <returns></returns>
+		public string[] GetOrdList(string sqlWhere) 
+		{
+			List<Model.WorkOrder> _TemOrderList = GetModelList(sqlWhere);
+			string[] _OrderList = new string[_TemOrderList.Count];
+			int t = 0;
+			foreach(Model.WorkOrder _Order in _TemOrderList)
+			{
+				if(_Order != null)
+				{
+					_OrderList[t] = _Order.OrderID;
+					t++;
+				}
+			}
+			return _OrderList;
+		}
 
 
 		/// <summary>
@@ -96,7 +106,7 @@ namespace Maticsoft.BLL
 		/// </summary>
 		public bool Delete(string _orderID)
 		{
-            
+			
 			//该表无主键信息，请自定义主键/条件字段
 			return dal.Delete(_orderID);
 		}

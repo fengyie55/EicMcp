@@ -29,7 +29,7 @@ namespace Maticsoft.DAL
 		{}
 		#region  BasicMethod
 
-        DbHelperSQL dbs = new DbHelperSQL();
+		DbHelperSQL dbs = new DbHelperSQL();
 		/// <summary>
 		/// 是否存在该记录
 		/// </summary>
@@ -206,32 +206,57 @@ namespace Maticsoft.DAL
 			}
 		}
 
-        /// <summary>
-        /// 得到一个对象实体
-        /// </summary>
-        public Maticsoft.Model.OrderLabSet GetModel(string BatchNo)
-        {
+		/// <summary>
+		/// 得到一个对象实体
+		/// </summary>
+		public Maticsoft.Model.OrderLabSet GetModel(string BatchNo)
+		{
 
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append("select  top 1 OrderID,BachNo,LabName,Lab_ID,Count from tb_OrderLabSet ");
-            strSql.Append(" where BachNo=@BachNo");
-            SqlParameter[] parameters = {
+			StringBuilder strSql = new StringBuilder();
+			strSql.Append("select  top 1 OrderID,BachNo,LabName,Lab_ID,Count from tb_OrderLabSet ");
+			strSql.Append(" where BachNo=@BachNo");
+			SqlParameter[] parameters = {
 					new SqlParameter("@BachNo", SqlDbType.VarChar,50)
 			};
-            parameters[0].Value = BatchNo;
+			parameters[0].Value = BatchNo;
 
-            Maticsoft.Model.OrderLabSet model = new Maticsoft.Model.OrderLabSet();
-            DataSet ds = dbs.Query(strSql.ToString(), parameters);
-            if (ds.Tables[0].Rows.Count > 0)
-            {
-                return DataRowToModel(ds.Tables[0].Rows[0]);
-            }
-            else
-            {
-                return null;
-            }
-        }
+			Maticsoft.Model.OrderLabSet model = new Maticsoft.Model.OrderLabSet();
+			DataSet ds = dbs.Query(strSql.ToString(), parameters);
+			if (ds.Tables[0].Rows.Count > 0)
+			{
+				return DataRowToModel(ds.Tables[0].Rows[0]);
+			}
+			else
+			{
+				return null;
+			}
+		}
 
+		/// <summary>
+		/// 得到一个对象实体
+		/// </summary>
+		public Maticsoft.Model.OrderLabSet GetModelBy(string orderId)
+		{
+
+			StringBuilder strSql = new StringBuilder();
+			strSql.Append("select  top 1 OrderID,BachNo,LabName,Lab_ID,Count from tb_OrderLabSet ");
+			strSql.Append(" where OrderID=@OrderID");
+			SqlParameter[] parameters = {
+					new SqlParameter("@OrderID", SqlDbType.VarChar,50)
+			};
+			parameters[0].Value = orderId;
+
+			Maticsoft.Model.OrderLabSet model = new Maticsoft.Model.OrderLabSet();
+			DataSet ds = dbs.Query(strSql.ToString(), parameters);
+			if (ds.Tables[0].Rows.Count > 0)
+			{
+				return DataRowToModel(ds.Tables[0].Rows[0]);
+			}
+			else
+			{
+				return null;
+			}
+		}
 
 		/// <summary>
 		/// 得到一个对象实体
@@ -280,21 +305,21 @@ namespace Maticsoft.DAL
 			return dbs.Query(strSql.ToString());
 		}
 
-        /// <summary>
-        /// 获取标签设置信息
-        /// </summary>
-        public DataSet GetLabInfo(string strWhere)
-        {
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append("SELECT tb_OrderLabSet.OrderID, tb_OrderLabSet.BachNo, tb_OrderLabSet.LabName, tb_OrderLabSet.Count, tb_LabInfo.Name, tb_LabInfo.Value");
-            strSql.Append(" FROM tb_LabInfo LEFT OUTER JOIN tb_OrderLabSet ON tb_LabInfo.Lab_ID = tb_OrderLabSet.Lab_ID");
+		/// <summary>
+		/// 获取标签设置信息
+		/// </summary>
+		public DataSet GetLabInfo(string strWhere)
+		{
+			StringBuilder strSql = new StringBuilder();
+			strSql.Append("SELECT tb_OrderLabSet.OrderID, tb_OrderLabSet.BachNo, tb_OrderLabSet.LabName, tb_OrderLabSet.Count, tb_LabInfo.Name, tb_LabInfo.Value");
+			strSql.Append(" FROM tb_LabInfo LEFT OUTER JOIN tb_OrderLabSet ON tb_LabInfo.Lab_ID = tb_OrderLabSet.Lab_ID");
 
-            if (strWhere.Trim() != "")
-            {
-                strSql.Append(" where " + strWhere);
-            }
-            return dbs.Query(strSql.ToString());
-        }
+			if (strWhere.Trim() != "")
+			{
+				strSql.Append(" where " + strWhere);
+			}
+			return dbs.Query(strSql.ToString());
+		}
 		/// <summary>
 		/// 获得前几行数据
 		/// </summary>

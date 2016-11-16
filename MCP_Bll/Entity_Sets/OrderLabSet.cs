@@ -87,14 +87,20 @@ namespace Maticsoft.BLL
 		}
 
 
-        /// <summary>
-        /// 得到一个对象实体
-        /// </summary>
-        public Maticsoft.Model.OrderLabSet GetModel(string BatchNo)
-        {
+		/// <summary>
+		/// 得到一个对象实体
+		/// </summary>
+		public Maticsoft.Model.OrderLabSet GetModel(string BatchNo)
+		{
 
-            return dal.GetModel(BatchNo);
-        }
+			return dal.GetModel(BatchNo);
+		}
+
+
+		public Model.OrderLabSet GetModelBy(string orderId)
+		{
+			return dal.GetModelBy(orderId);
+		}
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
@@ -127,13 +133,13 @@ namespace Maticsoft.BLL
 			return dal.GetList(strWhere);
 		}
 
-         /// <summary>
-        /// 获取标签设置信息
-        /// </summary>
-        public DataSet GetLabInfo(string strWhere)
-        {
-            return dal.GetLabInfo(strWhere);
-        }
+		 /// <summary>
+		/// 获取标签设置信息
+		/// </summary>
+		public DataSet GetLabInfo(string strWhere)
+		{
+			return dal.GetLabInfo(strWhere);
+		}
 
 		/// <summary>
 		/// 获得前几行数据

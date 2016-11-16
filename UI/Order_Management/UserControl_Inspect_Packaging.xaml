@@ -7,45 +7,45 @@
              mc:Ignorable="d" FontSize="12"            
              d:DesignHeight="640" d:DesignWidth="1040" Background="{StaticResource Setting_Ctoragle_Background}" Loaded="DocumentContent_Loaded">
     <Grid Background="{StaticResource DocumentContent_Background}">
-    	<Grid.ColumnDefinitions>
-    		<ColumnDefinition Width="67"/>
-    		<ColumnDefinition Width="157"/>
-    		<ColumnDefinition Width="0"/>
-    		<ColumnDefinition Width="5"/>
-    		<ColumnDefinition Width="65"/>
-    		<ColumnDefinition Width="150"/>
-    		<ColumnDefinition Width="80"/>
-    		<ColumnDefinition Width="80"/>
-    		<ColumnDefinition Width="150"/>
-    		<ColumnDefinition Width="280"/>
-    		<ColumnDefinition Width="5*" />
-    	</Grid.ColumnDefinitions>
-    	<Grid.RowDefinitions>
-    		<RowDefinition Height="32"/>
-    		<RowDefinition Height="2"/>
-    		<RowDefinition Height="25"/>
-    		<RowDefinition Height="25"/>
-    		<RowDefinition Height="25"/>
-    		<RowDefinition Height="25"/>
-    		<RowDefinition Height="25"/>
-    		<RowDefinition Height="25"/>
-    		<RowDefinition Height="25"/>
-    		<RowDefinition Height="35"/>
-    		<RowDefinition Height="35"/>
-    		<RowDefinition Height="25"/>
-			<RowDefinition Height="25"/>
-    		<RowDefinition Height="25"/>
-    		<RowDefinition Height="25"/>
-    		<RowDefinition Height="25"/>
-    		<RowDefinition Height="25"/>
-    		<RowDefinition Height="25"/>
-			<RowDefinition Height="25"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="67"/>
+            <ColumnDefinition Width="157"/>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="65"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="5*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
             <RowDefinition/>
-    	</Grid.RowDefinitions>
+        </Grid.RowDefinitions>
         <Border BorderBrush="Silver" BorderThickness="1" x:Name="border1" Background="{StaticResource Border_Background}" Margin="0" Grid.ColumnSpan="10" d:LayoutOverrides="Height">
-        	  <Label FontSize="15" Foreground="White" Name="lab_Title" Margin="0,0,109,0" VerticalAlignment="Center" HorizontalAlignment="Left">订单中心——多芯检测</Label>      
-		</Border>
+            <Label FontSize="15" Foreground="White" Name="lab_Title" Margin="0,0,109,0" VerticalAlignment="Center" HorizontalAlignment="Left">订单中心——多芯检测</Label>
+        </Border>
         <Label Content="PASS" x:Name="lab_Result" FontSize="64" FontWeight="Normal" Foreground="#FF3A9D52" FontFamily="Simsun (Founder Extended)" Margin="123,24,0,0.656" Grid.Column="9" Grid.Row="2" d:LayoutOverrides="HorizontalAlignment, Height" Grid.RowSpan="4" Background="{DynamicResource OutsideFontColor}" />
         <Label Content='3D结果:' Margin="0,20,0,7" x:Name='lab_Note_Result_3D' Grid.Column="4" Grid.Row="3" d:LayoutOverrides="Width" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.RowSpan="2" />
         <Label Content='Exfo结果:' Margin="0" x:Name='lab_Note_Result_Exfo' Grid.Column="4" Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Center" />
@@ -71,31 +71,31 @@
         <DataGrid x:Name="dgv_Data_3D" Grid.ColumnSpan="6" Grid.Column="4" Grid.Row="7" Grid.RowSpan="8" Margin="0"/>
         <DataGrid x:Name="dgv_Data_Exfo" Grid.ColumnSpan="6" Grid.Column="4" Margin="0" Grid.Row="16" Grid.RowSpan="9"/>
         <TextBlock Text='Exfo数据' FontSize="{DynamicResource TitleFont}" FontWeight="Bold" Height="16" Grid.ColumnSpan="6" TextOptions.TextFormattingMode="Display" Foreground="White" Grid.Column="4" Grid.Row="15" VerticalAlignment="Bottom" Margin="0,0,1,4">
-        	<TextBlock.Background>
-        		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-        			<GradientStop Color="Black" Offset="0"/>
-        			<GradientStop Color="#FF599ABC" Offset="{DynamicResource {x:Static SystemParameters.BorderWidthKey}}"/>
-        		</LinearGradientBrush>
-        	</TextBlock.Background>
+            <TextBlock.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF599ABC" Offset="{DynamicResource {x:Static SystemParameters.BorderWidthKey}}"/>
+                </LinearGradientBrush>
+            </TextBlock.Background>
         </TextBlock>
-        <TextBlock Text='信息查询' Margin="2,0,4,3.5" FontSize="{DynamicResource TitleFont}" FontWeight="Bold" Grid.ColumnSpan="2" TextOptions.TextFormattingMode="Display" Foreground="White" Grid.Row="15" VerticalAlignment="Bottom" Height="16" >
-        	<TextBlock.Background>
-        		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-        			<GradientStop Color="Black" Offset="0"/>
-        			<GradientStop Color="#FF599ABC" Offset="{DynamicResource {x:Static SystemParameters.BorderWidthKey}}"/>
-        		</LinearGradientBrush>
-        	</TextBlock.Background>
+        <TextBlock Text='信息查询' Margin="4,0,2,3" FontSize="{DynamicResource TitleFont}" FontWeight="Bold" Grid.ColumnSpan="2" TextOptions.TextFormattingMode="Display" Foreground="White" Grid.Row="18" VerticalAlignment="Bottom" Height="16" Visibility="Hidden" >
+            <TextBlock.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF599ABC" Offset="{DynamicResource {x:Static SystemParameters.BorderWidthKey}}"/>
+                </LinearGradientBrush>
+            </TextBlock.Background>
         </TextBlock>
-        <TextBox x:Name="txb_BarCode_Search_Order" Grid.Column="1" Margin="0,24,20,0" Grid.Row="15" TextWrapping="Wrap" Grid.RowSpan="2" KeyUp="txb_BarCode_Search_Order_KeyUp" IsEnabled="False" />
+        <TextBox x:Name="txb_BarCode_Search_Order" Grid.Column="1" Margin="0,0,20,0" Grid.Row="19" TextWrapping="Wrap" KeyUp="txb_BarCode_Search_Order_KeyUp" Height="19" Visibility="Hidden" />
         <CheckBox x:Name="ckb_OrderID" Content="CheckBox" Grid.Column="1" HorizontalAlignment="Right" Margin="0,6.5,2,3" Grid.Row="2" Width="13.292" Checked="ckb_OrderID_Checked" />
         <CheckBox x:Name="ckb_BatchNo" Content="CheckBox" Grid.Column="1" HorizontalAlignment="Right" Margin="0,5.657,2,3.843" Grid.Row="3" Width="13.292" Checked="ckb_BatchNo_Checked" />
         <TextBlock Text='3D数据' FontSize="{DynamicResource TitleFont}" FontWeight="Bold" Height="16" Grid.ColumnSpan="6" TextOptions.TextFormattingMode="Display" Foreground="White" Grid.Column="4" Grid.Row="6" VerticalAlignment="Bottom" Margin="0,0,1,2">
-        	<TextBlock.Background>
-        		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-        			<GradientStop Color="Black" Offset="0" />
-        			<GradientStop Color="#FF599ABC" Offset="{DynamicResource {x:Static SystemParameters.BorderWidthKey}}" />
-        		</LinearGradientBrush>
-        	</TextBlock.Background></TextBlock>
+            <TextBlock.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0" />
+                    <GradientStop Color="#FF599ABC" Offset="{DynamicResource {x:Static SystemParameters.BorderWidthKey}}" />
+                </LinearGradientBrush>
+            </TextBlock.Background></TextBlock>
         <TextBox Grid.Column='5' Grid.Row='2' Height='23' Name='txb_Pigtailsn' VerticalAlignment='Top' PreviewKeyDown='txb_Pigtailsn_PreviewKeyDown' d:LayoutOverrides="GridBox" />
         <TextBox Grid.Column='1' Grid.Row='2' Height='23' HorizontalAlignment='Left' Name='txb_Orderid' Width="137" PreviewKeyDown='txb_Orderid_PreviewKeyDown' Margin="0,1" />
         <TextBlock Margin="0" Grid.Row="3" Text="批号：" HorizontalAlignment="Right" FontSize="13.333" d:LayoutOverrides="Height" VerticalAlignment="Center"/>
@@ -115,7 +115,20 @@
         <Button Content="批量刷码" Grid.Column="9" Height="23" HorizontalAlignment="Left" Margin="6,5,0,0" Name="button1" VerticalAlignment="Top" Width="53" Click="button1_Click" Visibility="Hidden" />
         <Label Content="Label" Grid.Column="9" Height="23" HorizontalAlignment="Left" Margin="65,5,0,0" Name="lab_Count_Show" VerticalAlignment="Top" Width="52" Visibility="Hidden" />
         <Label Content="0" Grid.Column="6" Grid.RowSpan="3" Height="28" HorizontalAlignment="Left" Margin="69,31,0,0" Name="lab_NotPrintCount" VerticalAlignment="Top" Foreground="#FF0A21FF" FontSize="18" FontWeight="Bold" Width="32" Grid.ColumnSpan="2" />
-        <Label Content="条码F工单:" Margin="0,1" x:Name="label8_Copy6" Grid.Row="16" HorizontalAlignment="Right" FontSize="12" VerticalAlignment="Center" Width="67" />
+        <Label Content="条码F工单:" Margin="0,2,155,135" x:Name="label8_Copy6" Grid.Row="19" HorizontalAlignment="Right" FontSize="12" VerticalAlignment="Center" Width="67" Grid.ColumnSpan="2" Grid.RowSpan="2" Visibility="Hidden" />
         <TextBox Grid.Column="1" Grid.Row="4" Height="24" HorizontalAlignment="Left" Name="txb_LabName" VerticalAlignment="Top" Width="137" FontSize="9" IsEnabled="False" />
+        <TextBlock Text='批量检测' Margin="4,0,2,4" FontSize="{DynamicResource TitleFont}" FontWeight="Bold" Grid.ColumnSpan="2" TextOptions.TextFormattingMode="Display" Foreground="White" Grid.Row="15" VerticalAlignment="Bottom" Height="16" >
+            <TextBlock.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF599ABC" Offset="{DynamicResource {x:Static SystemParameters.BorderWidthKey}}"/>
+                </LinearGradientBrush>
+            </TextBlock.Background>
+        </TextBlock>
+        <Label Content="开始条码:" Margin="0,1,0,0" x:Name="label8_Copy" Grid.Row="16" HorizontalAlignment="Right" FontSize="12" VerticalAlignment="Center" />
+        <TextBox x:Name="txb_Batch_StartSn" Grid.Column="1" Margin="0,0,20,0" Grid.Row="16" TextWrapping="Wrap" Height="19" />
+        <Label Content="批量:" x:Name="label8_Copy2" Grid.Row="17" FontSize="12" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.RowSpan="2" RenderTransformOrigin="0.514,0.438" />
+        <TextBox x:Name="txb_Batch_Count"  Grid.Column="1" Margin="0,0,104,0" Grid.Row="17" TextWrapping="Wrap"  VerticalAlignment="Center" Height="19" />
+        <Button x:Name="btn_Batch_Print" Content="打印" Grid.Column="1" Grid.Row="17" Height="23" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="61" Margin="76,0,20,0" Click="btn_Batch_Print_Click" />
     </Grid>
 </ad:DocumentContent>

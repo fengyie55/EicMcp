@@ -13,9 +13,9 @@ namespace Maticsoft.DAL
 		public ConsumableInfo()
 		{}
 		#region  Method
-        DbHelperSQL dbs = new DbHelperSQL();
+		DbHelperSQL dbs = new DbHelperSQL();
 
-        
+		
 
 
 		/// <summary>
@@ -34,40 +34,40 @@ namespace Maticsoft.DAL
 			return dbs.Exists(strSql.ToString(),parameters);
 		}
 
-        /// <summary>
-        /// 获取字段不重复记录
-        /// </summary>
-        /// <param name="_Value">字段名</param>
-        /// <returns></returns>
-        public DataSet Get_Distinct_List(string _Value)
-        {
-            DataSet ds = new DataSet();
-            try
-            {
-                if (_Value.Trim() != "")
-                {
-                    StringBuilder strSql = new StringBuilder();
-                    strSql.Append(" SELECT DISTINCT ");
-                    strSql.Append(_Value);
-                    strSql.Append(" FROM tb_ConsumableInfo ");
-                    ds = dbs.Query(strSql.ToString());
-                }
-            }
-            catch { ds = null; };
-            return ds;
-        }
+		/// <summary>
+		/// 获取字段不重复记录
+		/// </summary>
+		/// <param name="_Value">字段名</param>
+		/// <returns></returns>
+		public DataSet Get_Distinct_List(string _Value)
+		{
+			DataSet ds = new DataSet();
+			try
+			{
+				if (_Value.Trim() != "")
+				{
+					StringBuilder strSql = new StringBuilder();
+					strSql.Append(" SELECT DISTINCT ");
+					strSql.Append(_Value);
+					strSql.Append(" FROM tb_ConsumableInfo ");
+					ds = dbs.Query(strSql.ToString());
+				}
+			}
+			catch { ds = null; };
+			return ds;
+		}
 
-        /// <summary>
-        /// 获取用于新增加耗材的编号
-        /// </summary>
-        /// <returns></returns>
-        public string GetMaxID()
-        {
-            DataSet ds = new DataSet();
-            string _sql = "SELECT TOP (1) SUBSTRING(C_Barcode, 4, 9) + 1 AS MaxNum FROM tb_ConsumableInfo ORDER BY Csm_ID DESC";
-            ds = dbs.Query(_sql);
-            return "ECH" + ds.Tables[0].Rows[0]["MaxNum"].ToString();
-        }
+		/// <summary>
+		/// 获取用于新增加耗材的编号
+		/// </summary>
+		/// <returns></returns>
+		public string GetMaxID()
+		{
+			DataSet ds = new DataSet();
+			string _sql = "SELECT TOP (1) SUBSTRING(C_Barcode, 4, 9) + 1 AS MaxNum FROM tb_ConsumableInfo ORDER BY Csm_ID DESC";
+			ds = dbs.Query(_sql);
+			return "ECH" + ds.Tables[0].Rows[0]["MaxNum"].ToString();
+		}
 
 		/// <summary>
 		/// 增加一条数据
@@ -343,12 +343,12 @@ namespace Maticsoft.DAL
 				{
 					model.C_Remarks=ds.Tables[0].Rows[0]["C_Remarks"].ToString();
 				}
-                //通过计算得出当前库存
-                ConsumableReceive _M_Re = new ConsumableReceive();
-                ConsumableStorage _M_St = new ConsumableStorage();
-                double _storageCount = _M_St.Get_Stock(model.C_Barcode);
-                double _receiveCount = _M_Re.Get_Stock(model.C_Barcode);
-                model.Stock = (_storageCount - _receiveCount).ToString();
+				//通过计算得出当前库存
+				ConsumableReceive _M_Re = new ConsumableReceive();
+				ConsumableStorage _M_St = new ConsumableStorage();
+				double _storageCount = _M_St.Get_Stock(model.C_Barcode);
+				double _receiveCount = _M_Re.Get_Stock(model.C_Barcode);
+				model.Stock = (_storageCount - _receiveCount).ToString();
 
 				return model;
 			}
@@ -358,114 +358,114 @@ namespace Maticsoft.DAL
 			}
 		}
 
-        /// <summary>
-        /// 得到一个对象实体
-        /// </summary>
-        public Maticsoft.Model.ConsumableInfo GetModel(string Csm_BarCode)
-        {
+		/// <summary>
+		/// 得到一个对象实体
+		/// </summary>
+		public Maticsoft.Model.ConsumableInfo GetModel(string Csm_BarCode)
+		{
 
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append("select  top 1 Csm_ID,C_Type,C_Barcode,C_Name,C_AliasName,C_Model,C_Address,C_Function,C_Lifetime,C_LifeUnit,C_SafeStock,C_Unit,C_Picture,C_Manufacturer,C_Official_Website,C_Tel,C_After_Sale,C_PurchasCycle,C_Remarks from tb_ConsumableInfo ");
-            strSql.Append(" where C_Barcode=@C_Barcode");
-            SqlParameter[] parameters = {
+			StringBuilder strSql = new StringBuilder();
+			strSql.Append("select  top 1 Csm_ID,C_Type,C_Barcode,C_Name,C_AliasName,C_Model,C_Address,C_Function,C_Lifetime,C_LifeUnit,C_SafeStock,C_Unit,C_Picture,C_Manufacturer,C_Official_Website,C_Tel,C_After_Sale,C_PurchasCycle,C_Remarks from tb_ConsumableInfo ");
+			strSql.Append(" where C_Barcode=@C_Barcode");
+			SqlParameter[] parameters = {
 					new SqlParameter("@C_Barcode", SqlDbType.VarChar)
 			};
-            parameters[0].Value = Csm_BarCode;
+			parameters[0].Value = Csm_BarCode;
 
-            Maticsoft.Model.ConsumableInfo model = new Maticsoft.Model.ConsumableInfo();
-            DataSet ds = dbs.Query(strSql.ToString(), parameters);
-            if (ds.Tables[0].Rows.Count > 0)
-            {
-                if (ds.Tables[0].Rows[0]["Csm_ID"] != null && ds.Tables[0].Rows[0]["Csm_ID"].ToString() != "")
-                {
-                    model.Csm_ID = decimal.Parse(ds.Tables[0].Rows[0]["Csm_ID"].ToString());
-                }
-                if (ds.Tables[0].Rows[0]["C_Type"] != null && ds.Tables[0].Rows[0]["C_Type"].ToString() != "")
-                {
-                    model.C_Type = ds.Tables[0].Rows[0]["C_Type"].ToString();
-                }
-                if (ds.Tables[0].Rows[0]["C_Barcode"] != null && ds.Tables[0].Rows[0]["C_Barcode"].ToString() != "")
-                {
-                    model.C_Barcode = ds.Tables[0].Rows[0]["C_Barcode"].ToString();
-                }
-                if (ds.Tables[0].Rows[0]["C_Name"] != null && ds.Tables[0].Rows[0]["C_Name"].ToString() != "")
-                {
-                    model.C_Name = ds.Tables[0].Rows[0]["C_Name"].ToString();
-                }
-                if (ds.Tables[0].Rows[0]["C_AliasName"] != null && ds.Tables[0].Rows[0]["C_AliasName"].ToString() != "")
-                {
-                    model.C_AliasName = ds.Tables[0].Rows[0]["C_AliasName"].ToString();
-                }
-                if (ds.Tables[0].Rows[0]["C_Model"] != null && ds.Tables[0].Rows[0]["C_Model"].ToString() != "")
-                {
-                    model.C_Model = ds.Tables[0].Rows[0]["C_Model"].ToString();
-                }
-                if (ds.Tables[0].Rows[0]["C_Address"] != null && ds.Tables[0].Rows[0]["C_Address"].ToString() != "")
-                {
-                    model.C_Address = ds.Tables[0].Rows[0]["C_Address"].ToString();
-                }
-                if (ds.Tables[0].Rows[0]["C_Function"] != null && ds.Tables[0].Rows[0]["C_Function"].ToString() != "")
-                {
-                    model.C_Function = ds.Tables[0].Rows[0]["C_Function"].ToString();
-                }
-                if (ds.Tables[0].Rows[0]["C_Lifetime"] != null && ds.Tables[0].Rows[0]["C_Lifetime"].ToString() != "")
-                {
-                    model.C_Lifetime = ds.Tables[0].Rows[0]["C_Lifetime"].ToString();
-                }
-                if (ds.Tables[0].Rows[0]["C_LifeUnit"] != null && ds.Tables[0].Rows[0]["C_LifeUnit"].ToString() != "")
-                {
-                    model.C_LifeUnit = ds.Tables[0].Rows[0]["C_LifeUnit"].ToString();
-                }
-                if (ds.Tables[0].Rows[0]["C_SafeStock"] != null && ds.Tables[0].Rows[0]["C_SafeStock"].ToString() != "")
-                {
-                    model.C_SafeStock = ds.Tables[0].Rows[0]["C_SafeStock"].ToString();
-                }
-                if (ds.Tables[0].Rows[0]["C_Unit"] != null && ds.Tables[0].Rows[0]["C_Unit"].ToString() != "")
-                {
-                    model.C_Unit = ds.Tables[0].Rows[0]["C_Unit"].ToString();
-                }
-                if (ds.Tables[0].Rows[0]["C_Picture"] != null && ds.Tables[0].Rows[0]["C_Picture"].ToString() != "")
-                {
-                    model.C_Picture = ds.Tables[0].Rows[0]["C_Picture"].ToString();
-                }
-                if (ds.Tables[0].Rows[0]["C_Manufacturer"] != null && ds.Tables[0].Rows[0]["C_Manufacturer"].ToString() != "")
-                {
-                    model.C_Manufacturer = ds.Tables[0].Rows[0]["C_Manufacturer"].ToString();
-                }
-                if (ds.Tables[0].Rows[0]["C_Official_Website"] != null && ds.Tables[0].Rows[0]["C_Official_Website"].ToString() != "")
-                {
-                    model.C_Official_Website = ds.Tables[0].Rows[0]["C_Official_Website"].ToString();
-                }
-                if (ds.Tables[0].Rows[0]["C_Tel"] != null && ds.Tables[0].Rows[0]["C_Tel"].ToString() != "")
-                {
-                    model.C_Tel = ds.Tables[0].Rows[0]["C_Tel"].ToString();
-                }
-                if (ds.Tables[0].Rows[0]["C_After_Sale"] != null && ds.Tables[0].Rows[0]["C_After_Sale"].ToString() != "")
-                {
-                    model.C_After_Sale = ds.Tables[0].Rows[0]["C_After_Sale"].ToString();
-                }
-                if (ds.Tables[0].Rows[0]["C_PurchasCycle"] != null && ds.Tables[0].Rows[0]["C_PurchasCycle"].ToString() != "")
-                {
-                    model.C_PurchasCycle = ds.Tables[0].Rows[0]["C_PurchasCycle"].ToString();
-                }
-                if (ds.Tables[0].Rows[0]["C_Remarks"] != null && ds.Tables[0].Rows[0]["C_Remarks"].ToString() != "")
-                {
-                    model.C_Remarks = ds.Tables[0].Rows[0]["C_Remarks"].ToString();
-                }
+			Maticsoft.Model.ConsumableInfo model = new Maticsoft.Model.ConsumableInfo();
+			DataSet ds = dbs.Query(strSql.ToString(), parameters);
+			if (ds.Tables[0].Rows.Count > 0)
+			{
+				if (ds.Tables[0].Rows[0]["Csm_ID"] != null && ds.Tables[0].Rows[0]["Csm_ID"].ToString() != "")
+				{
+					model.Csm_ID = decimal.Parse(ds.Tables[0].Rows[0]["Csm_ID"].ToString());
+				}
+				if (ds.Tables[0].Rows[0]["C_Type"] != null && ds.Tables[0].Rows[0]["C_Type"].ToString() != "")
+				{
+					model.C_Type = ds.Tables[0].Rows[0]["C_Type"].ToString();
+				}
+				if (ds.Tables[0].Rows[0]["C_Barcode"] != null && ds.Tables[0].Rows[0]["C_Barcode"].ToString() != "")
+				{
+					model.C_Barcode = ds.Tables[0].Rows[0]["C_Barcode"].ToString();
+				}
+				if (ds.Tables[0].Rows[0]["C_Name"] != null && ds.Tables[0].Rows[0]["C_Name"].ToString() != "")
+				{
+					model.C_Name = ds.Tables[0].Rows[0]["C_Name"].ToString();
+				}
+				if (ds.Tables[0].Rows[0]["C_AliasName"] != null && ds.Tables[0].Rows[0]["C_AliasName"].ToString() != "")
+				{
+					model.C_AliasName = ds.Tables[0].Rows[0]["C_AliasName"].ToString();
+				}
+				if (ds.Tables[0].Rows[0]["C_Model"] != null && ds.Tables[0].Rows[0]["C_Model"].ToString() != "")
+				{
+					model.C_Model = ds.Tables[0].Rows[0]["C_Model"].ToString();
+				}
+				if (ds.Tables[0].Rows[0]["C_Address"] != null && ds.Tables[0].Rows[0]["C_Address"].ToString() != "")
+				{
+					model.C_Address = ds.Tables[0].Rows[0]["C_Address"].ToString();
+				}
+				if (ds.Tables[0].Rows[0]["C_Function"] != null && ds.Tables[0].Rows[0]["C_Function"].ToString() != "")
+				{
+					model.C_Function = ds.Tables[0].Rows[0]["C_Function"].ToString();
+				}
+				if (ds.Tables[0].Rows[0]["C_Lifetime"] != null && ds.Tables[0].Rows[0]["C_Lifetime"].ToString() != "")
+				{
+					model.C_Lifetime = ds.Tables[0].Rows[0]["C_Lifetime"].ToString();
+				}
+				if (ds.Tables[0].Rows[0]["C_LifeUnit"] != null && ds.Tables[0].Rows[0]["C_LifeUnit"].ToString() != "")
+				{
+					model.C_LifeUnit = ds.Tables[0].Rows[0]["C_LifeUnit"].ToString();
+				}
+				if (ds.Tables[0].Rows[0]["C_SafeStock"] != null && ds.Tables[0].Rows[0]["C_SafeStock"].ToString() != "")
+				{
+					model.C_SafeStock = ds.Tables[0].Rows[0]["C_SafeStock"].ToString();
+				}
+				if (ds.Tables[0].Rows[0]["C_Unit"] != null && ds.Tables[0].Rows[0]["C_Unit"].ToString() != "")
+				{
+					model.C_Unit = ds.Tables[0].Rows[0]["C_Unit"].ToString();
+				}
+				if (ds.Tables[0].Rows[0]["C_Picture"] != null && ds.Tables[0].Rows[0]["C_Picture"].ToString() != "")
+				{
+					model.C_Picture = ds.Tables[0].Rows[0]["C_Picture"].ToString();
+				}
+				if (ds.Tables[0].Rows[0]["C_Manufacturer"] != null && ds.Tables[0].Rows[0]["C_Manufacturer"].ToString() != "")
+				{
+					model.C_Manufacturer = ds.Tables[0].Rows[0]["C_Manufacturer"].ToString();
+				}
+				if (ds.Tables[0].Rows[0]["C_Official_Website"] != null && ds.Tables[0].Rows[0]["C_Official_Website"].ToString() != "")
+				{
+					model.C_Official_Website = ds.Tables[0].Rows[0]["C_Official_Website"].ToString();
+				}
+				if (ds.Tables[0].Rows[0]["C_Tel"] != null && ds.Tables[0].Rows[0]["C_Tel"].ToString() != "")
+				{
+					model.C_Tel = ds.Tables[0].Rows[0]["C_Tel"].ToString();
+				}
+				if (ds.Tables[0].Rows[0]["C_After_Sale"] != null && ds.Tables[0].Rows[0]["C_After_Sale"].ToString() != "")
+				{
+					model.C_After_Sale = ds.Tables[0].Rows[0]["C_After_Sale"].ToString();
+				}
+				if (ds.Tables[0].Rows[0]["C_PurchasCycle"] != null && ds.Tables[0].Rows[0]["C_PurchasCycle"].ToString() != "")
+				{
+					model.C_PurchasCycle = ds.Tables[0].Rows[0]["C_PurchasCycle"].ToString();
+				}
+				if (ds.Tables[0].Rows[0]["C_Remarks"] != null && ds.Tables[0].Rows[0]["C_Remarks"].ToString() != "")
+				{
+					model.C_Remarks = ds.Tables[0].Rows[0]["C_Remarks"].ToString();
+				}
 
-                //通过计算得出当前库存
-                ConsumableReceive _M_Re = new ConsumableReceive();
-                ConsumableStorage _M_St = new ConsumableStorage();
-                double _storageCount = _M_St.Get_Stock(model.C_Barcode);
-                double _receiveCount = _M_Re.Get_Stock(model.C_Barcode);
-                model.Stock = (_storageCount - _receiveCount).ToString();
-                return model;
-            }
-            else
-            {
-                return null;
-            }
-        }
+				//通过计算得出当前库存
+				ConsumableReceive _M_Re = new ConsumableReceive();
+				ConsumableStorage _M_St = new ConsumableStorage();
+				double _storageCount = _M_St.Get_Stock(model.C_Barcode);
+				double _receiveCount = _M_Re.Get_Stock(model.C_Barcode);
+				model.Stock = (_storageCount - _receiveCount).ToString();
+				return model;
+			}
+			else
+			{
+				return null;
+			}
+		}
 
 
 		/// <summary>

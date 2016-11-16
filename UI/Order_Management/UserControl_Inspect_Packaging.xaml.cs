@@ -5,6 +5,11 @@ using Maticsoft.BLL;
 using System.Data;
 using System.Threading;
 using System;
+using System.Windows.Threading;
+using System.Windows;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
 
 namespace UI
 {
@@ -41,7 +46,7 @@ namespace UI
 
         int _WTT_NotPrintCount = 0;
 
-       // string _WTT_SN_One = "";
+        // string _WTT_SN_One = "";
         #endregion
 
 
@@ -73,9 +78,9 @@ namespace UI
                         _WTT_Inspect = _TemInspect;
                         lab_Title.Content = "订单中心——" + _WorkOrder.InspectMethod;
                     }
-                    else { My_MessageBox.My_MessageBox_Message("未找到工单信息！"); }        
+                    else { My_MessageBox.My_MessageBox_Message("未找到工单信息！"); }
                 }
-                else { My_MessageBox.My_MessageBox_Message("工单单号不能为空"); }           
+                else { My_MessageBox.My_MessageBox_Message("工单单号不能为空"); }
             }
         }
 
@@ -98,7 +103,7 @@ namespace UI
                 //
                 _WTT_Inspect.PackBatch = _PackBatch;
                 _WTT_Inspect.IsUpdate = true;
-               
+
 
                 if (
                     _WorkOrder.InspectMethod == Maticsoft.Model.E_InspectMethod.配组_二十四芯 ||
@@ -142,19 +147,45 @@ namespace UI
                     //获取并显示标签模板的名字
                     txb_LabName.Text = _WTT_Inspect.My_Print.LabName;
 
-                    if (_WTT_Inspect.My_Print.LabName == "海信_RD-A-ELA32983.btw"  
-                        || _WTT_Inspect.My_Print.LabName == "特恩驰跳线.btw" ||
-                        _WTT_Inspect.My_Print.LabName == "特恩驰双并.btw" ||
-                        _WTT_Inspect.My_Print.LabName == "TKF盒子标签12芯.btw"||
-                        _WTT_Inspect.My_Print.LabName == "MM海信_RD-A-ELA32983.btw" )
+                    //确定模板是否为Bt打印模板 从配置文件中读取
+                    List<string> btLabList = GetBtLabNameList();
+                    if (btLabList.Contains(_WTT_Inspect.My_Print.LabName))
                     {
                         _WTT_Inspect.My_Print.IsBtPrint = true;
                     }
                 }
-                catch (Exception ex) { My_MessageBox.My_MessageBox_Message(ex.Message); }                          
+                catch (Exception ex) { My_MessageBox.My_MessageBox_Message(ex.Message); }
             }
         }
 
+        /// <summary>
+        /// 获取Ip地址列表 从配置文件中
+        /// </summary>
+        /// <returns></returns>
+        private List<string> GetBtLabNameList()
+        {
+            try
+            {
+                //显示版本信息
+                string str = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "sysVersion.ini"; //获取当前版本号
+                ZhuifengLib.Ini.IniFiles inifiles = new ZhuifengLib.Ini.IniFiles(str);
+
+                NameValueCollection Values = new NameValueCollection();
+                inifiles.ReadSectionValues("BtLabName", Values);
+                List<string> BtLabList = new List<string>();
+                foreach (var item in Values)
+                {
+                    var itemValue = inifiles.ReadString("BtLabName", item.ToString(), "");
+                    BtLabList.Add(itemValue.Replace("\0",""));
+                }
+                return BtLabList;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.InnerException.Message);
+            }
+        }
 
         //
         //条码输入框
@@ -180,14 +211,14 @@ namespace UI
             lab_ErrList.Content = "";  // string PigtailSN;
             //如果检测类型是12芯x2 则将条码设置为 10位
             if (_WorkOrder.InspectMethod == Maticsoft.Model.E_InspectMethod.TFK十二芯检测x2 ||
-                _WorkOrder.InspectMethod == Maticsoft.Model.E_InspectMethod.TFK二十四芯检测x2 
+                _WorkOrder.InspectMethod == Maticsoft.Model.E_InspectMethod.TFK二十四芯检测x2
                 && PigtailSN.Length > 10)
             {
                 PigtailSN = PigtailSN.Substring(0, 10);
             }
             //初始化参数
-            My_Inspect.InspectEventArgs _SN = new My_Inspect.InspectEventArgs(ClientSN, PigtailSN); 
-           
+            My_Inspect.InspectEventArgs _SN = new My_Inspect.InspectEventArgs(ClientSN, PigtailSN);
+
             //进行检测
             if (_WTT_Inspect.InspectStart(_SN))
             {
@@ -243,7 +274,7 @@ namespace UI
             {
                 _WTT_FillCount_Exfo++; Info_FillCount_Exfo.Text = _WTT_FillCount_Exfo.ToString();
             }
-            if (_SN.InspectResult.Data_3D != null)   
+            if (_SN.InspectResult.Data_3D != null)
             {
                 dgv_Data_3D.ItemsSource = _SN.InspectResult.Data_3D.Tables[0].DefaultView;
             }
@@ -272,18 +303,18 @@ namespace UI
                     txb_ClientNum.Text = _WTT_Inspect.Get_Client_NotPack_PigtailNum(txb_ClientSN.Text.Trim());
                 }
                 //获取8芯配组ClientSN
-                else if (_WorkOrder.InspectMethod == Maticsoft.Model.E_InspectMethod.配组_八芯_SAMHALL||
+                else if (_WorkOrder.InspectMethod == Maticsoft.Model.E_InspectMethod.配组_八芯_SAMHALL ||
                      _WorkOrder.InspectMethod == Maticsoft.Model.E_InspectMethod.配组_二十四芯_SAMHALL
                      || _WorkOrder.InspectMethod == Maticsoft.Model.E_InspectMethod.配组_四十八芯_SAMHALL ||
                     _WorkOrder.InspectMethod == Maticsoft.Model.E_InspectMethod.配组_九十六芯_SAMHALL)
                 {
                     My_MessageBox.My_MessageBox_Message("客户编码：" + txb_ClientSN.Text + "\r\n配组完成!");
-                   
+
                     txb_ClientSN.Text = _M_SerialNumber.Get_MinSN(txb_Orderid.Text.Trim(), Maticsoft.Model.E_SerialNumber_Type.ClientSN, "");
                     //待包装线号
                     txb_ClientNum.Text = _WTT_Inspect.Get_Client_NotPack_PigtailNum(txb_ClientSN.Text.Trim());
                 }
-                
+
             }
             //更新已包装数
             Info_YetPack_Count.Text = _M_SerialNumber.Get_PackCount_Batch("BatchNo ='" + cmb_BatchNo.Text.Trim() + "' AND (Type = 'ClientSN') AND State ='Yet_Pack'").ToString();
@@ -300,7 +331,7 @@ namespace UI
                 My_MessageBox.My_MessageBox_Message("批号：" + _PackBatch.BatchNo + "  数量：" + _PackBatch.Count + "已包装：" + Info_YetPack_Count.Text + "\r\n包装完成！");
             }
         }
-       
+
 
 
         //
@@ -330,7 +361,7 @@ namespace UI
 
         #region Method
 
-        /************************** Method **************************/      
+        /************************** Method **************************/
         //根据工单类型决定显示和隐藏相应的控件
         private void showOption(Maticsoft.Model.E_InspectMethod _Imethod)
         {
@@ -338,9 +369,9 @@ namespace UI
             if (_Imethod == Maticsoft.Model.E_InspectMethod.一码一签)
             {
                 lab_Note_ClientSN.Visibility = System.Windows.Visibility.Hidden;
-                lab_Note_NotPigtailNum.Visibility = System.Windows.Visibility.Hidden;                           
+                lab_Note_NotPigtailNum.Visibility = System.Windows.Visibility.Hidden;
                 txb_ClientNum.Visibility = System.Windows.Visibility.Hidden;
-                txb_ClientSN.Visibility = System.Windows.Visibility.Hidden;              
+                txb_ClientSN.Visibility = System.Windows.Visibility.Hidden;
             }
             else if (_Imethod == Maticsoft.Model.E_InspectMethod.双并检测 ||
                      _Imethod == Maticsoft.Model.E_InspectMethod.四芯检测 ||
@@ -350,11 +381,11 @@ namespace UI
                      _Imethod == Maticsoft.Model.E_InspectMethod.FFOS_八芯 ||
                      _Imethod == Maticsoft.Model.E_InspectMethod.FFOS_十六芯 ||
                      _Imethod == Maticsoft.Model.E_InspectMethod.FFOS_二十四芯 ||
-                     _Imethod == Maticsoft.Model.E_InspectMethod.FFOS_三十二芯  ||
-                     _Imethod == Maticsoft.Model.E_InspectMethod.TFK十二芯检测x2||
+                     _Imethod == Maticsoft.Model.E_InspectMethod.FFOS_三十二芯 ||
+                     _Imethod == Maticsoft.Model.E_InspectMethod.TFK十二芯检测x2 ||
                      _Imethod == Maticsoft.Model.E_InspectMethod.TFK一芯检测x2 ||
                      _Imethod == Maticsoft.Model.E_InspectMethod.TFK二十四芯检测x2 ||
-                     _Imethod == Maticsoft.Model.E_InspectMethod.两码两签||
+                     _Imethod == Maticsoft.Model.E_InspectMethod.两码两签 ||
                      _Imethod == Maticsoft.Model.E_InspectMethod.MPO检测)
             {
                 lab_Note_ClientSN.Visibility = System.Windows.Visibility.Hidden;
@@ -367,7 +398,7 @@ namespace UI
             //根据工单检测类型决定是否隐藏 结果显示控件
             txb_Result_Fill_3D.Visibility = System.Windows.Visibility.Hidden;
             txb_Result_Fill_Exfo.Visibility = System.Windows.Visibility.Hidden;
-            
+
             if (_WorkOrder.InspectType == Maticsoft.Model.E_InspectType.检测3D)
             {
                 txb_Result_Fill_3D.Visibility = System.Windows.Visibility.Visible;
@@ -387,13 +418,13 @@ namespace UI
         private void shouOrderInfo(Maticsoft.Model.WorkOrder _workOrderInfo)
         {
             Info_OrderID_Count.Text = _workOrderInfo.Count;
-            Info_PeoductName.Text = _workOrderInfo.ProductName;            
-            Info_Model.Text = _workOrderInfo.Model;           
-            Info_DeliveryDate.Text = _workOrderInfo.DeliveryDate;                    
-        }       
+            Info_PeoductName.Text = _workOrderInfo.ProductName;
+            Info_Model.Text = _workOrderInfo.Model;
+            Info_DeliveryDate.Text = _workOrderInfo.DeliveryDate;
+        }
         //播放异常提示音
         private void MyPlay()
-        {            
+        {
             System.Media.SoundPlayer player = new System.Media.SoundPlayer();
             string temPath = System.AppDomain.CurrentDomain.BaseDirectory;
             player.SoundLocation = temPath + "Alert.wav";
@@ -401,10 +432,10 @@ namespace UI
             player.Play();
         }
 
-       
+
         #endregion
 
-      
+
         //
         //标签打印
         //
@@ -412,7 +443,7 @@ namespace UI
         {
             _WTT_NotPrintCount = 0;
             lab_NotPrintCount.Content = _WTT_NotPrintCount.ToString();
-            _WTT_Inspect.LabPrint(); 
+            _WTT_Inspect.LabPrint();
         }
 
         private void button1_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -442,7 +473,7 @@ namespace UI
         {
             if (txb_BarCode_Search_Order.IsFocused && e.Key == Key.Enter)
             {
-                DataSet temds  = MCP_CS.SerialNumber.GetList("SN ='" + txb_BarCode_Search_Order.Text.Trim() + "'");
+                DataSet temds = MCP_CS.SerialNumber.GetList("SN ='" + txb_BarCode_Search_Order.Text.Trim() + "'");
                 if (temds != null & temds.Tables[0].Rows.Count > 0)
                 {
                     string temOrder = temds.Tables[0].Rows[0]["OrderID"].ToString();
@@ -460,8 +491,35 @@ namespace UI
 
         }
 
-       
-       
-        /*************************** The End */         
+        //批量打印标签
+        private void btn_Batch_Print_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            try
+            {
+                this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (ThreadStart)delegate
+                {
+                    //TODO:先获取开始条码 和要打印的数量 依此将条码写入正常的检测输入框 并触发检测事件
+                    long sn = long.Parse(txb_Batch_StartSn.Text.Trim());
+                    int snCount = int.Parse(txb_Batch_Count.Text.Trim());
+                    for (int i = 1; i <= snCount; i++)
+                    {
+                        txb_Pigtailsn.Text = sn.ToString();
+                        InspectSN(txb_ClientSN.Text.Trim(), sn.ToString());
+                        sn++;
+                        Thread.Sleep(200);
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+
+                My_MessageBox.My_MessageBox_Message(ex.InnerException.Message);
+            }
+          
+        }
+
+
+
+        /*************************** The End */
     }
 }

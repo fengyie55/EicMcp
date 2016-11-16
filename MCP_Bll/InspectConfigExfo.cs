@@ -1,16 +1,17 @@
-﻿/* LabInfo.cs
+﻿/**  版本信息模板在安装目录下，可自行修改。
+* InspectConfigExfo.cs
 *
 * 功 能： N/A
-* 类 名： LabInfo
+* 类 名： InspectConfigExfo
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2014-3-20 13:28:36   N/A    初版  
+* V0.01  11/3/2016 11:32:51 AM   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
 *│　此技术信息为本公司机密信息，未经本公司书面同意禁止向第三方披露．　│
-*│　版权所有：追风猎人　　　　　　　　　　　　　　│
+*│　版权所有：动软卓越（北京）科技有限公司　　　　　　　　　　　　　　│
 *└──────────────────────────────────┘
 */
 using System;
@@ -21,19 +22,19 @@ using Maticsoft.Model;
 namespace Maticsoft.BLL
 {
 	/// <summary>
-	/// LabInfo
+	/// InspectConfigExfo
 	/// </summary>
-	public partial class LabInfo
+	public partial class InspectConfigExfo
 	{
-		private readonly Maticsoft.DAL.LabInfo dal=new Maticsoft.DAL.LabInfo();
-		public LabInfo()
+		private readonly Maticsoft.DAL.InspectConfigExfo dal=new Maticsoft.DAL.InspectConfigExfo();
+		public InspectConfigExfo()
 		{}
 		#region  BasicMethod
 
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public decimal Add(Maticsoft.Model.LabInfo model)
+		public decimal Add(Maticsoft.Model.InspectConfigExfo model)
 		{
 			return dal.Add(model);
 		}
@@ -41,26 +42,18 @@ namespace Maticsoft.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(Maticsoft.Model.LabInfo model)
+		public bool Update(Maticsoft.Model.InspectConfigExfo model)
 		{
 			return dal.Update(model);
 		}
 
 		/// <summary>
-		/// 删除一条数据  Lab_ID
+		/// 删除一条数据
 		/// </summary>
 		public bool Delete(decimal ID_Key)
 		{
 			
 			return dal.Delete(ID_Key);
-		}
-
-		/// <summary>
-		/// 删除一条数据  Lab_ID
-		/// </summary>
-		public bool Delete(string _lab_ID)
-		{
-			return dal.Delete(_lab_ID);
 		}
 		/// <summary>
 		/// 删除一条数据
@@ -73,7 +66,7 @@ namespace Maticsoft.BLL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public Maticsoft.Model.LabInfo GetModel(decimal ID_Key)
+		public Maticsoft.Model.InspectConfigExfo GetModel(decimal ID_Key)
 		{
 			
 			return dal.GetModel(ID_Key);
@@ -82,10 +75,10 @@ namespace Maticsoft.BLL
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public Maticsoft.Model.LabInfo GetModelByCache(decimal ID_Key)
+		public Maticsoft.Model.InspectConfigExfo GetModelByCache(decimal ID_Key)
 		{
 			
-			string CacheKey = "LabInfoModel-" + ID_Key;
+			string CacheKey = "InspectConfigExfoModel-" + ID_Key;
 			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
@@ -100,7 +93,7 @@ namespace Maticsoft.BLL
 				}
 				catch{}
 			}
-			return (Maticsoft.Model.LabInfo)objModel;
+			return (Maticsoft.Model.InspectConfigExfo)objModel;
 		}
 
 		/// <summary>
@@ -120,7 +113,7 @@ namespace Maticsoft.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<Maticsoft.Model.LabInfo> GetModelList(string strWhere)
+		public List<Maticsoft.Model.InspectConfigExfo> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -128,13 +121,13 @@ namespace Maticsoft.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<Maticsoft.Model.LabInfo> DataTableToList(DataTable dt)
+		public List<Maticsoft.Model.InspectConfigExfo> DataTableToList(DataTable dt)
 		{
-			List<Maticsoft.Model.LabInfo> modelList = new List<Maticsoft.Model.LabInfo>();
+			List<Maticsoft.Model.InspectConfigExfo> modelList = new List<Maticsoft.Model.InspectConfigExfo>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				Maticsoft.Model.LabInfo model;
+				Maticsoft.Model.InspectConfigExfo model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

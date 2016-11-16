@@ -37,7 +37,7 @@ namespace Maticsoft.BLL
 
                //开始填充数据            
                DataSet temdata = e.ImportData;              
-               int rowIndex = 7;
+               int rowIndex = 10;
                int colIndex = 0;
               
                //填充数据
@@ -168,7 +168,7 @@ namespace Maticsoft.BLL
        {
            //开始填充数据
            DataSet temdata = e.ImportData;
-           int rowIndex = 7;
+           int rowIndex = 10;
            int colIndex = 0;
 
            //填充数据
@@ -212,7 +212,7 @@ namespace Maticsoft.BLL
 
                //开始填充数据
                DataSet temdata = e.ImportData;
-               int rowIndex = 7;
+               int rowIndex = 10;
                int colIndex = 0;
 
                //填充数据

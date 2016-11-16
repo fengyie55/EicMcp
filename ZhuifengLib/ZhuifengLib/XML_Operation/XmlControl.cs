@@ -22,7 +22,7 @@ namespace ZhuifengLib.XML
         public XmlControl(string xmlFile)
         {
             //
-            // TODO: 在这里加入建构函式的程序代码
+            //   在这里加入建构函式的程序代码
             //
             try
             {

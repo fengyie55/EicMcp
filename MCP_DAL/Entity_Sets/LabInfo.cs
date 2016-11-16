@@ -30,7 +30,7 @@ namespace Maticsoft.DAL
 		#region  BasicMethod
 
 
-        DbHelperSQL dbs = new DbHelperSQL();
+		DbHelperSQL dbs = new DbHelperSQL();
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
@@ -100,7 +100,7 @@ namespace Maticsoft.DAL
 			
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("delete from tb_LabInfo ");
-            strSql.Append(" where ID_Key=@ID_Key");
+			strSql.Append(" where ID_Key=@ID_Key");
 			SqlParameter[] parameters = {
 					new SqlParameter("@ID_Key", SqlDbType.Decimal)
 			};
@@ -117,30 +117,30 @@ namespace Maticsoft.DAL
 			}
 		}
 
-        /// <summary>
-        /// 删除一条数据
-        /// </summary>
-        public bool Delete(string _lab_ID) 
-        {
+		/// <summary>
+		/// 删除一条数据
+		/// </summary>
+		public bool Delete(string _lab_ID) 
+		{
 
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append("delete from tb_LabInfo ");
-            strSql.Append(" where Lab_ID=@Lab_ID");
-            SqlParameter[] parameters = {
+			StringBuilder strSql = new StringBuilder();
+			strSql.Append("delete from tb_LabInfo ");
+			strSql.Append(" where Lab_ID=@Lab_ID");
+			SqlParameter[] parameters = {
 					new SqlParameter("@Lab_ID", SqlDbType.Decimal)
 			};
-            parameters[0].Value = _lab_ID;
+			parameters[0].Value = _lab_ID;
 
-            int rows = dbs.ExecuteSql(strSql.ToString(), parameters);
-            if (rows > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+			int rows = dbs.ExecuteSql(strSql.ToString(), parameters);
+			if (rows > 0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
 
 		/// <summary>
 		/// 批量删除数据

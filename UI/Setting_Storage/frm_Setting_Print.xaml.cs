@@ -22,6 +22,7 @@ namespace UI
         ObservableCollection<Maticsoft.Model.LabInfo> _WTT_LabInfo = new ObservableCollection<Maticsoft.Model.LabInfo>();
         private byte[] imBytes;
         Maticsoft.Model.LabVerify _W_LabVerify = new Maticsoft.Model.LabVerify();
+        Maticsoft.Bll.InspectConfigManage _M_InspectConfig = new Maticsoft.Bll.InspectConfigManage();
 
         public frm_Setting_Print()
         {
@@ -105,6 +106,24 @@ namespace UI
                     {
                         cmb_BatchNo.DataContext = temDs.Tables[0].DefaultView;
                         cmb_BatchNo.SelectedIndex = 0;
+
+
+                        //从配置文件中载入此产品的配置信息 2016-11-8 
+                        var temInspcetConfig = _M_InspectConfig.GetInspectConfigBy(txb_OrderID.Text);
+                        //找到了该工单的配置信息
+                        if (temInspcetConfig != null)
+                        {
+                            cbx_IsChangelabName.IsChecked = false;
+                            cmb_LabTemplate.Text = temInspcetConfig.LabelName;
+                            _WTT_LabInfo.Clear(); //清空列表
+                            var labContentList = _M_InspectConfig.GetLabContent(txb_OrderID.Text);
+                            labContentList.ForEach((m) =>
+                            {
+                                _WTT_LabInfo.Add(m);
+                            });
+                           
+                        }
+
                     }
                     else { My_MessageBox.My_MessageBox_Message("未找到工单信息！"); }
                 }
@@ -336,6 +355,12 @@ namespace UI
                 _M_LabInfo.Add(lab);
             }
 
+
+            //判断是否更新标签配置信息  2016-11-8
+            if (cbx_IsChangelabName.IsChecked==true)
+            {
+                _M_InspectConfig.SavaPrintConfig(txb_OrderID.Text, cmb_LabTemplate.Text, _WTT_LabInfo.ToList());
+            }
 
             Save_LabVerify();
         }

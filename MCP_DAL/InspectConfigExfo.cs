@@ -1,12 +1,12 @@
 ﻿/**  版本信息模板在安装目录下，可自行修改。
-* e_WorkOrder.cs
+* InspectConfigExfo.cs
 *
 * 功 能： N/A
-* 类 名： e_WorkOrder
+* 类 名： InspectConfigExfo
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2014/12/25 12:45:38   N/A    初版
+* V0.01  11/3/2016 11:32:51 AM   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
@@ -18,52 +18,47 @@ using System;
 using System.Data;
 using System.Text;
 using System.Data.SqlClient;
-using MCP_DBUitility;//Please add references
+using MCP_DBUitility;
+
 namespace Maticsoft.DAL
 {
 	/// <summary>
-	/// 数据访问类:e_WorkOrder
+	/// 数据访问类:InspectConfigExfo
 	/// </summary>
-	public partial class e_WorkOrder
+	public partial class InspectConfigExfo
 	{
-		public e_WorkOrder()
+		public InspectConfigExfo()
 		{}
-
-		DbHelperSQL dbs = new DbHelperSQL();
 		#region  BasicMethod
 
-		/// <summary>
-		/// 是否存在该记录
-		/// </summary>
-		public bool Exists(string WorkNum)
-		{
-			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select count(1) from tb_e_WorkOrder");
-			strSql.Append(" where WorkNum=@WorkNum ");
-			SqlParameter[] parameters = {
-					new SqlParameter("@WorkNum", SqlDbType.VarChar,50)			};
-			parameters[0].Value = WorkNum;
-
-			return dbs.Exists(strSql.ToString(),parameters);
-		}
-
+		DbHelperSQL dbs = new DbHelperSQL();
 
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public decimal Add(Maticsoft.Model.e_WorkOrder model)
+		public decimal Add(Maticsoft.Model.InspectConfigExfo model)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("insert into tb_e_WorkOrder(");
-			strSql.Append("WorkNum,DrawNum)");
+			strSql.Append("insert into tb_InspectConfigExfo(");
+			strSql.Append("ProductId,Wave,Type,IL_Min,IL_Max,RL_Min,RL_Max)");
 			strSql.Append(" values (");
-			strSql.Append("@WorkNum,@DrawNum)");
+			strSql.Append("SQL2012ProductId,SQL2012Wave,SQL2012Type,SQL2012IL_Min,SQL2012IL_Max,SQL2012RL_Min,SQL2012RL_Max)");
 			strSql.Append(";select @@IDENTITY");
 			SqlParameter[] parameters = {
-					new SqlParameter("@WorkNum", SqlDbType.VarChar,50),
-					new SqlParameter("@DrawNum", SqlDbType.VarChar,50)};
-			parameters[0].Value = model.WorkNum;
-			parameters[1].Value = model.DrawNum;
+					new SqlParameter("SQL2012ProductId", SqlDbType.NVarChar,50),
+					new SqlParameter("SQL2012Wave", SqlDbType.VarChar,15),
+					new SqlParameter("SQL2012Type", SqlDbType.VarChar,15),
+					new SqlParameter("SQL2012IL_Min", SqlDbType.VarChar,15),
+					new SqlParameter("SQL2012IL_Max", SqlDbType.VarChar,15),
+					new SqlParameter("SQL2012RL_Min", SqlDbType.VarChar,15),
+					new SqlParameter("SQL2012RL_Max", SqlDbType.VarChar,15)};
+			parameters[0].Value = model.ProductId;
+			parameters[1].Value = model.Wave;
+			parameters[2].Value = model.Type;
+			parameters[3].Value = model.IL_Min;
+			parameters[4].Value = model.IL_Max;
+			parameters[5].Value = model.RL_Min;
+			parameters[6].Value = model.RL_Max;
 
 			object obj = dbs.GetSingle(strSql.ToString(),parameters);
 			if (obj == null)
@@ -78,19 +73,35 @@ namespace Maticsoft.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(Maticsoft.Model.e_WorkOrder model)
+		public bool Update(Maticsoft.Model.InspectConfigExfo model)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("update tb_e_WorkOrder set ");
-			strSql.Append("DrawNum=@DrawNum");
-			strSql.Append(" where ID_Key=@ID_Key");
+			strSql.Append("update tb_InspectConfigExfo set ");
+			strSql.Append("ProductId=SQL2012ProductId,");
+			strSql.Append("Wave=SQL2012Wave,");
+			strSql.Append("Type=SQL2012Type,");
+			strSql.Append("IL_Min=SQL2012IL_Min,");
+			strSql.Append("IL_Max=SQL2012IL_Max,");
+			strSql.Append("RL_Min=SQL2012RL_Min,");
+			strSql.Append("RL_Max=SQL2012RL_Max");
+			strSql.Append(" where ID_Key=SQL2012ID_Key");
 			SqlParameter[] parameters = {
-					new SqlParameter("@DrawNum", SqlDbType.VarChar,50),
-					new SqlParameter("@ID_Key", SqlDbType.Decimal,9),
-					new SqlParameter("@WorkNum", SqlDbType.VarChar,50)};
-			parameters[0].Value = model.DrawNum;
-			parameters[1].Value = model.ID_Key;
-			parameters[2].Value = model.WorkNum;
+					new SqlParameter("SQL2012ProductId", SqlDbType.NVarChar,50),
+					new SqlParameter("SQL2012Wave", SqlDbType.VarChar,15),
+					new SqlParameter("SQL2012Type", SqlDbType.VarChar,15),
+					new SqlParameter("SQL2012IL_Min", SqlDbType.VarChar,15),
+					new SqlParameter("SQL2012IL_Max", SqlDbType.VarChar,15),
+					new SqlParameter("SQL2012RL_Min", SqlDbType.VarChar,15),
+					new SqlParameter("SQL2012RL_Max", SqlDbType.VarChar,15),
+					new SqlParameter("SQL2012ID_Key", SqlDbType.Decimal,9)};
+			parameters[0].Value = model.ProductId;
+			parameters[1].Value = model.Wave;
+			parameters[2].Value = model.Type;
+			parameters[3].Value = model.IL_Min;
+			parameters[4].Value = model.IL_Max;
+			parameters[5].Value = model.RL_Min;
+			parameters[6].Value = model.RL_Max;
+			parameters[7].Value = model.ID_Key;
 
 			int rows=dbs.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -110,35 +121,12 @@ namespace Maticsoft.DAL
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("delete from tb_e_WorkOrder ");
-			strSql.Append(" where ID_Key=@ID_Key");
+			strSql.Append("delete from tb_InspectConfigExfo ");
+			strSql.Append(" where ID_Key=SQL2012ID_Key");
 			SqlParameter[] parameters = {
-					new SqlParameter("@ID_Key", SqlDbType.Decimal)
+					new SqlParameter("SQL2012ID_Key", SqlDbType.Decimal)
 			};
 			parameters[0].Value = ID_Key;
-
-			int rows=dbs.ExecuteSql(strSql.ToString(),parameters);
-			if (rows > 0)
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-		/// <summary>
-		/// 删除一条数据
-		/// </summary>
-		public bool Delete(string WorkNum)
-		{
-			
-			StringBuilder strSql=new StringBuilder();
-			strSql.Append("delete from tb_e_WorkOrder ");
-			strSql.Append(" where WorkNum=@WorkNum ");
-			SqlParameter[] parameters = {
-					new SqlParameter("@WorkNum", SqlDbType.VarChar,50)			};
-			parameters[0].Value = WorkNum;
 
 			int rows=dbs.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -156,7 +144,7 @@ namespace Maticsoft.DAL
 		public bool DeleteList(string ID_Keylist )
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("delete from tb_e_WorkOrder ");
+			strSql.Append("delete from tb_InspectConfigExfo ");
 			strSql.Append(" where ID_Key in ("+ID_Keylist + ")  ");
 			int rows=dbs.ExecuteSql(strSql.ToString());
 			if (rows > 0)
@@ -173,18 +161,18 @@ namespace Maticsoft.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public Maticsoft.Model.e_WorkOrder GetModel(decimal ID_Key)
+		public Maticsoft.Model.InspectConfigExfo GetModel(decimal ID_Key)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select  top 1 ID_Key,WorkNum,DrawNum from tb_e_WorkOrder ");
-			strSql.Append(" where ID_Key=@ID_Key");
+			strSql.Append("select  top 1 ProductId,Wave,Type,IL_Min,IL_Max,RL_Min,RL_Max,ID_Key from tb_InspectConfigExfo ");
+			strSql.Append(" where ID_Key=SQL2012ID_Key");
 			SqlParameter[] parameters = {
-					new SqlParameter("@ID_Key", SqlDbType.Decimal)
+					new SqlParameter("SQL2012ID_Key", SqlDbType.Decimal)
 			};
 			parameters[0].Value = ID_Key;
 
-			Maticsoft.Model.e_WorkOrder model=new Maticsoft.Model.e_WorkOrder();
+			Maticsoft.Model.InspectConfigExfo model=new Maticsoft.Model.InspectConfigExfo();
 			DataSet ds=dbs.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -196,51 +184,46 @@ namespace Maticsoft.DAL
 			}
 		}
 
-		/// <summary>
-		/// 得到一个对象实体
-		/// </summary>
-		public Maticsoft.Model.e_WorkOrder GetModel(string Order) 
-		{
-			StringBuilder strSql = new StringBuilder();
-			strSql.Append("select  top 1 ID_Key,WorkNum,DrawNum from tb_e_WorkOrder ");
-			strSql.Append(" where WorkNum=@WorkNum");
-			SqlParameter[] parameters = {
-					new SqlParameter("@WorkNum", SqlDbType.VarChar,50)};
-			parameters[0].Value = Order;
-
-			Maticsoft.Model.e_WorkOrder model = new Maticsoft.Model.e_WorkOrder();
-			DataSet ds = dbs.Query(strSql.ToString(), parameters);
-			if (ds.Tables[0].Rows.Count > 0)
-			{
-				return DataRowToModel(ds.Tables[0].Rows[0]);
-			}
-			else
-			{
-				return null;
-			}
-		}
-
-
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public Maticsoft.Model.e_WorkOrder DataRowToModel(DataRow row)
+		public Maticsoft.Model.InspectConfigExfo DataRowToModel(DataRow row)
 		{
-			Maticsoft.Model.e_WorkOrder model=new Maticsoft.Model.e_WorkOrder();
+			Maticsoft.Model.InspectConfigExfo model=new Maticsoft.Model.InspectConfigExfo();
 			if (row != null)
 			{
+				if(row["ProductId"]!=null)
+				{
+					model.ProductId=row["ProductId"].ToString();
+				}
+				if(row["Wave"]!=null)
+				{
+					model.Wave=row["Wave"].ToString();
+				}
+				if(row["Type"]!=null)
+				{
+					model.Type=row["Type"].ToString();
+				}
+				if(row["IL_Min"]!=null)
+				{
+					model.IL_Min=row["IL_Min"].ToString();
+				}
+				if(row["IL_Max"]!=null)
+				{
+					model.IL_Max=row["IL_Max"].ToString();
+				}
+				if(row["RL_Min"]!=null)
+				{
+					model.RL_Min=row["RL_Min"].ToString();
+				}
+				if(row["RL_Max"]!=null)
+				{
+					model.RL_Max=row["RL_Max"].ToString();
+				}
 				if(row["ID_Key"]!=null && row["ID_Key"].ToString()!="")
 				{
 					model.ID_Key=decimal.Parse(row["ID_Key"].ToString());
-				}
-				if(row["WorkNum"]!=null)
-				{
-					model.WorkNum=row["WorkNum"].ToString();
-				}
-				if(row["DrawNum"]!=null)
-				{
-					model.DrawNum=row["DrawNum"].ToString();
 				}
 			}
 			return model;
@@ -252,8 +235,8 @@ namespace Maticsoft.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID_Key,WorkNum,DrawNum ");
-			strSql.Append(" FROM tb_e_WorkOrder ");
+			strSql.Append("select ProductId,Wave,Type,IL_Min,IL_Max,RL_Min,RL_Max,ID_Key ");
+			strSql.Append(" FROM tb_InspectConfigExfo ");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);
@@ -272,8 +255,8 @@ namespace Maticsoft.DAL
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append(" ID_Key,WorkNum,DrawNum ");
-			strSql.Append(" FROM tb_e_WorkOrder ");
+			strSql.Append(" ProductId,Wave,Type,IL_Min,IL_Max,RL_Min,RL_Max,ID_Key ");
+			strSql.Append(" FROM tb_InspectConfigExfo ");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);
@@ -288,7 +271,7 @@ namespace Maticsoft.DAL
 		public int GetRecordCount(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select count(1) FROM tb_e_WorkOrder ");
+			strSql.Append("select count(1) FROM tb_InspectConfigExfo ");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);
@@ -319,7 +302,7 @@ namespace Maticsoft.DAL
 			{
 				strSql.Append("order by T.ID_Key desc");
 			}
-			strSql.Append(")AS Row, T.*  from tb_e_WorkOrder T ");
+			strSql.Append(")AS Row, T.*  from tb_InspectConfigExfo T ");
 			if (!string.IsNullOrEmpty(strWhere.Trim()))
 			{
 				strSql.Append(" WHERE " + strWhere);
@@ -336,15 +319,15 @@ namespace Maticsoft.DAL
 		public DataSet GetList(int PageSize,int PageIndex,string strWhere)
 		{
 			SqlParameter[] parameters = {
-					new SqlParameter("@tblName", SqlDbType.VarChar, 255),
-					new SqlParameter("@fldName", SqlDbType.VarChar, 255),
-					new SqlParameter("@PageSize", SqlDbType.Int),
-					new SqlParameter("@PageIndex", SqlDbType.Int),
-					new SqlParameter("@IsReCount", SqlDbType.Bit),
-					new SqlParameter("@OrderType", SqlDbType.Bit),
-					new SqlParameter("@strWhere", SqlDbType.VarChar,1000),
+					new SqlParameter("SQL2012tblName", SqlDbType.VarChar, 255),
+					new SqlParameter("SQL2012fldName", SqlDbType.VarChar, 255),
+					new SqlParameter("SQL2012PageSize", SqlDbType.Int),
+					new SqlParameter("SQL2012PageIndex", SqlDbType.Int),
+					new SqlParameter("SQL2012IsReCount", SqlDbType.Bit),
+					new SqlParameter("SQL2012OrderType", SqlDbType.Bit),
+					new SqlParameter("SQL2012strWhere", SqlDbType.VarChar,1000),
 					};
-			parameters[0].Value = "tb_e_WorkOrder";
+			parameters[0].Value = "tb_InspectConfigExfo";
 			parameters[1].Value = "ID_Key";
 			parameters[2].Value = PageSize;
 			parameters[3].Value = PageIndex;

@@ -272,7 +272,6 @@ namespace Maticsoft.DAL
                 //获取默认打印机
                 PrintDocument fPrintDocument = new PrintDocument();
 
-                Messages messages = null;
                 //设置打印模板
                 LabelFormatDocument btFormat = btEngine.Documents.Open(LabPatch + LabName);
 

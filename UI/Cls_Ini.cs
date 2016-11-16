@@ -22,7 +22,7 @@ namespace UI
         {
             // 判断文件是否存在
             FileInfo fileInfo = new FileInfo(AFileName);
-            //Todo:搞清枚举的用法
+            // 搞清枚举的用法
             if ((!fileInfo.Exists))
             { //|| (FileAttributes.Directory in fileInfo.Attributes))
                 //文件不存在，建立文件

@@ -35,7 +35,7 @@
         <Label Content="批号:" Margin="0,1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Height="25" Width="37"/>
         <TextBox x:Name="txb_Batch_OptionCount" Margin="0,2,0,1" Grid.Row="3" TextWrapping="Wrap" Text="" Width="56" Grid.Column="1" HorizontalAlignment="Left"/>
         <Label Content="选择模板:" Grid.Row="2" VerticalAlignment="Center" Margin="0,3,0,1" RenderTransformOrigin="0.436,0.476" HorizontalAlignment="Right" Height="23" Width="61"/>
-        <ComboBox x:Name="cmb_LabTemplate" Margin="0,2,0,1" Grid.Row="2" Grid.Column="1" />
+        <ComboBox x:Name="cmb_LabTemplate" Margin="0,2,0,1" Grid.Row="2" Grid.Column="1" IsReadOnly="True" IsEnabled="{Binding IsChecked, ElementName=cbx_IsChangelabName}"/>
         <Button Grid.Row="2" Height="20" HorizontalAlignment="Right" Margin="0,4,188,3" x:Name="btn_ChangeBT_Template" VerticalAlignment="Center" Width="48" Content="载入" Click="btn_ChangeBT_Template_Click" Grid.Column="2" />
         <DataGrid Margin="5,6,7,0" Grid.Row="4" Name="dgv_TemplateInfo" SelectionUnit="CellOrRowHeader"  CanUserAddRows="False" ItemsSource="{Binding}" AutoGenerateColumns="False" CellEditEnding="dgv_TemplateInfo_CellEditEnding" Grid.ColumnSpan="3">
             <DataGrid.Columns>
@@ -61,6 +61,7 @@
                 <Button Width="100" Click="Button_Click_1">打印</Button>
             </StackPanel>
         </GroupBox>
+        <CheckBox x:Name="cbx_IsChangelabName" Content="修改" Grid.Column="2" HorizontalAlignment="Left" Margin="64,7,0,0" Grid.Row="2" VerticalAlignment="Top"/>
     </Grid>
 
 
